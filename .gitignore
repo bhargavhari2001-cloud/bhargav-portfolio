@@ -1,0 +1,23 @@
+# ── secrets (never commit) ──────────────────────────────
+.env
+.env.*
+*.token
+
+# ── Vercel local link / build cache ─────────────────────
+.vercel/
+
+# ── OS / editor junk ────────────────────────────────────
+.DS_Store
+**/.DS_Store
+
+# ── Claude Code local settings (keep launch.json, drop local prefs) ──
+.claude/settings.local.json
+
+# ── redundant now that git tracks history ───────────────
+versions/
+
+# ── cowork artifact thumbnail (not part of the live site) ─
+thumbnail.png
+
+# ── node (in case any tooling adds it) ──────────────────
+node_modules/

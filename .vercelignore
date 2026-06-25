@@ -1,0 +1,5 @@
+versions/
+.vercel/
+thumbnail.png
+.DS_Store
+**/.DS_Store
