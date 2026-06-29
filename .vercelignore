@@ -3,3 +3,4 @@ versions/
 thumbnail.png
 .DS_Store
 **/.DS_Store
+resume_build.py

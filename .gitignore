@@ -21,3 +21,6 @@ thumbnail.png
 
 # ── node (in case any tooling adds it) ──────────────────
 node_modules/
+
+# editor/backup snapshots (not part of the site)
+*.bak

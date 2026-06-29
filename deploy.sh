@@ -29,3 +29,20 @@ VERCEL_TOKEN="$VERCEL_TOKEN" \
   npx --yes vercel@latest deploy --prod --yes --scope bhargavhari2001-5140s-projects
 
 echo "Deployed build $BID — clients will auto-refresh to it."
+
+# 4) snapshot this deploy to git + push to GitHub (version history per release).
+#    git add -A respects .gitignore, so .env / *.token / *.bak / .vercel never get committed.
+if git rev-parse --git-dir >/dev/null 2>&1; then
+  git add -A
+  if git diff --cached --quiet; then
+    echo "Git: nothing changed since last commit."
+  else
+    git commit -q -m "Deploy $BID" && echo "Git: committed $BID."
+  fi
+  if git remote get-url origin >/dev/null 2>&1; then
+    if git push -q origin HEAD; then echo "Git: pushed to GitHub."; else
+      echo "WARN: git push failed (deploy still live). Pull/rebase and push manually." >&2; fi
+  else
+    echo "WARN: no git remote 'origin' set — skipped GitHub push." >&2
+  fi
+fi
