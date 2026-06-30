@@ -14,7 +14,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260629165403';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260630132325';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -456,6 +456,34 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .approach li::before{content:counter(ap);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:.78rem;font-weight:600;color:var(--acc)}
 .approach li b{color:var(--ink);font-weight:600}
 @media(prefers-reduced-motion:reduce){.display.hsplit .hw{opacity:1;transform:none;filter:none;transition:none}.btn-line.sb-on::before{animation:none;opacity:.4}}
+/* ── Editorial spine hero ── */
+.hero{padding:0}
+.hero>.wrap{max-width:none;padding:0;display:grid;grid-template-columns:1fr 224px 1fr;grid-template-rows:minmax(min(76vh,640px),1fr)}
+.hero-col-l{display:flex;flex-direction:column;justify-content:space-between;padding:60px 44px;align-items:center;text-align:center}
+.hero-discs{display:flex;flex-direction:column;align-items:center}
+.disc-item{font-size:.62rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);line-height:2.2}
+.disc-sep{width:18px;height:1px;background:var(--line);margin:3px 0}
+.hero-pstats{display:flex;flex-direction:column;gap:22px}
+.ps-v{display:block;font-size:2.75rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.ps-l{display:block;font-size:.62rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;margin-top:4px}
+.hero-spine{display:flex;flex-direction:column;align-items:center}
+.spine-rule{width:1px;background:var(--line);flex-shrink:0;height:44px;align-self:center}
+.hero-spine .hero-figure{position:static;flex:1;display:flex;align-items:flex-end;justify-content:center;width:100%}
+.hero-spine #fig-canvas{height:min(72vh,540px);filter:none}
+.hero-col-r{display:flex;flex-direction:column;justify-content:center;padding:60px 52px}
+.hero-col-r h1.display{margin-top:0}
+.hero-col-r .lede{max-width:100%}
+
+@media(max-width:860px){
+  .hero>.wrap{display:flex;flex-direction:column}
+  .hero-col-l{display:none}
+  .hero-spine{border:none;border-bottom:1px solid var(--line)}
+  .hero-spine #fig-canvas{height:min(48vh,340px)}
+  .hero-spine #fig-canvas.ready{opacity:.38}
+  .hero-col-r{padding:40px 24px 32px}
+  .hero-col-r h1.display{font-size:clamp(1.9rem,6.5vw,3rem)}
+
+}
 </style>
 </head>
 <body>
@@ -522,22 +550,35 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 
 <div class="hero">
   <div class="hero-orbs" aria-hidden="true"><span class="orb ring o1"></span><span class="orb blob o2"></span><span class="orb ring o3"></span></div>
-  <div class="hero-figure"><canvas id="fig-canvas" width="362" height="960" aria-hidden="true"></canvas></div>
   <div class="wrap">
-    <div class="kick">Business Analytics · Finance · AI Engineering</div>
-    <h1 class="display">I analyze the problem.<br>Then I <span class="kw">build</span> the fix.</h1>
-    <script>(function(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;var h=document.querySelector('.display');if(!h)return;var frag=document.createDocumentFragment(),words=[];function wrap(t){t.split(/(\s+)/).forEach(function(p){if(p==='')return;if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));}else{var s=document.createElement('span');s.className='hw';s.textContent=p;frag.appendChild(s);words.push(s);}});}[].slice.call(h.childNodes).forEach(function(n){if(n.nodeType===3){wrap(n.nodeValue);}else if(n.nodeName==='BR'){frag.appendChild(document.createElement('br'));}else{var s=document.createElement('span');s.className='hw';s.appendChild(n.cloneNode(true));frag.appendChild(s);words.push(s);}});h.textContent='';h.appendChild(frag);h.classList.add('hsplit');words.forEach(function(w,i){w.style.transitionDelay=(i*55+40)+'ms';});requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('hin');});});})();</script>
-    <p class="lede">M.S. Business Analytics · ex-IT pre-sales · building AI tools at the boundary of finance and data.</p>
-    <div class="hero-btns">
-      <a class="btn btn-dark" href="#work" data-magnetic>See the work</a>
-      <a class="btn btn-line sb-on" href="mailto:bhargavhari2001@gmail.com">Get in touch</a>
-      <a class="btn btn-line sb-on" href="resume.pdf" target="_blank" rel="noopener">Résumé <span class="arr">↗</span></a>
+    <div class="hero-col-l">
+      <div class="hero-discs">
+        <span class="disc-item">Business</span>
+        <span class="disc-item">Analytics</span>
+        <div class="disc-sep"></div>
+        <span class="disc-item">Finance</span>
+        <div class="disc-sep"></div>
+        <span class="disc-item">AI Engineering</span>
+      </div>
+      <div class="hero-pstats">
+        <div class="pstat"><span class="ps-v">3</span><span class="ps-l">AI tools, end-to-end</span></div>
+        <div class="pstat"><span class="ps-v">0.981</span><span class="ps-l">AUC · Churn model</span></div>
+        <div class="pstat"><span class="ps-v">458K</span><span class="ps-l">Customers modeled</span></div>
+        <div class="pstat"><span class="ps-v">3+ yrs</span><span class="ps-l">enterprise BA experience</span></div>
+      </div>
     </div>
-    <div class="stats reveal">
-      <div class="stat"><div class="n" id="s1">3</div><div class="l">AI products, end-to-end</div></div>
-      <div class="stat"><div class="n" id="s2">0.981</div><div class="l">AUC · Churn prediction model</div></div>
-      <div class="stat"><div class="n" id="s3">458K</div><div class="l">customers modeled (Amex)</div></div>
-      <div class="stat"><div class="n">3+ yrs</div><div class="l">enterprise BA experience</div></div>
+    <div class="hero-spine">
+      <div class="hero-figure"><canvas id="fig-canvas" width="362" height="960" aria-hidden="true"></canvas></div>
+    </div>
+    <div class="hero-col-r">
+      <h1 class="display">I analyze the problem.<br>Then I <span class="kw">build</span> the fix.</h1>
+      <script>(function(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;var h=document.querySelector('.display');if(!h)return;var frag=document.createDocumentFragment(),words=[];function wrap(t){t.split(/(\s+)/).forEach(function(p){if(p==='')return;if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));}else{var s=document.createElement('span');s.className='hw';s.textContent=p;frag.appendChild(s);words.push(s);}});}[].slice.call(h.childNodes).forEach(function(n){if(n.nodeType===3){wrap(n.nodeValue);}else if(n.nodeName==='BR'){frag.appendChild(document.createElement('br'));}else{var s=document.createElement('span');s.className='hw';s.appendChild(n.cloneNode(true));frag.appendChild(s);words.push(s);}});h.textContent='';h.appendChild(frag);h.classList.add('hsplit');words.forEach(function(w,i){w.style.transitionDelay=(i*55+40)+'ms';});requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('hin');});});})();</script>
+      <p class="lede">M.S. Business Analytics · ex-IT pre-sales · building AI tools at the boundary of finance and data.</p>
+      <div class="hero-btns">
+        <a class="btn btn-dark" href="#work" data-magnetic>See the work</a>
+        <a class="btn btn-line sb-on" href="mailto:bhargavhari2001@gmail.com">Get in touch</a>
+        <a class="btn btn-line sb-on" href="resume.pdf" target="_blank" rel="noopener">Résumé <span class="arr">↗</span></a>
+      </div>
     </div>
   </div>
 </div>
