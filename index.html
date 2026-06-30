@@ -14,7 +14,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260630132325';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260630132914';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -257,7 +257,7 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 .edu-card h3{font-size:.92rem;margin:5px 0 3px;font-weight:700}.edu-card p{font-size:.78rem;color:var(--muted)}
 /* pinned scroll track — figure stays centred while the clip scrubs across it */
 /* track height tuned so the scrub rate (~6.3px/frame) matches the hero turntable */
-.contact-track{position:relative;height:172vh}
+.contact-track{position:relative;height:120vh}
 .contact-pin{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
 .contact-pin .wrap{width:100%}
 .contact-box{margin:0;display:grid;grid-template-columns:1fr auto;gap:clamp(28px,5vw,64px);align-items:center}
@@ -280,6 +280,12 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 .contact-links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--ink);transition:width .35s var(--ease-out)}
 .contact-links a:hover{color:var(--ink)}
 .contact-links a:hover::after{width:100%}
+.end-note{margin-top:clamp(34px,6vh,72px);text-align:center}
+.end-lead{font-size:clamp(1.02rem,2.1vw,1.4rem);font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.4;max-width:600px;margin:0 auto}
+.end-spec-label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 11px}
+.end-spec{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px}
+.end-spec span{font-size:.73rem;font-weight:500;color:var(--muted);padding:6px 13px;border:1px solid var(--line);border-radius:99px;background:var(--card);transition:color .2s,border-color .2s}
+@media(hover:hover) and (pointer:fine){.end-spec span:hover{color:var(--ink);border-color:var(--ink)}}
 footer{padding:28px 0;font-size:.73rem;color:var(--muted);border-top:1px solid var(--line)}
 .reveal{opacity:0;transform:translateY(22px) scale(0.985);filter:blur(6px);transition:opacity 650ms var(--ease-out),transform 650ms var(--ease-out),filter 650ms var(--ease-out),translate 750ms var(--ease-out)}
 .reveal.in{opacity:1;transform:translateY(0) scale(1);filter:blur(0);translate:0 0}
@@ -793,6 +799,11 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
           <div class="contact-figure" id="contact-figure" aria-hidden="true">
             <canvas id="fig2-canvas" width="384" height="503"></canvas>
           </div>
+        </div>
+        <div class="end-note reveal">
+          <p class="end-lead">I build analytics systems that drive decisions.</p>
+          <p class="end-spec-label">Specializing in</p>
+          <div class="end-spec"><span>Business Analytics</span><span>Product Analytics</span><span>FinTech Analytics</span><span>Strategy &amp; Consulting</span></div>
         </div>
       </div>
     </div>
