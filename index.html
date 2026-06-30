@@ -14,7 +14,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260630133943';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260630135552';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -816,7 +816,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
   </div>
 </section>
 
-<footer><div class="wrap reveal">© 2026 Bhargav Hari · Designed &amp; built by me</div></footer>
+<footer><div class="wrap reveal">© 2026 Bhargav Hari · Designed &amp; built by me with AI</div></footer>
 
 <!-- DRAWER -->
 <div class="drawer-backdrop" id="drawer-backdrop" onclick="closeDrawer()"></div>
