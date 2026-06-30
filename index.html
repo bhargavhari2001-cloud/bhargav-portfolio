@@ -14,7 +14,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260630132914';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260630133943';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -496,6 +496,12 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 <style id="dash-css">
 .drawer.has-dash{width:min(1080px,100vw)}
 .drawer-body.has-dash{display:grid;grid-template-columns:396px 1fr;padding:0;align-items:stretch}
+.drawer-body.has-multi{padding:0}
+.has-multi .rm-head{padding:24px 38px 6px 44px}
+.has-multi .rm-row{display:grid;grid-template-columns:396px 1fr;align-items:stretch;border-top:1px solid var(--line)}
+.has-multi .rm-row-full{border-top:1px solid var(--line)}
+.has-multi .rm-row .d-main,.has-multi .rm-row-full .d-main{padding:28px 38px 34px 44px}
+@media(max-width:820px){.has-multi .rm-row{grid-template-columns:1fr}.has-multi .rm-row .d-dash{border-right:none;border-bottom:1px solid var(--line)}}
 .d-dash{position:relative;overflow:hidden;background:linear-gradient(160deg,#f3f4ff 0%,#eef6ff 55%,#f6effe 100%);padding:26px 22px 34px;border-right:1px solid var(--line)}
 .d-liquid{position:absolute;inset:0;z-index:0;pointer-events:none;filter:blur(34px);opacity:.9}
 .d-dash-inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:12px}
@@ -1547,11 +1553,27 @@ if(!window.matchMedia('(pointer:coarse)').matches){var g=document.getElementById
   window.openDrawer=function(k){
     _open(k);
     var c=window.CASES&&CASES[k], drawer=document.getElementById("drawer"), body=document.getElementById("d-body");
-    var old=body.querySelector(".d-liquid"); if(old&&old.__stop)old.__stop();
+    [].forEach.call(body.querySelectorAll(".d-liquid"),function(o){if(o&&o.__stop)o.__stop();});
+    drawer.classList.remove("has-dash"); body.classList.remove("has-dash","has-multi");
     if(c&&c.dashMulti){
-      drawer.classList.add("has-dash"); body.classList.add("has-dash");
-      body.innerHTML='<div class="d-dash">'+renderMultiDash(c.dashMulti)+'</div><div class="d-main">'+body.innerHTML+'</div>';
-      initLiquid(body.querySelector(".d-liquid"),c.dashMulti[0].accent);
+      drawer.classList.add("has-dash"); body.classList.add("has-multi");
+      var tagsEl=body.querySelector(".drawer-tags"), liveEl=body.querySelector(".drawer-live");
+      var head=(tagsEl?tagsEl.outerHTML:"")+(liveEl?liveEl.outerHTML:"");
+      var dashFor=function(nm){var n=(nm||"").toLowerCase();for(var i=0;i<c.dashMulti.length;i++){var e=c.dashMulti[i].eyebrow.toLowerCase();if(n.indexOf(e)>-1||e.indexOf(n)>-1)return c.dashMulti[i];}return null;};
+      var groups=[], lead="", curG=null;
+      c.sections.forEach(function(s){
+        if(/rm-proj/.test(s.b)){ var nm=(s.b.match(/rm-proj-name">([^<]+)</)||[])[1]||""; curG={name:nm,html:""}; groups.push(curG); }
+        var secHTML='<div class="drawer-sec"><div class="dlabel">'+s.l+'</div>'+(s.h?'<h3>'+s.h+'</h3>':'')+s.b+'</div>';
+        if(curG){ curG.html+=secHTML; } else { lead+=secHTML; }
+      });
+      var accents=[];
+      var rows=groups.map(function(g){
+        var d=dashFor(g.name);
+        if(d){ accents.push(d.accent); return '<div class="rm-row"><div class="d-dash">'+renderMultiDash([d])+'</div><div class="d-main">'+g.html+'</div></div>'; }
+        return '<div class="rm-row-full"><div class="d-main">'+g.html+'</div></div>';
+      }).join("");
+      body.innerHTML='<div class="rm-head">'+head+lead+'</div>'+rows;
+      [].forEach.call(body.querySelectorAll(".d-liquid"),function(cv,i){ initLiquid(cv,accents[i]); });
     } else if(c&&c.dash){
       drawer.classList.add("has-dash"); body.classList.add("has-dash");
       body.innerHTML='<div class="d-dash">'+renderDash(c.dash)+'</div><div class="d-main">'+body.innerHTML+'</div>';
@@ -1562,7 +1584,7 @@ if(!window.matchMedia('(pointer:coarse)').matches){var g=document.getElementById
     drawer.scrollTop=0;
   };
   window.closeDrawer=function(){
-    var cv=document.querySelector("#d-body .d-liquid"); if(cv&&cv.__stop)cv.__stop();
+    [].forEach.call(document.querySelectorAll("#d-body .d-liquid"),function(cv){if(cv&&cv.__stop)cv.__stop();});
     _close();
   };
 })();
