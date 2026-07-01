@@ -14,7 +14,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260630135552';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260701131948';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -316,6 +316,13 @@ footer{padding:28px 0;font-size:.73rem;color:var(--muted);border-top:1px solid v
 .mask-reveal .mask-inner{display:block;transform:translateY(115%);transition:transform 950ms var(--ease-out);will-change:transform}
 .mask-reveal.revealed .mask-inner{transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){#scroll-progress{display:none}.mask-reveal{overflow:visible;padding-bottom:0;margin-bottom:0}.mask-reveal .mask-inner{transform:none;transition:none}.reveal{filter:none}}
+/* iOS/touch: animated blur() + transforms (the .reveal filter and the .mask-reveal translate under overflow:hidden/will-change) leave duplicate "ghost" paints on scroll — garbled/doubled headings. On touch, keep ONLY an opacity fade; drop every transform/translate/blur/mask so nothing transform-based can ghost. */
+@media(hover:none) and (pointer:coarse){
+  .reveal,.reveal.in,.reveal[data-dir],.reveal.in[data-dir]{transform:none;translate:0 0;filter:none;will-change:auto}
+  .reveal{transition:opacity 500ms var(--ease-out)}
+  .mask-reveal{overflow:visible;padding-bottom:0;margin-bottom:0}
+  .mask-reveal .mask-inner{transform:none;transition:none;will-change:auto}
+}
 #cursor-glow{position:fixed;top:0;left:0;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:9999;background:radial-gradient(circle,rgba(15,98,254,.065) 0%,transparent 70%);transition:transform .12s linear;will-change:transform}
 @media(pointer:coarse){#cursor-glow{display:none}}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}#hero-canvas,#cursor-glow{display:none}}
