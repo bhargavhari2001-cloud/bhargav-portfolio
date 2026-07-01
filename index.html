@@ -14,7 +14,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260701163249';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260701164529';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -469,6 +469,14 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .approach li::before{content:counter(ap);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:.78rem;font-weight:600;color:var(--acc)}
 .approach li b{color:var(--ink);font-weight:600}
 @media(prefers-reduced-motion:reduce){.display.hsplit .hw{opacity:1;transform:none;filter:none;transition:none}.btn-line.sb-on::before{animation:none;opacity:.4}}
+/* ── sohub-style spring hover on work (.proj) + research (.mini) cards (transform added alongside the reveal transitions so scroll-reveals still animate) ── */
+.proj .visual{transition:translate .8s var(--ease-out) .1s,opacity .8s var(--ease-out) .1s,transform .34s cubic-bezier(.34,1.56,.64,1)}
+.minigrid .mini{transition:opacity .6s var(--ease-out),translate .72s var(--ease-out),scale .72s var(--ease-out),transform .36s cubic-bezier(.34,1.56,.64,1),border-color .3s}
+@media(hover:hover) and (pointer:fine){
+  .minigrid .mini:hover{transform:translateY(-4px) scale(1.02)}
+  .proj:hover .visual{transform:scale(1.03)}
+}
+@media(prefers-reduced-motion:reduce){.minigrid .mini:hover,.proj:hover .visual{transform:none}}
 /* ── Editorial spine hero ── */
 .hero{padding:0}
 .hero>.wrap{max-width:none;padding:0;display:grid;grid-template-columns:1fr 224px 1fr;grid-template-rows:minmax(min(76vh,640px),1fr)}
