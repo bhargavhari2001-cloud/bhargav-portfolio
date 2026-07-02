@@ -1103,12 +1103,22 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   var mq=window.matchMedia('(max-width:700px)'); /* pin is disabled on mobile (position:static) — skip the scrub math there, re-checked live so a resize/rotate doesn't need a reload */
   var pin=track.querySelector('.research-pin');
   var navH=67;
+  /* Sweep per row = max(natural overflow, 20% of the row's visible width). On short viewports the
+     height-aware card cap can shrink 3 cards until they no longer overflow the row — natural travel
+     hits 0 and the whole effect silently vanishes (track collapses to pin height). The minimum
+     sweep keeps the drift alive there: rows centre themselves and slide symmetrically. On tall
+     screens sweep === natural overflow and the maths reduces to the original 0 → -overflow drift. */
+  function sweepFor(row){
+    var wrapW=row.parentElement.clientWidth;
+    var n=row.scrollWidth-wrapW;                              // natural overflow (≤0 when cards fit)
+    return {n:n, s:Math.max(n, wrapW*0.2)};
+  }
   function recompute(){
     navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0;
     if(mq.matches){ track.style.height=''; return; }         // mobile: static pin — let the CSS own the height
-    var maxTravel=0;                                          // how far the widest row must drift horizontally
-    rows.forEach(function(r){ var t=r.scrollWidth-r.parentElement.clientWidth; if(t>maxTravel)maxTravel=t; });
-    track.style.height=(pin.offsetHeight+Math.max(1,maxTravel*2))+'px'; // pinned distance sized to the travel
+    var maxS=0;
+    rows.forEach(function(r){ var s=sweepFor(r).s; if(s>maxS)maxS=s; });
+    track.style.height=(pin.offsetHeight+Math.max(1,maxS*2))+'px'; // pinned distance sized to the sweep
   }                                                           // (~2px scroll : 1px drift) — consistent on any screen
   var ticking=false;
   function update(){
@@ -1119,12 +1129,11 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
        construction — a load-time snapshot is skewed by the section's entrance transform (~50px) */
     var rectTop=track.getBoundingClientRect().top;
     var span=Math.max(1, track.offsetHeight-pin.offsetHeight);
-    var travels=rows.map(function(row){ return row.scrollWidth-row.parentElement.clientWidth; });
+    var geo=rows.map(sweepFor);
     var p=(navH-rectTop)/span; p=Math.max(0,Math.min(1,p));
     rows.forEach(function(row,i){
-      var travel=travels[i];
-      if(travel<=0){ row.style.transform=''; return; }
-      var x=(i%2===0)? -p*travel : (p-1)*travel; /* even rows drift left, odd rows drift right */
+      var g=geo[i], xc=-g.n/2;                                /* row centred in its wrap at p=.5 */
+      var x=(i%2===0)? xc+(0.5-p)*g.s : xc-(0.5-p)*g.s;       /* even rows drift left, odd rows drift right */
       row.style.transform='translateX('+x.toFixed(1)+'px)';
     });
   }
