@@ -1102,24 +1102,25 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var mq=window.matchMedia('(max-width:700px)'); /* pin is disabled on mobile (position:static) — skip the scrub math there, re-checked live so a resize/rotate doesn't need a reload */
   var pin=track.querySelector('.research-pin');
-  var startY=0;
+  var navH=67;
   function recompute(){
+    navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0;
     if(mq.matches){ track.style.height=''; return; }         // mobile: static pin — let the CSS own the height
     var maxTravel=0;                                          // how far the widest row must drift horizontally
     rows.forEach(function(r){ var t=r.scrollWidth-r.parentElement.clientWidth; if(t>maxTravel)maxTravel=t; });
-    track.style.height=(pin.offsetHeight+Math.max(1,maxTravel*1.5))+'px'; // drift speed tied to travel (~1.5px
-    var y=window.scrollY||window.pageYOffset||0;              // scroll : 1px drift), NOT to a fixed 260vh — so it
-    var navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0; // feels the
-    startY=track.getBoundingClientRect().top+y-navH;          // same on a laptop and a tall monitor, not a crawl
-  }                                                           // on big screens; p=0 aligns with where the pin sticks
+    track.style.height=(pin.offsetHeight+Math.max(1,maxTravel*2))+'px'; // pinned distance sized to the travel
+  }                                                           // (~2px scroll : 1px drift) — consistent on any screen
   var ticking=false;
   function update(){
     ticking=false;
     if(mq.matches){ rows.forEach(function(row){ row.style.transform=''; }); return; }
-    var y=window.scrollY||window.pageYOffset||0;
-    var span=Math.max(1, track.offsetHeight-pin.offsetHeight); // live pinned window — drift always finishes exactly
-    var travels=rows.map(function(row){ return row.scrollWidth-row.parentElement.clientWidth; }); // as the pin releases
-    var p=(y-startY)/span; p=Math.max(0,Math.min(1,p));       // (reads batched before writes to avoid layout thrash)
+    /* progress comes from the track's LIVE position, never a cached start line: while the pin is
+       stuck, track.top slides from navH upward in lockstep with scroll, so p is correct by
+       construction — a load-time snapshot is skewed by the section's entrance transform (~50px) */
+    var rectTop=track.getBoundingClientRect().top;
+    var span=Math.max(1, track.offsetHeight-pin.offsetHeight);
+    var travels=rows.map(function(row){ return row.scrollWidth-row.parentElement.clientWidth; });
+    var p=(navH-rectTop)/span; p=Math.max(0,Math.min(1,p));
     rows.forEach(function(row,i){
       var travel=travels[i];
       if(travel<=0){ row.style.transform=''; return; }
