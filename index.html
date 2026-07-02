@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702034858';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702035751';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -1102,9 +1102,10 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   function recompute(){
     if(mq.matches) return;
     var y=window.scrollY||window.pageYOffset||0;
-    startY=track.getBoundingClientRect().top+y;
-    span=Math.max(1, track.offsetHeight-pin.offsetHeight);  // pin's own rendered height (not
-  }                                                          // innerHeight) — it can exceed min-height
+    var navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0;
+    startY=track.getBoundingClientRect().top+y-navH;         // p=0 must align with where the pin actually
+    span=Math.max(1, track.offsetHeight-pin.offsetHeight);   // sticks (top:var(--nav-h)), not the raw track
+  }                                                          // top — else rows dead-zone at start / stop short of full drift
   var ticking=false;
   function update(){
     ticking=false;
