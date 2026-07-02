@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702113754';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702122733';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -300,7 +300,7 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 .contact-pin{position:sticky;top:var(--nav-h);min-height:calc(100vh - var(--nav-h));display:flex;align-items:flex-end;overflow:hidden;padding-bottom:clamp(40px,7vh,88px)}
 .contact-pin .wrap{width:100%;position:relative;z-index:1}
 .contact-wordmark{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(28px,7vh,72px);pointer-events:none;overflow:hidden}
-.contact-wordmark span{display:block;font-size:clamp(3.2rem,16vw,14.5rem);font-weight:800;letter-spacing:-.04em;line-height:.82;color:var(--ink);opacity:.92;white-space:nowrap}
+.contact-wordmark span{display:block;font-size:var(--wm-cap, clamp(3.2rem,16vw,14.5rem));font-weight:800;letter-spacing:-.04em;line-height:.82;color:var(--ink);opacity:.92;white-space:nowrap}
 .contact-box{margin:0;max-width:560px}
 .contact-box h2{font-size:clamp(1.5rem,2.6vw,1.9rem);font-weight:700;letter-spacing:-.03em}
 .contact-figure{position:absolute;z-index:2;right:6%;top:clamp(50px,15vh,150px);width:clamp(190px,22vw,340px);aspect-ratio:384/503;filter:drop-shadow(0 26px 26px rgba(17,17,16,.20));pointer-events:none}
@@ -1250,6 +1250,41 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     }
     startLoop();
   }
+})();
+
+/* Contact wordmark height guard — the wordmark's font-size is driven by viewport WIDTH
+   (16vw), but the space it must fit in is driven by viewport HEIGHT (the pin, bottom-anchored
+   copy box, end-note). On a wide-but-short window (e.g. a resized desktop browser) the
+   width-based size can exceed the available height and the wordmark collides with the "Say
+   hello." block below it. This caps the font-size to whatever room actually exists, live,
+   on any aspect ratio — it only ever shrinks the CSS value, never grows past it. */
+(function(){
+  var pin=document.querySelector('.contact-pin');
+  var wordmark=document.querySelector('.contact-wordmark');
+  var spans=wordmark?wordmark.querySelectorAll('span'):[];
+  var box=document.querySelector('.contact-box');
+  if(!pin||!wordmark||!spans.length||!box) return;
+  var mqStacked=window.matchMedia('(max-width:859px)'); /* mobile/tablet: wordmark flows in-line above
+    the figure/copy, not absolutely overlapping them — no collision is possible, skip the cap there */
+  function recompute(){
+    if(mqStacked.matches || window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+      wordmark.style.removeProperty('--wm-cap'); return;
+    }
+    wordmark.style.removeProperty('--wm-cap');           // measure against the CSS's own natural size first
+    var pinTop=pin.getBoundingClientRect().top;
+    var boxTop=box.getBoundingClientRect().top;
+    var padTop=parseFloat(getComputedStyle(wordmark).paddingTop)||0;
+    var clearance=24;                                     // minimum breathing room above the copy block
+    var availableForText=boxTop-pinTop-padTop-clearance;
+    var maxFontSize=availableForText/(2*0.82);            // 2 lines at line-height .82
+    var natural=parseFloat(getComputedStyle(spans[0]).fontSize);
+    if(maxFontSize<natural){
+      wordmark.style.setProperty('--wm-cap', Math.max(maxFontSize,51.2)+'px'); // never below the CSS min (3.2rem)
+    }
+  }
+  window.addEventListener('resize',recompute,{passive:true});
+  window.addEventListener('load',recompute);
+  recompute();
 })();
 
 /* scroll-scrubbed figurine — the "Let's build something" clip plays forward as you
