@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702031405';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260701164529';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
