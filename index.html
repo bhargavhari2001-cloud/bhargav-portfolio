@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702041105';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702041441';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -555,10 +555,13 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .hero-word .display{font-size:clamp(1.35rem,3.3vw,1.95rem);line-height:1.12;letter-spacing:-.02em;margin:0 0 20px}
 .hw-scroll{font:600 11px/1 ui-monospace,'SF Mono',Menlo,monospace;letter-spacing:.16em;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px;padding-bottom:6px}
 .hw-right{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
-.hw-stats{display:grid;grid-template-columns:auto auto;gap:22px 48px}
-.hero-word .pstat{display:flex;align-items:baseline;gap:10px;text-align:left}
-.hero-word .ps-v{font-size:1.85rem;font-weight:800;letter-spacing:-.03em;line-height:1;flex:none}
-.hero-word .ps-l{font-size:.62rem;line-height:1.3;color:var(--muted);font-weight:500;max-width:13ch}
+/* 4 shared columns (num|label|num|label) — every number right-aligns to one edge and every
+   label starts at the same x, so ragged number widths can't push labels out of line */
+.hw-stats{display:grid;grid-template-columns:auto minmax(0,auto) auto minmax(0,auto);gap:22px 12px;align-items:baseline}
+.hero-word .pstat{display:contents}
+.hero-word .pstat:nth-child(even) .ps-v{margin-left:36px}   /* breathing room between the two stat pairs */
+.hero-word .ps-v{font-size:1.85rem;font-weight:800;letter-spacing:-.03em;line-height:1;text-align:right}
+.hero-word .ps-l{font-size:.62rem;line-height:1.3;color:var(--muted);font-weight:500;max-width:13ch;text-align:left}
 .hw-arr{display:inline-block;animation:hwbob 1.7s ease-in-out infinite}
 @keyframes hwbob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 @media(max-width:820px){
@@ -568,8 +571,9 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
   .hw-foot{flex-direction:column;align-items:flex-start;gap:14px;padding:0 22px 26px}
   .hw-scroll{display:none}
   .hw-right{align-items:flex-start;width:100%}
-  .hw-stats{grid-template-columns:1fr 1fr;gap:14px 22px;width:100%}
-  .hero-word .pstat{text-align:left}
+  .hw-stats{grid-template-columns:auto 1fr;gap:14px 12px;width:100%}  /* one stat per row: num | label */
+  .hero-word .pstat:nth-child(even) .ps-v{margin-left:0}
+  .hero-word .ps-v{text-align:left}
 }
 @media(prefers-reduced-motion:reduce){.hw-arr{animation:none}}
 </style>
