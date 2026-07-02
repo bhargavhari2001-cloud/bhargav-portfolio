@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702040149';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702041105';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -1098,23 +1098,26 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var mq=window.matchMedia('(max-width:700px)'); /* pin is disabled on mobile (position:static) — skip the scrub math there, re-checked live so a resize/rotate doesn't need a reload */
   var pin=track.querySelector('.research-pin');
-  var startY=0, span=1;
+  var startY=0;
   function recompute(){
-    if(mq.matches) return;
-    var y=window.scrollY||window.pageYOffset||0;
-    var navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0;
-    startY=track.getBoundingClientRect().top+y-navH;         // p=0 must align with where the pin actually
-    span=Math.max(1, track.offsetHeight-pin.offsetHeight);   // sticks (top:var(--nav-h)), not the raw track
-  }                                                          // top — else rows dead-zone at start / stop short of full drift
+    if(mq.matches){ track.style.height=''; return; }         // mobile: static pin — let the CSS own the height
+    var maxTravel=0;                                          // how far the widest row must drift horizontally
+    rows.forEach(function(r){ var t=r.scrollWidth-r.parentElement.clientWidth; if(t>maxTravel)maxTravel=t; });
+    track.style.height=(pin.offsetHeight+Math.max(1,maxTravel*1.5))+'px'; // drift speed tied to travel (~1.5px
+    var y=window.scrollY||window.pageYOffset||0;              // scroll : 1px drift), NOT to a fixed 260vh — so it
+    var navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0; // feels the
+    startY=track.getBoundingClientRect().top+y-navH;          // same on a laptop and a tall monitor, not a crawl
+  }                                                           // on big screens; p=0 aligns with where the pin sticks
   var ticking=false;
   function update(){
     ticking=false;
     if(mq.matches){ rows.forEach(function(row){ row.style.transform=''; }); return; }
     var y=window.scrollY||window.pageYOffset||0;
-    var p=(y-startY)/span; p=Math.max(0,Math.min(1,p));
+    var span=Math.max(1, track.offsetHeight-pin.offsetHeight); // live pinned window — drift always finishes exactly
+    var travels=rows.map(function(row){ return row.scrollWidth-row.parentElement.clientWidth; }); // as the pin releases
+    var p=(y-startY)/span; p=Math.max(0,Math.min(1,p));       // (reads batched before writes to avoid layout thrash)
     rows.forEach(function(row,i){
-      var wrap=row.parentElement;
-      var travel=row.scrollWidth-wrap.clientWidth;
+      var travel=travels[i];
       if(travel<=0){ row.style.transform=''; return; }
       var x=(i%2===0)? -p*travel : (p-1)*travel; /* even rows drift left, odd rows drift right */
       row.style.transform='translateX('+x.toFixed(1)+'px)';
@@ -1122,6 +1125,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   }
   window.addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   window.addEventListener('resize',function(){ recompute(); if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
+  window.addEventListener('load',function(){ recompute(); update(); });  // re-measure once images settle (accurate scrollWidth)
   recompute();
   update();
 })();
