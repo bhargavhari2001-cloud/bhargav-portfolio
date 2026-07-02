@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702111011';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702112928';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -211,8 +211,8 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 .research-pin{position:sticky;top:var(--nav-h);min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
 .research-pin .minigrid.minigrid-img{width:100%;margin:0}/* drop the base grid's margin-top so the rows center symmetrically inside the pinned viewport (no bottom clip) */
 @media(max-width:700px){.research-track{height:auto}.research-pin{position:static;min-height:0;overflow:visible;padding:20px 0}}
-@media(max-width:700px){.minigrid .mini.mini-img{width:min(78vw,440px)}}
-@media(prefers-reduced-motion:reduce){.mini-row{flex-wrap:wrap;width:auto}.minigrid .mini.mini-img{width:calc(50% - 11px)}}
+@media(max-width:700px){.minigrid .mini.mini-img{width:min(78vw,440px)}.mini-row{flex-wrap:wrap;width:auto}.row-clone{display:none}}
+@media(prefers-reduced-motion:reduce){.mini-row{flex-wrap:wrap;width:auto}.minigrid .mini.mini-img{width:calc(50% - 11px)}.row-clone{display:none}}
 .mini.mini-img{position:relative;padding:0;overflow:hidden;aspect-ratio:3/2;border:1px solid var(--line);border-radius:18px;display:block;isolation:isolate}
 .mini.mini-img .mini-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;scale:1.001;opacity:1;transition:scale .7s var(--ease-out),opacity .4s ease;will-change:transform,translate;animation:miniFloat 5.4s ease-in-out infinite;animation-delay:var(--fd,0s)}
 .mini.mini-img[data-basket] .mini-bg{object-position:80% 50%}
@@ -560,7 +560,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .hw-stats{display:grid;grid-template-columns:auto minmax(0,auto) auto minmax(0,auto);gap:22px 12px;align-items:baseline}
 .hero-word .pstat{display:contents}
 .hero-word .pstat:nth-child(even) .ps-v{margin-left:36px}   /* breathing room between the two stat pairs */
-.hero-word .ps-v{font-size:1.85rem;font-weight:800;letter-spacing:-.03em;line-height:1;text-align:right}
+.hero-word .ps-v{font-size:1.85rem;font-weight:800;letter-spacing:-.03em;line-height:1;text-align:right;white-space:nowrap}
 .hero-word .ps-l{font-size:.62rem;line-height:1.3;color:var(--muted);font-weight:500;max-width:13ch;text-align:left}
 .hw-arr{display:inline-block;animation:hwbob 1.7s ease-in-out infinite}
 @keyframes hwbob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
@@ -1103,22 +1103,33 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   var mq=window.matchMedia('(max-width:700px)'); /* pin is disabled on mobile (position:static) — skip the scrub math there, re-checked live so a resize/rotate doesn't need a reload */
   var pin=track.querySelector('.research-pin');
   var navH=67;
-  /* Sweep per row = max(natural overflow, 20% of the row's visible width). On short viewports the
-     height-aware card cap can shrink 3 cards until they no longer overflow the row — natural travel
-     hits 0 and the whole effect silently vanishes (track collapses to pin height). The minimum
-     sweep keeps the drift alive there: rows centre themselves and slide symmetrically. On tall
-     screens sweep === natural overflow and the maths reduces to the original 0 → -overflow drift. */
-  function sweepFor(row){
-    var wrapW=row.parentElement.clientWidth;
-    var n=row.scrollWidth-wrapW;                              // natural overflow (≤0 when cards fit)
-    return {n:n, s:Math.max(n, wrapW*0.2)};
+  /* Continuous conveyor: each row must ALWAYS be wider than its container, so the drift runs
+     edge-to-edge with no exposed gap. On short viewports the height-aware card cap shrinks the
+     cards until 3 of them no longer overflow — so we extend the row with cloned cards until it
+     overhangs by ≥35%. Clones are real, clickable duplicates (marquee-style), hidden from the
+     accessibility tree and dropped entirely on mobile/reduced-motion where rows wrap statically. */
+  function ensureOverflow(){
+    rows.forEach(function(row){
+      [].slice.call(row.querySelectorAll('.row-clone')).forEach(function(c){ c.remove(); });
+      var originals=[].slice.call(row.children);
+      var target=row.parentElement.clientWidth*1.35, i=0;
+      while(row.scrollWidth<target && i<originals.length*2){   // safety cap: at most 2x the row
+        var clone=originals[i%originals.length].cloneNode(true);
+        clone.classList.add('row-clone');
+        clone.setAttribute('aria-hidden','true');
+        clone.setAttribute('tabindex','-1');
+        row.appendChild(clone);
+        i++;
+      }
+    });
   }
   function recompute(){
     navH=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||0;
-    if(mq.matches){ track.style.height=''; return; }         // mobile: static pin — let the CSS own the height
-    var maxS=0;
-    rows.forEach(function(r){ var s=sweepFor(r).s; if(s>maxS)maxS=s; });
-    track.style.height=(pin.offsetHeight+Math.max(1,maxS*2))+'px'; // pinned distance sized to the sweep
+    if(mq.matches){ track.style.height=''; return; }         // mobile: static stack — let the CSS own the height
+    ensureOverflow();
+    var maxTravel=0;
+    rows.forEach(function(r){ var t=r.scrollWidth-r.parentElement.clientWidth; if(t>maxTravel)maxTravel=t; });
+    track.style.height=(pin.offsetHeight+Math.max(1,maxTravel*2))+'px'; // pinned distance sized to the travel
   }                                                           // (~2px scroll : 1px drift) — consistent on any screen
   var ticking=false;
   function update(){
@@ -1129,11 +1140,13 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
        construction — a load-time snapshot is skewed by the section's entrance transform (~50px) */
     var rectTop=track.getBoundingClientRect().top;
     var span=Math.max(1, track.offsetHeight-pin.offsetHeight);
-    var geo=rows.map(sweepFor);
+    var travels=rows.map(function(row){ return row.scrollWidth-row.parentElement.clientWidth; });
     var p=(navH-rectTop)/span; p=Math.max(0,Math.min(1,p));
     rows.forEach(function(row,i){
-      var g=geo[i], xc=-g.n/2;                                /* row centred in its wrap at p=.5 */
-      var x=(i%2===0)? xc+(0.5-p)*g.s : xc-(0.5-p)*g.s;       /* even rows drift left, odd rows drift right */
+      var travel=travels[i];
+      if(travel<=0){ row.style.transform=''; return; }
+      var x=(i%2===0)? -p*travel : (p-1)*travel;              /* even rows drift left, odd rows drift right —
+        row always overhangs both edges between 0 and -travel, so no gap can ever appear */
       row.style.transform='translateX('+x.toFixed(1)+'px)';
     });
   }
