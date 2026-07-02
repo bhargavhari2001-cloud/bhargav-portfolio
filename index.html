@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702122733';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702131836';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -486,17 +486,10 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .minigrid .mini:nth-child(4){translate:-92px 66px}
 .minigrid .mini:nth-child(5){translate:0 98px}
 .minigrid .mini:nth-child(6){translate:92px 66px}
-/* subtle scattered-photo tilt — each tile rests at a small resting angle, settling from a larger tumble on entrance */
+/* cards tumble in from a slight tilt on entrance, but always settle perfectly flat and aligned */
 .minigrid .mini.mini-img{rotate:8deg;transition:opacity .6s var(--ease-out),translate .72s var(--ease-out),scale .72s var(--ease-out),rotate .7s var(--ease-out)}
-.mini-row:nth-child(1) .mini.mini-img:nth-child(1){--rest-rot:-1.4deg}
-.mini-row:nth-child(1) .mini.mini-img:nth-child(2){--rest-rot:1.1deg}
-.mini-row:nth-child(1) .mini.mini-img:nth-child(3){--rest-rot:-0.8deg}
-.mini-row:nth-child(2) .mini.mini-img:nth-child(1){--rest-rot:1.5deg}
-.mini-row:nth-child(2) .mini.mini-img:nth-child(2){--rest-rot:-1.1deg}
-.mini-row:nth-child(2) .mini.mini-img:nth-child(3){--rest-rot:0.9deg}
-.minigrid.in .mini.mini-img{rotate:var(--rest-rot,0deg)}
-@media(hover:hover) and (pointer:fine){.minigrid .mini.mini-img:hover{rotate:0deg}}
-@media(prefers-reduced-motion:reduce){.minigrid .mini.mini-img{rotate:var(--rest-rot,0deg);transition:opacity .6s var(--ease-out)}}
+.minigrid.in .mini.mini-img{rotate:0deg}
+@media(prefers-reduced-motion:reduce){.minigrid .mini.mini-img{rotate:0deg;transition:opacity .6s var(--ease-out)}}
 .skills .skill-col:nth-child(1){translate:-104px -22px}
 .skills .skill-col:nth-child(2){translate:-46px 88px}
 .skills .skill-col:nth-child(3){translate:46px 88px}
