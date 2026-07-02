@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702031405';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702033115';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -204,11 +204,11 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 .minigrid .mini:hover{border-color:var(--ac,var(--acc))}
 .minigrid .mini:hover .mini-ic{border-color:var(--ac,var(--acc));color:var(--ac,var(--acc));background:color-mix(in srgb,var(--ac,var(--acc)) 11%,var(--card))}
 /* ===== research grid — sohub-style full-bleed image tiles ===== */
-.minigrid.minigrid-img{display:flex;flex-direction:column;gap:22px}
+.minigrid.minigrid-img{display:flex;flex-direction:column;gap:22px;overflow-x:hidden}
 .mini-row{display:flex;gap:22px;width:max-content;will-change:transform}
 .minigrid .mini.mini-img{width:clamp(300px,44vw,640px);flex:0 0 auto;height:auto}
 .research-track{position:relative;height:260vh}
-.research-pin{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.research-pin{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
 .research-pin .minigrid.minigrid-img{width:100%}
 @media(max-width:700px){.research-track{height:auto}.research-pin{position:static;min-height:0;overflow:visible;padding:20px 0}}
 @media(max-width:700px){.minigrid .mini.mini-img{width:min(78vw,440px)}}
