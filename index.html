@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260702034008';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260702034858';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -206,10 +206,10 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 /* ===== research grid — sohub-style full-bleed image tiles ===== */
 .minigrid.minigrid-img{display:flex;flex-direction:column;gap:22px;overflow-x:hidden}
 .mini-row{display:flex;gap:22px;width:max-content;will-change:transform}
-.minigrid .mini.mini-img{width:clamp(300px,44vw,640px);flex:0 0 auto;height:auto}
+.minigrid .mini.mini-img{width:min(clamp(300px,44vw,640px),calc((100vh - var(--nav-h) - 70px) * .75));flex:0 0 auto;height:auto}/* second cap keeps 2 rows (aspect 3/2) fitting under the nav within one viewport — height-aware, not just width */
 .research-track{position:relative;height:260vh}
 .research-pin{position:sticky;top:var(--nav-h);min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
-.research-pin .minigrid.minigrid-img{width:100%}
+.research-pin .minigrid.minigrid-img{width:100%;margin:0}/* drop the base grid's margin-top so the rows center symmetrically inside the pinned viewport (no bottom clip) */
 @media(max-width:700px){.research-track{height:auto}.research-pin{position:static;min-height:0;overflow:visible;padding:20px 0}}
 @media(max-width:700px){.minigrid .mini.mini-img{width:min(78vw,440px)}}
 @media(prefers-reduced-motion:reduce){.mini-row{flex-wrap:wrap;width:auto}.minigrid .mini.mini-img{width:calc(50% - 11px)}}
