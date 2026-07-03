@@ -591,6 +591,8 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .d-dash-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.16em;color:var(--acc);text-transform:uppercase}
 .d-dash-sub{font-size:.82rem;font-weight:600;color:#F0F5F7;margin-top:3px}
 .glass{background:rgba(255,255,255,.86);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.7);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.d-card.dk{background:radial-gradient(120% 160% at 12% 0%,#1b2536 0%,#0a0e15 72%);border:1px solid rgba(255,255,255,.09);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.d-card.dk .d-card-t{color:#AEB9CB}
 .d-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .d-stat{padding:12px 13px}
 .d-stat-v{font-size:1.32rem;font-weight:800;letter-spacing:-.02em;color:#12161d;line-height:1}
@@ -601,7 +603,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .d-card{padding:13px 14px;min-width:0}
 .d-card-t{font-size:.7rem;font-weight:700;color:#12161d;margin-bottom:9px}
 .d-svg{width:100%;max-width:360px;height:auto;overflow:visible;display:block;margin:0 auto}
-.d-type-erd .d-svg{max-width:320px}
+.d-type-erd .d-svg{max-width:560px}
 .d-bl{font-size:9.5px;fill:#5c6673}
 .d-bv{font-size:9.5px;fill:#12161d;font-weight:700}
 .d-dash-foot{font-size:.6rem;color:rgba(240,245,247,.55);text-align:center;opacity:.9;margin-top:auto;padding-top:6px}
@@ -801,14 +803,16 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <div class="minigrid minigrid-img">
       <div class="mini-row">
       <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_churn')" style="--ac:#8a93e0"><img class="mini-bg" src="media/case/churn.webp" alt="" loading="lazy"><span class="mini-badge"><b>0.981</b><i>AUC</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>Customer churn + survival analysis</h4><p>Complaints dominate churn — XGBoost + Cox on a real e-commerce set, AUC 0.981.</p></div></button>
-      <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_amex')" style="--ac:#5fd6a0"><img class="mini-bg" src="media/case/amex.webp" alt="" loading="lazy"><span class="mini-badge"><b>0.953</b><i>ROC-AUC</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>Amex credit-default prediction</h4><p>190 features, 458K customers — three models, best ROC-AUC 0.953.</p></div></button>
+      <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_amex')" style="--ac:#5fd6a0"><img class="mini-bg" src="media/case/amex.webp" alt="" loading="lazy"><span class="mini-badge"><b>0.948</b><i>ROC-AUC</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>Amex credit-default prediction</h4><p>5.5M rows → 1,085 features — LightGBM wins, top decile 94% defaulters.</p></div></button>
       <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_smartclinic')" style="--ac:#8fb8e8"><img class="mini-bg" src="media/case/smartclinic.webp" alt="" loading="lazy"><span class="mini-badge"><b>6</b><i>table · 3NF</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>SmartClinic healthcare database</h4><p>Business rules enforced in the schema — Oracle APEX, 17 constraints, 7 triggers.</p></div></button>
+      <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_fakenews')" style="--ac:#e08fb8"><img class="mini-bg" src="media/case/nlp.webp" alt="" loading="lazy"><span class="mini-badge"><b>22.2K</b><i>headlines</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>Real vs. fake news — the linguistic fingerprint</h4><p>22,219 headlines — TF-IDF, bigrams and LDA topics separate Reuters from propaganda.</p></div></button>
       </div>
       <div class="mini-row">
       <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_vol')" style="--ac:#e0b573"><img class="mini-bg" src="media/case/vol.webp" alt="" loading="lazy"><span class="mini-badge"><b>81.5%</b><i>out-of-sample</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>S&amp;P 500 volatility forecasting</h4><p>ARIMA + GARCH on 10 years of daily data, walk-forward validated.</p></div></button>
       <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_bank')" style="--ac:#e0938f"><img class="mini-bg" src="media/case/bank.webp" alt="" loading="lazy"><span class="mini-badge"><b>85%</b><i>accuracy</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>Financial restatements &amp; earnings detection</h4><p>Beneish M-Score + ML over 303,800 firm-years (2000–2024) · 8.6% restated.</p></div></button>
       <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_taxi')" style="--ac:#e6c35a"><img class="mini-bg" src="media/case/ev.webp" alt="" loading="lazy"><span class="mini-badge"><b>0.946</b><i>AUC-ROC</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>NYC taxi trip-duration prediction</h4><p>274K TLC trips — XGBoost beats the linear baseline by 21.8%.</p></div></button>
-      <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_more')" style="--ac:#9aa4b5" data-basket><img class="mini-bg" src="media/case/basket.webp" alt="" loading="lazy"><span class="mini-badge"><b data-rmcount>3+</b><i>more studies</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>More research projects</h4><p>EV-loan risk · NLP sentiment · market basket.</p></div></button>
+      <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_hhp')" style="--ac:#7fc8a9"><img class="mini-bg" src="media/case/hhp.webp" alt="" loading="lazy"><span class="mini-badge"><b>48%</b><i>days · top 20%</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>Heritage Health hospital-stay triage</h4><p>113K patients — the top-20% risk tier holds nearly half of all hospital days.</p></div></button>
+      <button class="mini mini-img" onclick="openCaseTransition(this.querySelector('.mini-bg'),'r_more')" style="--ac:#9aa4b5" data-basket><img class="mini-bg" src="media/case/basket.webp" alt="" loading="lazy"><span class="mini-badge"><b data-rmcount>4+</b><i>more studies</i></span><div class="mini-overlay"><h4><span class="mini-arr" aria-hidden="true">→</span>More research projects</h4><p>EV-loan risk · NLP sentiment · market basket · public-health regression.</p></div></button>
       </div>
     </div>
     </div>
@@ -968,48 +972,48 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 
 <script>
 var CASES={
-  bidcraft:{no:"CASE STUDY 01 · RAG · FULL-STACK SAAS",title:"BidCraft — AI-powered RFP automation",live:"https://bid-craft-beta.vercel.app/",tags:["Next.js 16","TypeScript 5","Claude API","Voyage AI","Supabase pgvector","TipTap","Zustand"],sections:[
-    {l:"Problem",h:"The people who know the answers are blocked by the people doing the formatting.",b:'<p>At Impelsys I ran pre-sales workflows for <b>20+ enterprise proposals a year</b>. Every RFP meant the same ritual: hunt through old proposals for answers already written, copy-paste boilerplate, reformat Word documents, and chase sign-offs across Finance, Delivery, Legal and Product. A single RFP response consumes <b>40–60 hours</b> industry-wide.</p><div class="drawer-callout"><b>The insight:</b> This is a retrieval problem wearing a writing problem\'s clothes. If past answers were embedded in a vector space, every new question could find its nearest proven answer — and an LLM could adapt it instead of inventing from scratch.</div>'},
-    {l:"Method",h:"A seven-stage RAG pipeline, each stage independently testable.",b:'<ul><li><b>1 · Ingest &amp; parse</b> — PDFs via Claude Vision; DOCX via Mammoth. Handles tables, nested sections, numbered lists.</li><li><b>2 · Question extraction</b> — Claude assigns one of 7 categories (Technical, Security, Experience, Staffing, Methodology, Pricing, General) and flags mandatory items.</li><li><b>3 · KB &amp; embeddings</b> — 240-entry knowledge base embedded with Voyage AI voyage-3-lite (512 dims) into Supabase pgvector.</li><li><b>4 · Semantic search</b> — Cosine-similarity search via match_knowledge_base RPC — vector search inside PostgreSQL, zero extra infra.</li><li><b>5 · Grounded generation</b> — Claude Sonnet drafts each answer using only retrieved KB context. Every response gets a 0–100 confidence score.</li><li><b>6 · Human review</b> — TipTap editor with star ratings, inline feedback, and edit-distance tracking from draft to approved.</li><li><b>7 · Export</b> — One-click Word export with cover page, TOC, category sections, and appendix via the docx library.</li></ul>'},
-    {l:"Key Decisions",h:"Why these choices hold up.",b:'<p><b>RAG over fine-tuning.</b> Proposal content changes weekly; a fine-tuned model is stale on arrival.</p><p><b>pgvector over a dedicated vector DB.</b> At 240 entries PostgreSQL cosine search is instant — and it eliminated an entire infrastructure dependency.</p><p><b>Confidence scores as triage.</b> The dangerous failure mode in AI drafting isn\'t a bad answer — it\'s a bad answer that looks good.</p>'},
+  bidcraft:{no:"CASE STUDY 01 \u00b7 RAG \u00b7 FULL-STACK SAAS",title:"BidCraft \u2014 AI-powered RFP automation",live:"https://bid-craft-beta.vercel.app/",tags:["Next.js 16","TypeScript 5","Claude API","Voyage AI","Supabase pgvector","TipTap","Zustand"],sections:[
+    {l:"The problem",h:"The people who know the answers are blocked by the people doing the formatting.",b:'<p>At Impelsys I ran pre-sales for <b>20+ enterprise proposals a year</b>. Every RFP meant the same ritual: dig through old proposals for answers we had already written, copy-paste boilerplate, reformat Word documents, and chase sign-offs across Finance, Delivery, Legal and Product. Industry-wide, a single RFP response eats <b>40\u201360 hours</b>.</p><div class="drawer-callout"><b>The insight:</b> this is a retrieval problem wearing a writing problem\'s clothes. If every past answer lives in a vector space \u2014 text turned into coordinates, where similar meanings sit near each other \u2014 every new question can find its nearest proven answer, and an LLM can adapt it instead of inventing from scratch.</div>'},
+    {l:"How it works",h:"A seven-stage pipeline, each stage testable on its own.",b:'<ul><li><b>1 \u00b7 Ingest &amp; parse</b> \u2014 PDFs read by Claude Vision, DOCX by Mammoth. Tables, nested sections and numbered lists survive intact.</li><li><b>2 \u00b7 Question extraction</b> \u2014 Claude sorts every question into one of 7 categories (Technical, Security, Experience, Staffing, Methodology, Pricing, General) and flags the mandatory ones.</li><li><b>3 \u00b7 Knowledge base</b> \u2014 240 approved answers embedded with Voyage voyage-3-lite: each answer becomes a 512-number coordinate stored in Supabase pgvector.</li><li><b>4 \u00b7 Search</b> \u2014 cosine similarity (nearest meaning, not nearest keyword) runs as a single RPC inside PostgreSQL \u2014 no separate search service to deploy or babysit.</li><li><b>5 \u00b7 Grounded drafting</b> \u2014 Claude writes each answer using only the retrieved context, and every draft carries a 0\u2013100 confidence score.</li><li><b>6 \u00b7 Human review</b> \u2014 a TipTap editor with star ratings, inline feedback, and edit-distance tracking from draft to approved.</li><li><b>7 \u00b7 Export</b> \u2014 one click produces a finished Word document: cover page, TOC, category sections, appendix.</li></ul>'},
+    {l:"Why these choices",h:"Decisions I would defend in a design review.",b:'<p><b>RAG over fine-tuning.</b> Proposal content changes weekly; a fine-tuned model is stale on arrival. Retrieval reads from a knowledge base I can update in seconds.</p><p><b>pgvector over a dedicated vector DB.</b> At 240 entries, PostgreSQL answers a similarity query instantly \u2014 adding a second database would be infrastructure for its own sake.</p><p><b>Confidence scores as triage.</b> The dangerous failure in AI drafting isn\'t a bad answer \u2014 it\'s a bad answer that looks good. Low-confidence drafts get routed to a human first.</p>'},
     {l:"Stack",h:"",b:'<div class="drawer-stack"><span class="drawer-pill">Next.js 16</span><span class="drawer-pill">TypeScript</span><span class="drawer-pill">Claude Sonnet</span><span class="drawer-pill">Voyage AI</span><span class="drawer-pill">Supabase pgvector</span><span class="drawer-pill">TipTap 3</span><span class="drawer-pill">docx v9</span><span class="drawer-pill">Zustand</span><span class="drawer-pill">Tailwind 4</span></div>'}
   ]},
-  tradingbot:{no:"CASE STUDY 02 · ALGORITHMIC TRADING · PYTHON",title:"S&P 500 Options Trading Bot",live:"https://trading-bot-dashboard-five.vercel.app",tags:["Python","Alpaca API","Options Greeks","IV Rank","RSI","pandas","matplotlib"],sections:[
-    {l:"Problem",h:"Options selling is a discipline problem disguised as a prediction problem.",b:'<p>Premium-selling strategies profit from time decay and inflated implied volatility — but they fail in practice for one reason: <b>discretion</b>. Traders skip the stop-loss "just this once," oversize after a win, and can\'t monitor positions every minute of the session.</p><div class="drawer-callout"><b>The insight:</b> If every rule can be written down, every rule can be automated — and the machine version of you is a more disciplined trader than you are.</div>'},
-    {l:"Method",h:"Six-phase pipeline — Black-Scholes at the core.",b:'<ul><li><b>Phase 1 · Data pipeline</b> — Pulls the live SPY options chain via Alpaca, computes historical volatility from 252-day rolling log-returns, and derives <b>IV Rank</b> — where today\'s implied volatility sits in its 52-week range. IV Rank is the strategy\'s master on/off switch.</li><li><b>Phase 2 · Black-Scholes pricing engine</b> — Implements the full BSM model: <em>C = S·N(d₁) − K·e⁻ʳᵀ·N(d₂)</em>. For every candidate contract, computes the theoretical fair value then backs out <b>implied volatility</b> via Newton-Raphson iteration. The spread between market price and BSM fair value flags over-priced premium before any trade decision is made.</li><li><b>Phase 3 · Signal engine</b> — Computes RSI-14 for momentum context and full Greeks (Delta, Gamma, Theta, Vega). Combines IV Rank threshold, RSI neutrality, and BSM-derived edge into a single signal: SELL, BUY, or NO TRADE.</li><li><b>Phase 4 · Risk manager</b> — Enforces the 2% rule: no trade may risk more than 2% of account NAV. Uses BSM Theta to size positions so time-decay income offsets the tail risk budget. Stop-loss at 2× premium, take-profit at 50% — both placed as GTC orders at entry.</li><li><b>Phase 5 · Order executor</b> — Connects to Alpaca\'s paper-trading API, converts signals to OCC-format symbols, places legs as limit orders, auto-closes on exit-level breach.</li><li><b>Phase 6 · Performance dashboard</b> — Live six-panel Matplotlib view: equity curve, win-rate donut, daily P&amp;L bars, Greeks table, trade log, and real-time BSM fair-value vs. market-price spread — refreshing every 60 seconds.</li></ul>'},
-    {l:"Key Decisions",h:"Why these rules and not others.",b:'<p><b>IV Rank gates everything.</b> Selling options is selling insurance — you only want to sell when premiums are overpriced.</p><p><b>Asymmetric exits (50% TP / 2× SL).</b> The last 50% of premium takes the longest and carries the most gamma risk. Taking profits at half keeps expectancy positive even at modest win rates.</p><p><b>Paper trading as honest middle ground.</b> Real market data, real order mechanics, fake money. Backtests can be fooled by lookahead bias; live paper trading can\'t.</p>'},
-    {l:"Evidence",h:"A running system, not a notebook.",b:'<p>The trade log contains real executed short strangles — entry price, contracts, premium, stop and target levels, and full Greeks at entry — written by the system itself as it traded.</p><div class="drawer-stack"><span class="drawer-pill">Python</span><span class="drawer-pill">pandas · NumPy</span><span class="drawer-pill">Alpaca Broker API</span><span class="drawer-pill">Options Greeks</span><span class="drawer-pill">IV Rank</span><span class="drawer-pill">RSI</span><span class="drawer-pill">matplotlib</span></div>'}
+  tradingbot:{no:"CASE STUDY 02 \u00b7 ALGORITHMIC TRADING \u00b7 PYTHON",title:"S&P 500 Options Trading Bot",live:"https://trading-bot-dashboard-five.vercel.app",tags:["Python","Alpaca API","Options Greeks","IV Rank","RSI","pandas","matplotlib"],sections:[
+    {l:"The problem",h:"Options selling is a discipline problem disguised as a prediction problem.",b:'<p>Selling options profits from time decay and overpriced fear \u2014 but the strategy fails in practice for one human reason: <b>discretion</b>. Traders skip the stop-loss &quot;just this once,&quot; oversize after a win, and can\'t watch positions every minute of the session.</p><div class="drawer-callout"><b>The insight:</b> if every rule can be written down, every rule can be automated \u2014 and the machine version of you is a more disciplined trader than you are. So I wrote every rule down.</div>'},
+    {l:"How it works",h:"Six phases \u2014 Black-Scholes doing the pricing at the core.",b:'<ul><li><b>1 \u00b7 Data</b> \u2014 pulls the live SPY options chain from Alpaca, computes historical volatility from a year of daily returns, and derives <b>IV Rank</b> \u2014 where today\'s implied volatility sits in its 52-week range. That one number is the strategy\'s on/off switch.</li><li><b>2 \u00b7 Pricing engine</b> \u2014 implements Black-Scholes, the standard formula for what an option <em>should</em> cost: <em>C = S\u00b7N(d\u2081) \u2212 K\u00b7e\u207b\u02b3\u1d40\u00b7N(d\u2082)</em>. For every candidate contract it computes fair value, then backs out the volatility the market price implies. The gap between market price and fair value flags overpriced premium before any trade decision.</li><li><b>3 \u00b7 Signals</b> \u2014 RSI-14 for momentum context plus the Greeks (Delta, Gamma, Theta, Vega \u2014 how the position\'s value moves with price, time and volatility). IV Rank, RSI neutrality and pricing edge combine into one verdict: SELL, BUY, or NO TRADE.</li><li><b>4 \u00b7 Risk manager</b> \u2014 enforces the 2% rule: no trade risks more than 2% of the account. Theta sizes positions so time-decay income covers the tail-risk budget. Stop-loss at 2\u00d7 premium and take-profit at 50% are placed as standing orders at entry \u2014 not decided in the moment.</li><li><b>5 \u00b7 Execution</b> \u2014 connects to Alpaca\'s paper-trading API, converts signals to standard option symbols, places the legs as limit orders, closes automatically when an exit level is hit.</li><li><b>6 \u00b7 Dashboard</b> \u2014 a live six-panel view refreshing every 60 seconds: equity curve, win rate, daily P&amp;L, Greeks, trade log, and fair-value-vs-market spread.</li></ul>'},
+    {l:"Why these choices",h:"Why these rules and not others.",b:'<p><b>IV Rank gates everything.</b> Selling options is selling insurance \u2014 you only want to sell it when the premiums are overpriced.</p><p><b>Asymmetric exits (50% take-profit / 2\u00d7 stop).</b> The last half of an option\'s premium takes the longest to collect and carries the most risk of sudden moves. Taking profit at half keeps the math positive even at modest win rates.</p><p><b>Paper trading as the honest middle ground.</b> Real market data, real order mechanics, fake money. A backtest can fool itself by peeking at the future; live paper trading can\'t.</p>'},
+    {l:"Proof it ran",h:"A running system, not a notebook.",b:'<p>The trade log holds real executed short strangles \u2014 entry price, contracts, premium, stop and target levels, full Greeks at entry \u2014 written by the system itself as it traded.</p><div class="drawer-stack"><span class="drawer-pill">Python</span><span class="drawer-pill">pandas \u00b7 NumPy</span><span class="drawer-pill">Alpaca Broker API</span><span class="drawer-pill">Options Greeks</span><span class="drawer-pill">IV Rank</span><span class="drawer-pill">RSI</span><span class="drawer-pill">matplotlib</span></div>'}
   ]},
 
-  r_churn:{no:"RESEARCH 01 · CLASSIFICATION · SURVIVAL ANALYSIS",title:"Customer Churn & Survival Analysis",img:"media/case/churn.webp",tags:["Python","XGBoost","Cox Proportional Hazards","SHAP","scikit-learn","Kaplan-Meier","pandas"],sections:[
-    {l:"Situation",h:"Customers were leaving quietly — and nobody could say who was next.",b:'<p>A real <b>e-commerce dataset of ~5,600 customers</b>: tenure, order history, satisfaction scores, complaints, cashback. The business problem behind it is painfully common — retention teams find out about churn <em>after</em> it happens.</p>'},
-    {l:"Task",h:"Predict who leaves — and how urgently.",b:'<p>Build something that does two jobs at once: flag <b>who</b> is likely to churn, and estimate <b>when</b> — so a retention team gets a priority queue instead of a list of names.</p><div class="drawer-callout"><b>The framing:</b> a binary churn model tells you who to call. A survival model tells you how fast to dial.</div>'},
-    {l:"Action",h:"Two models, one story.",b:'<ul><li><b>XGBoost classifier</b> — 5-fold CV hyperparameter search, threshold tuned on F1 so the model optimises for the retention use case, not vanity accuracy.</li><li><b>Cox Proportional Hazards</b> (lifelines) — survival regression on time-to-churn, validated with Kaplan-Meier curves split by complaint status.</li><li><b>SHAP</b> — TreeSHAP global drivers plus a per-customer explanation vector, so every flag comes with a reason attached.</li></ul>'},
-    {l:"Result",h:"AUC 0.981 — and complaints are the alarm bell.",b:'<p><b>AUC 0.981, F1 0.84</b> for the classifier; <b>0.75 C-index</b> for the survival model. The loudest signal by far is <b>raising a complaint</b> — complainers churn dramatically faster on the Kaplan-Meier curves — followed by low satisfaction, city tier and short tenure; higher cashback is protective. The playbook writes itself: treat every complaint as a retention emergency.</p><div class="drawer-stack"><span class="drawer-pill">XGBoost</span><span class="drawer-pill">Cox PH · lifelines</span><span class="drawer-pill">SHAP</span><span class="drawer-pill">Kaplan-Meier</span><span class="drawer-pill">scikit-learn</span><span class="drawer-pill">pandas</span></div>'}
+  r_churn:{no:"RESEARCH 01 \u00b7 CLASSIFICATION \u00b7 SURVIVAL ANALYSIS",title:"Customer Churn & Survival Analysis",img:"media/case/churn.webp",tags:["Python","XGBoost","Cox Proportional Hazards","SHAP","scikit-learn","Kaplan-Meier","pandas"],sections:[
+    {l:"The problem",h:"Customers were leaving quietly \u2014 and nobody could say who was next.",b:'<p>A real <b>e-commerce dataset of ~5,600 customers</b>: tenure, order history, satisfaction scores, complaints, cashback. The business problem behind it is painfully common \u2014 retention teams find out about churn <em>after</em> it happens.</p>'},
+    {l:"The goal",h:"Predict who leaves \u2014 and how urgently.",b:'<p>One system doing two jobs: flag <b>who</b> is likely to churn, and estimate <b>when</b> \u2014 so a retention team gets a priority queue instead of a list of names.</p><div class="drawer-callout"><b>The framing:</b> a churn classifier tells you who to call. A survival model tells you how fast to dial.</div>'},
+    {l:"What I built",h:"Two models telling one story.",b:'<ul><li><b>XGBoost classifier</b> (gradient boosting \u2014 small decision trees stacked so each corrects the errors of the last) \u2014 tuned with 5-fold cross-validation, threshold set on F1 so the model optimises for the retention use case, not vanity accuracy.</li><li><b>Cox Proportional Hazards</b> \u2014 survival analysis: instead of a yes/no, it models <em>time until</em> churn. Validated with Kaplan-Meier curves \u2014 charts of how many customers &quot;survive&quot; unchurned as the months pass \u2014 split by complaint status.</li><li><b>SHAP</b> \u2014 splits every prediction fairly among the features that caused it, so each flagged customer comes with a reason attached.</li></ul>'},
+    {l:"What the data said",h:"AUC 0.981 \u2014 and complaints are the alarm bell.",b:'<p><b>AUC 0.981, F1 0.84</b> for the classifier; <b>0.75 C-index</b> for the survival model. The loudest signal by far is <b>raising a complaint</b> \u2014 complainers churn dramatically faster on the survival curves \u2014 followed by low satisfaction, city tier and short tenure; higher cashback is protective. The playbook writes itself: treat every complaint as a retention emergency.</p><div class="drawer-stack"><span class="drawer-pill">XGBoost</span><span class="drawer-pill">Cox PH \u00b7 lifelines</span><span class="drawer-pill">SHAP</span><span class="drawer-pill">Kaplan-Meier</span><span class="drawer-pill">scikit-learn</span><span class="drawer-pill">pandas</span></div>'}
   ]},
-  r_amex:{no:"RESEARCH 02 · CREDIT RISK · KAGGLE",title:"Amex Credit-Default Prediction",img:"media/case/amex.webp",tags:["Python","XGBoost","SHAP","pandas","NumPy","feature engineering","Kaggle"],sections:[
-    {l:"Situation",h:"458,913 customers, 190 features — and 50GB of raw data on a student laptop.",b:'<p>The American Express default-prediction Kaggle: 18 months of monthly statements per customer. The modelling turned out to be the easy half — the raw data did not even fit in memory.</p>'},
-    {l:"Task",h:"Predict default next statement, on consumer hardware.",b:'<p>Score every customer for default risk within the next statement period — and get there without a cluster, which meant treating the data engineering as seriously as the model.</p>'},
-    {l:"Action",h:"Engineer first, model second.",b:'<ul><li><b>Stream, compress, aggregate</b> — chunked reads into compressed Parquet, monthly snapshots collapsed to one 190-feature row per customer, no signal lost.</li><li><b>Three-model benchmark</b> — Logistic Regression, Random Forest and XGBoost on a stratified, class-balanced split; ROC-AUC as the yardstick.</li><li><b>SHAP TreeExplainer</b> — global importance over the winning model, plus a probability-ranked review list per customer.</li></ul>'},
-    {l:"Result",h:"0.953 ROC-AUC — and a tie worth talking about.",b:'<p><b>XGBoost and Logistic Regression both reached 0.953</b> (Random Forest 0.946) across 458,913 customers. On well-engineered features the humble linear model matched the ensemble — a useful reminder that feature quality beats model exotica.</p><div class="drawer-stack"><span class="drawer-pill">XGBoost</span><span class="drawer-pill">SHAP</span><span class="drawer-pill">pandas · NumPy</span><span class="drawer-pill">Parquet</span><span class="drawer-pill">scikit-learn</span><span class="drawer-pill">Kaggle</span></div>'}
+  r_amex:{no:"RESEARCH 02 \u00b7 CREDIT RISK \u00b7 KAGGLE",title:"Amex Credit-Default Prediction",img:"media/case/amex.webp",tags:["Python","LightGBM","SHAP","pandas","feature engineering","Kaggle"],sections:[
+    {l:"The problem",h:"458,913 customers, 5.5 million rows \u2014 and 50GB that won\'t fit in memory.",b:'<p>The American Express default-prediction Kaggle: 18 months of anonymised monthly statements per customer, 190 raw features. The modelling turned out to be the easy half \u2014 the raw data didn\'t even fit on a student laptop.</p>'},
+    {l:"The goal",h:"Predict who misses their next statement \u2014 on consumer hardware.",b:'<p>Score each customer\'s probability of defaulting on the next statement, from their recent history alone \u2014 with no compute cluster, which meant treating the data engineering as seriously as the model.</p>'},
+    {l:"What I built",h:"Stream, sample, engineer \u2014 then let the models fight.",b:'<ul><li><b>Stream &amp; sample</b> \u2014 I streamed the raw CSV line-by-line and kept a stratified 15,000-customer sample that preserves the 25.9% default rate \u2014 laptop-sized without distorting the problem.</li><li><b>1,085 engineered features</b> \u2014 each customer\'s up-to-13 monthly statements collapse into one row: last / mean / std / min / max plus last-minus-mean (the trend against their own history) for every numeric feature.</li><li><b>Three classifiers</b> \u2014 a logistic-regression baseline, a Random Forest, and <b>LightGBM</b> (gradient boosting \u2014 many small trees, each correcting the errors of the last), judged on ROC-AUC, PR-AUC and Amex\'s own competition metric.</li></ul>'},
+    {l:"What the data said",h:"LightGBM wins at 0.948 \u2014 and the top risk decile is 94% defaulters.",b:'<p><b>LightGBM: 0.948 ROC-AUC, 0.867 PR-AUC, 0.743 Amex metric</b> \u2014 clearly ahead of logistic regression (0.938) and Random Forest (0.941), thanks to native missing-value handling and non-linear feature interactions. The ranking is what makes it deployable: the <b>top predicted-risk decile is 94% defaulters</b> against a 25.9% base rate, and the top three deciles capture <b>85% of all defaults</b>. Payment behaviour dominates \u2014 the P_* family alone carries 43% of the model\'s gain \u2014 and trend-vs-own-history features rank surprisingly high: instability is itself predictive.</p><div class="drawer-stack"><span class="drawer-pill">LightGBM</span><span class="drawer-pill">SHAP</span><span class="drawer-pill">pandas \u00b7 NumPy</span><span class="drawer-pill">scikit-learn</span><span class="drawer-pill">Kaggle</span></div>'}
   ]},
-  r_smartclinic:{no:"RESEARCH 03 · DATABASE DESIGN · ORACLE APEX",title:"SmartClinic Healthcare Database",img:"media/case/smartclinic.webp",tags:["Oracle SQL","Oracle APEX","PL/SQL","ERD","3NF","Constraints","Triggers"],sections:[
-    {l:"Situation",h:"Double-bookings discovered on the day. History lost between visits.",b:'<p>Small clinics run on spreadsheets and memory: appointment collisions, billing reconciled by hand, no audit trail. The root cause is always the same — a schema that lets bad data in.</p>'},
-    {l:"Task",h:"Make bad data impossible, not just discouraged.",b:'<p>Design a clinic database where the business rules live in the schema itself — so they hold for the app, the API, and the DBA with a terminal open at 2am.</p><div class="drawer-callout"><b>Design principle:</b> rules enforced in the schema are enforced everywhere. Rules in the app can be bypassed.</div>'},
-    {l:"Action",h:"Six tables in 3NF — the constraints carry the rules.",b:'<ul><li><b>Appointments</b> — compound UNIQUE on (doctor_id, datetime): double-booking is rejected by the database itself.</li><li><b>Patient / Doctor</b> — UNIQUE phone and email with format CHECKs, gender CHECK, surrogate PKs by trigger.</li><li><b>Treatments</b> — ICD-10 diagnosis codes format-checked at the column level.</li><li><b>Insurance</b> split off Billing to satisfy 3NF; a nullable FK handles self-pay cleanly.</li><li><b>Billing</b> — a PL/SQL trigger recomputes the total on every insert and update.</li><li><b>Oracle APEX app</b> on top — registration, calendar, treatment entry, billing, dashboards; receptionist / clinician / admin roles; every report reads from views, never base tables.</li></ul>'},
-    {l:"Result",h:"17 constraints, 7 triggers, zero reliance on good intentions.",b:'<p>A full CRUD clinic system whose invariants are structural, not procedural. The schema on the left is interactive — tap any table to see its columns and constraints.</p><div class="drawer-stack"><span class="drawer-pill">Oracle SQL</span><span class="drawer-pill">Oracle APEX</span><span class="drawer-pill">PL/SQL Triggers</span><span class="drawer-pill">3NF</span><span class="drawer-pill">ERD</span><span class="drawer-pill">RBAC</span></div>'}
+  r_smartclinic:{no:"RESEARCH 03 \u00b7 DATABASE DESIGN \u00b7 ORACLE APEX",title:"SmartClinic Healthcare Database",img:"media/case/smartclinic.webp",tags:["Oracle SQL","Oracle APEX","PL/SQL","ERD","3NF","Constraints","Triggers"],sections:[
+    {l:"The problem",h:"Double-bookings discovered on the day. History lost between visits.",b:'<p>Small clinics run on spreadsheets and memory: appointment collisions, billing reconciled by hand, no audit trail. The root cause is always the same \u2014 a data store that lets bad data in.</p>'},
+    {l:"The goal",h:"Make bad data impossible, not just discouraged.",b:'<p>Design a clinic database where the business rules live in the schema itself \u2014 so they hold for the app, the API, and the DBA with a terminal open at 2am.</p><div class="drawer-callout"><b>Design principle:</b> rules enforced in the schema are enforced everywhere. Rules in the app can be bypassed.</div>'},
+    {l:"What I built",h:"Six tables in 3NF \u2014 the constraints carry the rules.",b:'<p>Co-built as a two-person MGIS team \u2014 schema, constraints and the APEX app split between us.</p><ul><li><b>Appointments</b> \u2014 a compound UNIQUE constraint on (doctor, date-time): the database itself refuses a double-booking.</li><li><b>Patient / Doctor</b> \u2014 unique phone and email with format checks, and IDs assigned automatically by trigger (code the database runs on its own when a row is inserted).</li><li><b>Treatments</b> \u2014 every treatment row is chained to a real appointment by enforced foreign keys, so clinical history can never go orphan.</li><li><b>Insurance</b> split from Billing to satisfy 3NF \u2014 third normal form, meaning every fact is stored exactly once, so it can never disagree with itself; self-pay is handled cleanly by an optional link.</li><li><b>Billing</b> \u2014 a PL/SQL trigger recomputes the invoice total on every insert and update.</li><li><b>Oracle APEX app</b> on top \u2014 registration, calendar, treatment entry, billing, dashboards; receptionist / clinician / admin roles; every report reads from views, never the base tables.</li></ul>'},
+    {l:"What the data said",h:"17 constraints, 7 triggers, zero reliance on good intentions.",b:'<p>A full clinic system whose invariants are structural, not procedural. The schema on the left is interactive \u2014 tap any table to see its columns and constraints.</p><div class="drawer-stack"><span class="drawer-pill">Oracle SQL</span><span class="drawer-pill">Oracle APEX</span><span class="drawer-pill">PL/SQL Triggers</span><span class="drawer-pill">3NF</span><span class="drawer-pill">ERD</span><span class="drawer-pill">RBAC</span></div>'}
   ]},
-  r_vol:{no:"RESEARCH 04 · TIME SERIES · VOLATILITY",title:"S&P 500 Volatility Forecasting",img:"media/case/vol.webp",tags:["Python","ARIMA","GARCH(1,1)","statsmodels","ARCH library","pandas","matplotlib"],sections:[
-    {l:"Situation",h:"Returns are unpredictable. Their variance is not.",b:'<p>Ten years of daily SPY (2014–2023, 2,516 trading days). Direction is close to noise — efficient markets — but volatility <b>clusters</b>: turbulent days follow turbulent days. That clustering is the one persistent, exploitable structure in the series.</p>'},
-    {l:"Task",h:"Call tomorrow calm or turbulent — better than the shortcut everyone uses.",b:'<p>Forecast next-day volatility state honestly: out-of-sample, walk-forward, no lookahead — judged against the 21-day rolling baseline practitioners actually reach for.</p><div class="drawer-callout"><b>The model pair:</b> ARIMA carries the mean equation. GARCH(1,1) models how yesterday\'s shock and yesterday\'s variance become today\'s variance.</div>'},
-    {l:"Action",h:"ARIMA for the mean, GARCH for the variance, walk-forward for honesty.",b:'<ul><li><b>Stationarity first</b> — ADF confirms log-returns are I(0); ARIMA(1,0,1) selected via ACF/PACF plus an AIC/BIC grid.</li><li><b>GARCH(1,1) Student-t</b> on the residuals — persistence α+β ≈ 0.998 (near-IGARCH), fat-tailed innovations.</li><li><b>Walk-forward validation</b> — 750-day rolling window, one-step-ahead, <b>1,765</b> out-of-sample forecasts.</li></ul>'},
-    {l:"Result",h:"81.5% vol-state accuracy vs 70.5% baseline — and it saw COVID coming sooner.",b:'<p>Eleven points over the baseline across 1,765 forecasts, with <b>−14.7% RMSE</b> and −14% QLIKE. Forecasts correlate <b>0.88 with the VIX</b> (peaking at a one-day lag), and in March 2020 the GARCH forecast reacted days ahead of the lagging rolling window — precisely when it mattered.</p><div class="drawer-stack"><span class="drawer-pill">ARIMA(1,0,1)</span><span class="drawer-pill">GARCH(1,1)</span><span class="drawer-pill">statsmodels</span><span class="drawer-pill">ARCH library</span><span class="drawer-pill">ADF test</span><span class="drawer-pill">Walk-forward CV</span></div>'}
+  r_vol:{no:"RESEARCH 04 \u00b7 TIME SERIES \u00b7 VOLATILITY",title:"S&P 500 Volatility Forecasting",img:"media/case/vol.webp",tags:["Python","ARIMA","GARCH(1,1)","statsmodels","ARCH library","pandas","matplotlib"],sections:[
+    {l:"The problem",h:"Returns are unpredictable. Their variance is not.",b:'<p>Ten years of daily S&P 500 data (2014\u20132023, 2,516 trading days). Which way the market moves tomorrow is close to noise \u2014 but <b>how violently</b> it moves clusters: turbulent days follow turbulent days. That clustering is the one persistent, exploitable structure in the series.</p>'},
+    {l:"The goal",h:"Call tomorrow calm or turbulent \u2014 better than the shortcut everyone uses.",b:'<p>Forecast next-day volatility honestly: out-of-sample, no peeking at the future \u2014 judged against the 21-day rolling average practitioners actually reach for.</p><div class="drawer-callout"><b>The model pair:</b> ARIMA handles the average level of returns. GARCH(1,1) models the turbulence itself \u2014 how yesterday\'s shock and yesterday\'s variance become today\'s variance.</div>'},
+    {l:"What I built",h:"ARIMA for the mean, GARCH for the variance, walk-forward for honesty.",b:'<ul><li><b>Stationarity first</b> \u2014 statistical tests (ADF) confirm returns are stable enough to model; ARIMA(1,0,1) selected via the standard diagnostic plots plus an information-criteria grid.</li><li><b>GARCH(1,1) with fat tails</b> \u2014 persistence \u03b1+\u03b2 \u2248 0.998, meaning shocks decay very slowly \u2014 turbulence lingers \u2014 with a Student-t distribution so extreme days aren\'t treated as impossible.</li><li><b>Walk-forward validation</b> \u2014 train on a rolling 750-day window, predict one day, slide forward, repeat: <b>1,765</b> out-of-sample forecasts with zero lookahead.</li></ul>'},
+    {l:"What the data said",h:"81.5% vol-state accuracy vs 70.5% baseline \u2014 and it saw COVID coming sooner.",b:'<p>Eleven points over the baseline across 1,765 forecasts, with <b>\u221214.7% RMSE</b> and \u221214% QLIKE. The forecasts correlate <b>0.88 with the VIX</b> \u2014 the market\'s own fear gauge \u2014 and in March 2020 the GARCH forecast reacted days ahead of the lagging rolling window, precisely when it mattered.</p><div class="drawer-stack"><span class="drawer-pill">ARIMA(1,0,1)</span><span class="drawer-pill">GARCH(1,1)</span><span class="drawer-pill">statsmodels</span><span class="drawer-pill">ARCH library</span><span class="drawer-pill">ADF test</span><span class="drawer-pill">Walk-forward CV</span></div>'}
   ]},
-  r_bank:{no:"RESEARCH 05 · FRAUD DETECTION · SEC EDGAR",title:"Financial Restatements & Earnings Detection",img:"media/case/bank.webp",tags:["Python","scikit-learn","Random Forest","Logistic Regression","Beneish M-Score","SMOTE","SEC EDGAR"],sections:[
-    {l:"Situation",h:"Restatements torch investor trust — and the warning signs sit in public filings.",b:'<p>303,800 firm-years of public-company data, 2000–2024, with an <b>8.6% restatement base rate</b>. Heavily imbalanced, noisy — exactly the kind of problem that gets triaged by auditor gut feel.</p>'},
-    {l:"Task",h:"An early-warning flag from public ratios only.",b:'<p>Score restatement risk using nothing an outside analyst could not compute themselves — ratio signals straight from the filings, no inside information.</p>'},
-    {l:"Action",h:"Beneish theory, modern rebalancing.",b:'<ul><li><b>Features</b> — DSRI (receivables outrunning revenue), GMI (margin decay), Sloan accruals ratio, plus auditor-change, prior-restatement and revenue-concentration flags.</li><li><b>SMOTE</b> to correct the 8.6% base rate before training.</li><li><b>Random Forest (200 trees)</b> benchmarked against an L2 logistic whose coefficient signs matched Beneish theory exactly — the ML and the 1999 theory agree.</li></ul>'},
-    {l:"Result",h:"85% accuracy, 0.82 precision, AUC 0.88.",b:'<p>Recall 0.79 on the restatement class. Top drivers by Gini importance: <b>DSRI, accruals, GMI, auditor change</b>. The trend panel on the left shows something else the data volunteers: the post-SOX decline in restatement rates, visible straight from the filings.</p><div class="drawer-stack"><span class="drawer-pill">Random Forest</span><span class="drawer-pill">Logistic Regression L2</span><span class="drawer-pill">SMOTE</span><span class="drawer-pill">Beneish M-Score</span><span class="drawer-pill">SEC EDGAR</span><span class="drawer-pill">scikit-learn</span></div>'}
+  r_bank:{no:"RESEARCH 05 \u00b7 FRAUD DETECTION \u00b7 SEC EDGAR",title:"Financial Restatements & Earnings Detection",img:"media/case/bank.webp",tags:["Python","scikit-learn","Random Forest","Logistic Regression","Fraud Triangle","SMOTE","SEC EDGAR"],sections:[
+    {l:"The problem",h:"Restatements torch investor trust \u2014 and the warning signs sit in public filings.",b:'<p>303,800 firm-years of public-company data, 2000\u20132024, where only <b>8.6%</b> ever restate their earnings. Heavily imbalanced, noisy \u2014 exactly the kind of problem that gets triaged by auditor gut feel.</p>'},
+    {l:"The goal",h:"An early-warning flag from public ratios only.",b:'<p>Score restatement risk using nothing an outside analyst couldn\'t compute themselves \u2014 ratio signals straight from the filings, no inside information.</p>'},
+    {l:"What I built",h:"The Fraud Triangle, turned into features.",b:'<ul><li><b>Fraud-Triangle ratios</b> \u2014 each feature maps to a leg of the classic framework: <b>leverage</b> (debt \u00f7 assets \u2014 the pressure to cheat), <b>profit margin</b> (declining efficiency signals distress), <b>operational complexity</b> (log of total assets \u2014 the opportunity to hide errors), and the <b>audit opinion</b> as the watchdog, plus auditor-change and prior-restatement flags.</li><li><b>SMOTE</b> \u2014 synthesizes extra examples of the rare restatement class so the model actually gets to learn what one looks like, instead of ignoring the 8.6%.</li><li><b>Random Forest (200 trees)</b> benchmarked against a regularized logistic regression whose coefficient signs matched the Fraud-Triangle logic \u2014 the ML and the framework agree.</li></ul>'},
+    {l:"What the data said",h:"85% accuracy, 0.82 precision, AUC 0.88.",b:'<p>Recall 0.79 on the restatement class. The strongest signal is <b>falling profitability: a 20%+ drop in net income raises restatement risk ~3.5\u00d7</b>, with leverage and audit-opinion changes close behind \u2014 the same red flags auditors have watched for decades. The trend panel on the left shows something else the data volunteers: the post-SOX decline in restatement rates, visible straight from the filings.</p><div class="drawer-stack"><span class="drawer-pill">Random Forest</span><span class="drawer-pill">Logistic Regression L2</span><span class="drawer-pill">SMOTE</span><span class="drawer-pill">Beneish M-Score</span><span class="drawer-pill">SEC EDGAR</span><span class="drawer-pill">scikit-learn</span></div>'}
   ]},
   r_taxi:{no:"RESEARCH 06 · REGRESSION · NYC TLC",title:"NYC Taxi Trip-Duration Prediction",img:"media/case/ev.webp",tags:["Python","XGBoost","SHAP","scikit-learn","pandas","NYC TLC","matplotlib"],sections:[
     {l:"The problem",h:"Every dispatch decision starts with a guess nobody checks.",b:'<p>NYC yellow cabs log about <b>3.5 million trips a month</b>, and the city publishes every record. Dispatchers, surge pricing, and driver scheduling all hinge on one number — how long will this trip take? — that has to be estimated <em>before the wheels move</em>, from nothing but what is known at pickup.</p>'},
@@ -1017,27 +1021,44 @@ var CASES={
     {l:"What I built",h:"274K real trips, a fair baseline, and a model that explains itself.",b:'<ul><li><b>The data</b> — with five BANA 780 teammates, I sampled 100K trips each from January, July and December 2025 (winter, summer, holidays), then filtered out GPS junk — trips under a minute or over 3 hours, distances past 50 miles, fares outside $2.50–$500. <b>274K clean trips</b> survived.</li><li><b>Two models, same features</b> — plain Linear Regression as the honest baseline, then <b>XGBoost</b> (gradient boosting — 100 shallow decision trees, each one correcting the errors of the trees before it).</li><li><b>SHAP</b> — a game-theory method that splits each prediction fairly among the features that caused it, so every forecast comes with a &quot;why.&quot;</li></ul>'},
     {l:"What the data said",h:"6.49-minute error, AUC 0.946 — and distance doesn\'t explain everything.",b:'<p>XGBoost predicted durations with an <b>RMSE of 6.49 minutes vs 8.31 for the linear baseline — 21.8% better</b>, roughly 1.8 minutes of precision per trip at fleet scale. The long-trip classifier hit <b>AUC 0.946</b> (88.6% accuracy, 81% precision, 76% recall). SHAP ranked distance first, but <b>pickup/dropoff zone mattered beyond distance</b> — congestion is geographic — and late-night hours push predictions longer. Honest limitation: the model underpredicts the rare 60-minute-plus outliers, because accidents and weird routes are invisible at pickup.</p><div class="drawer-stack"><span class="drawer-pill">XGBoost</span><span class="drawer-pill">Linear Regression</span><span class="drawer-pill">SHAP</span><span class="drawer-pill">scikit-learn</span><span class="drawer-pill">pandas</span><span class="drawer-pill">NYC TLC open data</span></div>'}
   ]},
-  r_more:{no:"RESEARCH 07 · ADDITIONAL PROJECTS",title:"More Research Projects",imgs:{"EV Loan Risk":"media/case/ev.webp","NLP Sentiment":"media/case/nlp.webp","Market Basket":"media/case/basket.webp"},tags:["Sentiment Analysis","Market Basket","EV Loan Risk","Random Forest","Apriori","R","Python"],sections:[
-    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 01 · Credit Risk</span><div class="rm-proj-name">EV Loan Risk</div></div>'},
-    {l:"Situation",h:"Rare repossessions on hard-to-value collateral.",b:'<p>EV resale values are hard to model and repossessions are rare — so a naive classifier predicts &quot;no repossession&quot; for everyone, looks accurate, and catches nothing.</p>'},
-    {l:"Task",h:"Catch the rare event without drowning lenders in false alarms.",b:'<p>Flag the borrowers who actually repossess, at a precision a loan desk can act on.</p>'},
-    {l:"Action",h:"Random Forest on credit-bureau signals.",b:'<p>300 trees on risk score, past delinquencies and credit utilization, with ROSE rebalancing for the rare-event class and the decision threshold tuned on AUC.</p>'},
-    {l:"Result",h:"88% accuracy; credit score dominates.",b:'<p>The &quot;Very High Risk&quot; tier repossesses at 10–15× the base rate — flagging those borrowers early could prevent an estimated 500–700 repossessions a year.</p>'},
-    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 02 · NLP</span><div class="rm-proj-name">NLP Sentiment</div></div>'},
-    {l:"Situation",h:"Reviews full of signal, unreadable at scale.",b:'<p>Product reviews say exactly what customers love and hate — but nobody can read thousands of them, and a single star rating flattens all of it.</p>'},
-    {l:"Task",h:"Quantify sentiment from the review down to the word.",b:'<p>Make the text measurable at three levels of zoom, so a product team can go from &quot;reviews are mostly positive&quot; to the exact sentences driving complaints.</p>'},
-    {l:"Action",h:"Three-level sentiment in R.",b:'<p>Review-, sentence- and word-level scoring with sentimentr / syuzhet — bing lexicon for polarity, NRC for emotions, and a t-SNE map of the review vocabulary.</p>'},
-    {l:"Result",h:"A layered, actionable sentiment profile.",b:'<p>Broadly-positive reviews separated from the specific sentences and words that drive complaints — unstructured text turned into concrete product feedback.</p>'},
-    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 03 · Association Rules</span><div class="rm-proj-name">Market Basket</div></div>'},
-    {l:"Situation",h:"Cross-sell decisions made on hunches.",b:'<p>Menu layout and bundling were being decided by feel — co-purchase patterns exist, but only matter if they are statistically real rather than coincidence.</p>'},
-    {l:"Task",h:"Find the pairs that co-occur beyond chance.",b:'<p>Mine ~1,834 restaurant orders for item pairs with genuine lift — rules a manager could act on next week.</p>'},
-    {l:"Action",h:"Apriori over the order book.",b:'<p>Association-rule mining in R (arules / arulesViz), minimum support 0.5%, confidence 20%, pairs ranked by lift.</p>'},
-    {l:"Result",h:"The Chicken Bowl anchors a third of orders.",b:'<p>It appears in 34% of orders; Chips &amp; Guacamole (25%) is the top add-on. The high-lift pairs translate directly into bundles and menu placement.</p>'}
+  r_fakenews:{no:"RESEARCH 07 \u00b7 NLP \u00b7 TEXT MINING",title:"Real vs. Fake News \u2014 The Linguistic Fingerprint",img:"media/case/nlp.webp",tags:["R","tidytext","TF-IDF","bigrams","LDA \u00b7 topicmodels","ggplot2"],sections:[
+    {l:"The problem",h:"Misinformation reads differently \u2014 but can you measure it?",b:'<p><b>22,219 news headlines</b>: 11,674 verified real (Reuters) and 10,545 flagged as fake or propaganda. The question is whether credibility leaves a trace in the words themselves \u2014 before any fact-checking happens.</p>'},
+    {l:"The goal",h:"Find the linguistic fingerprint of fake news.",b:'<p>Quantify how misinformation is <em>written</em> \u2014 vocabulary, phrasing, themes \u2014 using nothing but the headline text, so the difference is measurable instead of a gut feeling.</p>'},
+    {l:"What I built",h:"A text-mining pipeline in R, three lenses deep.",b:'<ul><li><b>TF-IDF</b> \u2014 scores every word by how distinctive it is to one class rather than merely common, surfacing each side\'s characteristic vocabulary.</li><li><b>Bigram analysis</b> \u2014 two-word phrases, because &quot;video shows&quot; and &quot;white house&quot; carry more signal than their words alone.</li><li><b>Topic models</b> \u2014 separate 4-topic LDA fits per class (unsupervised grouping that finds the latent themes a corpus keeps returning to), visualised side-by-side.</li></ul>'},
+    {l:"What the data said",h:"Two visibly different languages.",b:'<p>Real and fake headlines organise around <b>clearly different vocabularies and themes</b> \u2014 the eight LDA topic panels put the contrast on one chart. Deliberately analysis-first: the goal was an interpretable fingerprint a reader can see, not a black-box classifier score.</p><div class="drawer-stack"><span class="drawer-pill">R \u00b7 tidytext</span><span class="drawer-pill">TF-IDF</span><span class="drawer-pill">LDA \u00b7 topicmodels</span><span class="drawer-pill">ggplot2</span></div>'}
   ]},
-  retailpro:{no:"CASE STUDY 03 · AI FORECASTING · BUILT TWICE",title:"Precision Retail Pro — Inventory Intelligence",live:"https://precision-retail-pro.vercel.app/",tags:["Next.js 15","TypeScript","Claude API","Recharts","PapaParse","Zustand","Streamlit","Prophet"],sections:[
-    {l:"Problem",h:"Small retailers run on cash, and their cash is hiding on their shelves.",b:'<p>SMB retailers face a brutal double bind: money frozen in <b>dead stock</b> that hasn\'t sold in months, while best-sellers <b>stock out</b> and burn sales. Enterprise tools (SAP, Oracle) cost more than a small shop\'s annual profit; spreadsheets can\'t forecast and don\'t alert.</p><div class="drawer-callout"><b>The insight:</b> Two CSVs — inventory and sales history — contain everything needed to answer the only three questions that matter: what\'s dead, what\'s about to run out, and how much cash is trapped.</div>'},
-    {l:"Method",h:"Spec first, prototype second, product third.",b:'<ul><li><b>1 · Product spec</b> — PRODUCT_SPECS.md defined the metrics upfront: DSI = current stock ÷ average daily demand; Cash Trapped = cost × stock for SKUs over 90 DSI; urgent reorder under 14 DSI.</li><li><b>2 · v1 — Streamlit prototype</b> — Python/Streamlit with Pandas, Facebook Prophet for per-SKU seasonality-aware forecasting, and Plotly dashboards. Proved the analytics worked.</li><li><b>3 · v2 — Next.js rebuild</b> — Full TypeScript rebuild: drag-and-drop CSV upload with PapaParse, automatic column normalization, Claude-powered 30-day forecasts with moving-average fallback, Recharts, Zustand.</li></ul>'},
-    {l:"Key Decisions",h:"The design decisions that mattered.",b:'<p><b>DSI over raw quantities.</b> "300 units" means nothing without velocity. Days Sales of Inventory normalizes every SKU to time — the only scale a cash-flow decision understands.</p><p><b>Cash Trapped as the headline number.</b> Retailers don\'t act on "slow-moving inventory"; they act on "$48,000 of your money is sitting on a shelf."</p><p><b>AI with a fallback, always.</b> Claude forecasts when a key is present; a moving average takes over when it isn\'t. A tool that breaks without an API key is a demo, not a product.</p>'},
+  r_hhp:{no:"RESEARCH 08 \u00b7 HEALTHCARE \u00b7 REGRESSION",title:"Heritage Health \u2014 Hospital-Stay Triage",img:"media/case/hhp.webp",tags:["Python","Random Forest","Gradient Boosting","scikit-learn","pandas","Heritage Health Prize"],sections:[
+    {l:"The problem",h:"84.5% of patients never go to hospital \u2014 predicting who does is brutal.",b:'<p>The Heritage Health Prize problem: forecast days-in-hospital for <b>113,000 patients</b> from their prior-year claims. When five in six patients spend zero days in hospital, raw accuracy is nearly meaningless \u2014 a model that says &quot;nobody goes&quot; looks great and helps no one.</p>'},
+    {l:"The goal",h:"A triage tool, not a crystal ball.",b:'<p>Rank patients by hospitalisation risk so preventive care lands on the people who will actually need it \u2014 the ranking is the product, not the point estimate.</p><div class="drawer-callout"><b>The framing:</b> in rare-event prediction, being roughly right about <em>who</em> beats being precisely wrong about <em>how much</em>.</div>'},
+    {l:"What I built",h:"Three models on 19 claims-derived features.",b:'<ul><li><b>The data</b> \u2014 76,038 training and 71,435 validation records; 19 features engineered from claims, labs and prescription history.</li><li><b>Three models, simple to sophisticated</b> \u2014 a Linear Regression baseline, Gradient Boosting, and a <b>Random Forest</b> (many decision trees voting, each trained on a different slice of the data).</li><li><b>Evaluated on ranking power</b> \u2014 RMSE and MAE for the point estimates, but the real test: how much hospital time concentrates in the top of the risk ranking.</li></ul>'},
+    {l:"What the data said",h:"Modest R\u00b2, powerful ranking \u2014 the top 20% hold 48% of all hospital days.",b:'<p>Random Forest won: <b>RMSE 1.494 vs 1.506</b> for the baseline, average miss <b>0.71 days</b>. The R\u00b2 is small \u2014 and beside the point: <b>the top-20% highest-risk patients account for 48% of all hospital days</b>, which is exactly what a care team needs to target preventive outreach. Honest limitation: extreme rarity caps point-estimate accuracy \u2014 the value is in the queue, not the number.</p><div class="drawer-stack"><span class="drawer-pill">Random Forest</span><span class="drawer-pill">Gradient Boosting</span><span class="drawer-pill">scikit-learn</span><span class="drawer-pill">pandas</span><span class="drawer-pill">Heritage Health Prize</span></div>'}
+  ]},
+  r_more:{no:"RESEARCH 09 \u00b7 ADDITIONAL PROJECTS",title:"More Research Projects",imgs:{"EV Loan Risk":"media/case/ev.webp","NLP Sentiment":"media/case/nlp.webp","Market Basket":"media/case/basket.webp"},tags:["Sentiment Analysis","Market Basket","EV Loan Risk","Random Forest","Apriori","R","Python"],sections:[
+    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 01 · Credit Risk</span><div class="rm-proj-name">EV Loan Risk</div></div>'},
+    {l:"The problem",h:"Rare repossessions on hard-to-value collateral.",b:'<p>EV resale values are hard to model and repossessions are rare — so a naive classifier predicts &quot;no repossession&quot; for everyone, looks accurate, and catches nothing.</p>'},
+    {l:"The goal",h:"Catch the rare event without drowning lenders in false alarms.",b:'<p>Flag the borrowers who actually repossess, at a precision a loan desk can act on.</p>'},
+    {l:"What I built",h:"A Random Forest on credit-bureau signals.",b:'<p>I trained 300 trees on risk score, past delinquencies and credit utilization across a <b>233,000-loan</b> dataset (78% good / 22% repossessed), validated with caret cross-validation.</p>'},
+    {l:"What the data said",h:"88% accuracy; credit score dominates.",b:'<p>The &quot;Very High Risk&quot; bureau tier tops the repossession table by a wide margin — flagging those borrowers early could prevent an estimated 500–700 repossessions a year.</p>'},
+    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 02 · NLP</span><div class="rm-proj-name">NLP Sentiment</div></div>'},
+    {l:"The problem",h:"Reviews full of signal, unreadable at scale.",b:'<p>Product reviews say exactly what customers love and hate — but nobody can read thousands of them, and a single star rating flattens all of it.</p>'},
+    {l:"The goal",h:"Quantify sentiment from the review down to the word.",b:'<p>Make the text measurable at three levels of zoom, so a product team can go from &quot;reviews are mostly positive&quot; to the exact sentences driving complaints.</p>'},
+    {l:"What I built",h:"Three-level sentiment scoring in R.",b:'<p>I scored reviews at three zoom levels — whole review, sentence, single word — with sentimentr and syuzhet: one lexicon for positive/negative polarity, another for emotions, plus a t-SNE map (a 2-D chart where similar words land near each other) of the review vocabulary.</p>'},
+    {l:"What the data said",h:"A layered, actionable sentiment profile.",b:'<p>Broadly-positive reviews separated from the specific sentences and words that drive complaints — unstructured text turned into concrete product feedback.</p>'},
+    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 03 · Association Rules</span><div class="rm-proj-name">Market Basket</div></div>'},
+    {l:"The problem",h:"Cross-sell decisions made on hunches.",b:'<p>Menu layout and bundling were being decided by feel — co-purchase patterns exist, but they only matter if they are statistically real rather than coincidence.</p>'},
+    {l:"The goal",h:"Find the pairs that co-occur beyond chance.",b:'<p>Mine ~1,834 restaurant orders for item pairs with genuine lift — how much more often two items appear together than chance would predict — rules a manager could act on next week.</p>'},
+    {l:"What I built",h:"Apriori over the order book.",b:'<p>I mined association rules in R (arules / arulesViz) — keeping pairs seen in at least 0.5% of orders with 20% confidence, ranked by lift.</p>'},
+    {l:"What the data said",h:"The Chicken Bowl anchors a third of orders.",b:'<p>It appears in 34% of orders; Chips &amp; Guacamole (25%) is the top add-on. The high-lift pairs translate directly into bundles and menu placement.</p>'},
+    {l:"",h:"",b:'<div class="rm-proj"><span class="rm-proj-tag">Project 04 \u00b7 Public Health</span><div class="rm-proj-name">Health &amp; Education</div></div>'},
+    {l:"The problem",h:"Do educated states stay healthier?",b:'<p>Traditional public-health analysis leans on biology and environment. This asks a socioeconomic question instead: is a state\'s <b>diabetes mortality rate</b> related to how many of its citizens hold a bachelor\'s degree?</p>'},
+    {l:"The goal",h:"Put a number on the health\u2013education link.",b:'<p>Join state-level education and mortality data and test the hypothesis that human capital is protective.</p>'},
+    {l:"What I built",h:"State-level joins, then a regression.",b:'<p>Merged public education-attainment and diabetes-mortality datasets by state, computed the Pearson correlation and fit a regression with a visual trend line.</p>'},
+    {l:"What the data said",h:"r = \u22120.39 \u2014 a moderate, visible downward trend.",b:'<p>States with higher bachelor\'s-degree attainment show meaningfully lower diabetes mortality. Correlation isn\'t causation \u2014 but the &quot;health\u2013wealth&quot; gradient is right there in the plot.</p>'}
+  ]},
+  retailpro:{no:"CASE STUDY 03 \u00b7 AI FORECASTING \u00b7 BUILT TWICE",title:"Precision Retail Pro \u2014 Inventory Intelligence",live:"https://precision-retail-pro.vercel.app/",tags:["Next.js 15","TypeScript","Claude API","Recharts","PapaParse","Zustand","Streamlit","Prophet"],sections:[
+    {l:"The problem",h:"Small retailers run on cash, and their cash is hiding on their shelves.",b:'<p>Small shops face a brutal double bind: money frozen in <b>dead stock</b> that hasn\'t sold in months, while the best-sellers <b>run out</b> and burn sales. Enterprise tools (SAP, Oracle) cost more than a small shop\'s annual profit; spreadsheets can\'t forecast and don\'t alert.</p><div class="drawer-callout"><b>The insight:</b> two CSVs \u2014 inventory and sales history \u2014 contain everything needed to answer the only three questions that matter: what\'s dead, what\'s about to run out, and how much cash is trapped.</div>'},
+    {l:"How it works",h:"Spec first, prototype second, product third.",b:'<ul><li><b>1 \u00b7 Spec</b> \u2014 I defined the metrics before writing code. DSI = current stock \u00f7 average daily sales \u2014 how many days until a product sells out at today\'s pace. Over 90 days: dead stock. Under 14: reorder now. Cash Trapped = cost \u00d7 stock for everything past 90.</li><li><b>2 \u00b7 v1, Streamlit prototype</b> \u2014 Python with Prophet (a forecasting model that learns each product\'s weekly and seasonal rhythm) to prove the analytics actually worked before investing in a real UI.</li><li><b>3 \u00b7 v2, Next.js rebuild</b> \u2014 full TypeScript product: drag-and-drop CSV upload, automatic column matching, Claude-powered 30-day forecasts with a moving-average fallback, live charts.</li></ul>'},
+    {l:"Why these choices",h:"The design decisions that mattered.",b:'<p><b>DSI over raw quantities.</b> &quot;300 units&quot; means nothing without knowing how fast they sell. Days-of-stock puts every product on the one scale a cash-flow decision understands: time.</p><p><b>Cash Trapped as the headline number.</b> Retailers don\'t act on &quot;slow-moving inventory&quot;; they act on &quot;$48,000 of your money is sitting on a shelf.&quot;</p><p><b>AI with a fallback, always.</b> Claude forecasts when an API key is present; a moving average takes over when it isn\'t. A tool that breaks without an API key is a demo, not a product.</p>'},
     {l:"Stack",h:"",b:'<div class="drawer-stack"><span class="drawer-pill">Next.js 15</span><span class="drawer-pill">TypeScript</span><span class="drawer-pill">Claude Sonnet</span><span class="drawer-pill">Recharts</span><span class="drawer-pill">PapaParse</span><span class="drawer-pill">Zustand</span><span class="drawer-pill">Streamlit (v1)</span><span class="drawer-pill">Prophet (v1)</span></div>'}
   ]}
 };
@@ -1660,13 +1681,13 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
 
   if(window.CASES && CASES.r_amex){
     CASES.r_amex.dash={
-      subtitle:"Amex Kaggle \u00b7 458,913 customers \u00b7 190 features",
+      subtitle:"Amex Kaggle \u00b7 15K stratified sample \u00b7 1,085 features",
       accent:["#5fd6a0","#2f8f66","#d4af6a"],
-      stats:[{v:"0.953",l:"Best ROC-AUC"},{v:"458,913",l:"Customers"},{v:"190",l:"Features"},{v:"3",l:"Models benched"}],
+      stats:[{v:"0.948",l:"LightGBM ROC-AUC"},{v:"94%",l:"Top-decile default"},{v:"85%",l:"Caught in top 3"},{v:"1,085",l:"Features built"}],
       charts:[
-        {type:"models",title:"Model comparison (ROC-AUC)",data:[["XGBoost",0.953],["Logistic Reg.",0.953],["Random Forest",0.946]]},
-        {type:"bars",title:"The scale of it",data:[["Customers (000s)",458.9,1],["Raw data (GB)",50,0],["Features",190,1]]},
-        {type:"note",title:"Why the tie matters",text:"With 190 well-aggregated features the decision boundary is nearly linear \u2014 the ensemble adds almost nothing. The feature engineering did the heavy lifting."}
+        {type:"models",title:"Model comparison (ROC-AUC)",data:[["LightGBM",0.948],["Random Forest",0.941],["Logistic Reg.",0.938]]},
+        {type:"bars",title:"Where the gain comes from (feature families)",data:[["Payment (P_*)",1.0,1],["Balance (B_*)",0.49,0],["Delinquency (D_*)",0.49,0]]},
+        {type:"note",title:"Deployable ranking",text:"Top predicted-risk decile: 94% defaulters vs a 25.9% base rate. Top three deciles capture 85% of all defaults \u2014 a tiered-intervention engine, not just a score."}
       ]
     };
   }
@@ -1674,11 +1695,11 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     CASES.r_bank.dash={
       subtitle:"Compustat + SEC \u00b7 303,800 firm-years \u00b7 2000\u20132024",
       accent:["#e0938f","#c85f5a","#f2b8b5"],
-      stats:[{v:"8.6%",l:"Restatement rate"},{v:"303,800",l:"Firm-years"},{v:"34",l:"Features"},{v:"0.82",l:"Precision"}],
+      stats:[{v:"8.6%",l:"Restatement rate"},{v:"303,800",l:"Firm-years"},{v:"3.5\u00d7",l:"Risk on \u221220% profit"},{v:"0.82",l:"Precision"}],
       charts:[
         {type:"trend",title:"Restatement rate by year (2000\u20132024)",data:[[2000,11.2],[2003,14.6],[2006,13.3],[2009,9.1],[2012,10.3],[2015,8.3],[2018,5.5],[2021,5.0],[2024,1.2]]},
         {type:"bars",title:"Classifier report \u2014 restatement class",data:[["Precision",0.82,1],["Recall",0.79,0],["AUC",0.88,1]]},
-        {type:"note",title:"Model",text:"Beneish M-Score ratios + custom accrual signals \u2192 ~85% accuracy, 0.82 precision on the restatement class. Post-SOX decline visible in the trend."}
+        {type:"note",title:"Model",text:"Fraud-Triangle ratios (leverage \u00b7 margin \u00b7 complexity \u00b7 audit opinion) + SMOTE \u2192 ~85% accuracy, 0.82 precision on the restatement class. Post-SOX decline visible in the trend."}
       ]
     };
   }
@@ -1744,22 +1765,31 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
   }
   function chNote(t){ return '<div style="font-size:.72rem;color:var(--muted);line-height:1.55">'+t+'</div>'; }
   function chErd(){
-    var W=270,H=230;
+    var W=520,H=280;
     var T={
-      APPOINTMENT:{x:132,y:120,c:"#0a84ff",cols:"appointment_id PK \u00b7 date \u00b7 time \u00b7 status CHECK \u00b7 patient_id FK \u00b7 doctor_id FK \u00b7 UNIQUE(doctor,date,time)"},
-      PATIENT:{x:50,y:37,c:"#30d158",cols:"patient_id PK \u00b7 first/last_name \u00b7 dob \u00b7 gender CHECK \u00b7 phone UNIQUE \u00b7 email CHECK"},
-      DOCTOR:{x:214,y:37,c:"#30d158",cols:"doctor_id PK \u00b7 first/last_name \u00b7 specialization \u00b7 email UNIQUE"},
-      TREATMENT:{x:46,y:200,c:"#5e5ce6",cols:"treatment_id PK \u00b7 appointment_id FK (1:1) \u00b7 diagnosis \u00b7 prescription"},
-      BILL:{x:142,y:211,c:"#bf5af2",cols:"bill_id PK \u00b7 appointment_id FK (1:1) \u00b7 insurance_id FK? \u00b7 amount \u00b7 status"},
-      INSURANCE:{x:229,y:200,c:"#ff9f0a",cols:"insurance_id PK \u00b7 provider \u00b7 plan"}
+      APPOINTMENT:{x:260,y:150,c:"#0a84ff",cols:"appointment_id PK \u00b7 date \u00b7 time \u00b7 status CHECK \u00b7 patient_id FK \u00b7 doctor_id FK \u00b7 UNIQUE(doctor,date,time)"},
+      PATIENT:{x:140,y:44,c:"#30d158",cols:"patient_id PK \u00b7 first/last_name \u00b7 dob \u00b7 gender CHECK \u00b7 phone UNIQUE \u00b7 email CHECK"},
+      DOCTOR:{x:380,y:44,c:"#30d158",cols:"doctor_id PK \u00b7 first/last_name \u00b7 specialization \u00b7 email UNIQUE"},
+      TREATMENT:{x:90,y:246,c:"#5e5ce6",cols:"treatment_id PK \u00b7 appointment_id FK (1:1) \u00b7 diagnosis \u00b7 prescription"},
+      BILL:{x:260,y:254,c:"#bf5af2",cols:"bill_id PK \u00b7 appointment_id FK (1:1) \u00b7 insurance_id FK? \u00b7 amount \u00b7 status"},
+      INSURANCE:{x:430,y:246,c:"#ff9f0a",cols:"insurance_id PK \u00b7 provider \u00b7 plan"}
     };
     var edges=[["PATIENT","APPOINTMENT"],["DOCTOR","APPOINTMENT"],["APPOINTMENT","TREATMENT"],["APPOINTMENT","BILL"],["INSURANCE","BILL"]];
-    var lines=edges.map(function(e){var a=T[e[0]],b=T[e[1]];return '<line x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" stroke="#c9d2e3" stroke-width="1.4"/>';}).join("");
-    var nodes=Object.keys(T).map(function(k){var n=T[k],w=k.length*6.0+20,x=n.x-w/2;
+    function badge(cols){var fk=(cols.match(/FK/g)||[]).length,pk=/PK/.test(cols),p=[];if(pk)p.push("PK");if(fk)p.push(fk+" FK");return p.join(" \u00b7 ")||"lookup";}
+    function box(k){var n=T[k],w=Math.max(k.length*7.6+34,98);return {x:n.x-w/2,y:n.y-19,w:w,h:38,cx:n.x,cy:n.y};}
+    var B={}; Object.keys(T).forEach(function(k){B[k]=box(k);});
+    var lines=edges.map(function(e){
+      var a=B[e[0]],b=B[e[1]],ac=T[e[0]].c,x1=a.cx,y1=a.y+a.h,x2=b.cx,y2=b.y,d;
+      if(Math.abs(x1-x2)<4){ d='M'+x1+' '+y1+' L'+x2+' '+y2; }
+      else { var mid=(y1+y2)/2; d='M'+x1+' '+y1+' L'+x1+' '+mid+' L'+x2+' '+mid+' L'+x2+' '+y2; }
+      return '<path d="'+d+'" fill="none" stroke="'+ac+'" stroke-opacity=".4" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>';
+    }).join("");
+    var nodes=Object.keys(T).map(function(k){var n=T[k],b=B[k];
       return '<g class="d-node" tabindex="0" role="button" aria-label="'+k+'" data-tip="'+k+' \u2014 '+n.cols+'" style="cursor:pointer">'
-        +'<rect x="'+x+'" y="'+(n.y-11)+'" rx="6" width="'+w+'" height="22" fill="#ffffff" stroke="'+n.c+'" stroke-width="1.7"/>'
-        +'<circle cx="'+(x+10)+'" cy="'+n.y+'" r="2.7" fill="'+n.c+'"/>'
-        +'<text x="'+(x+17)+'" y="'+(n.y+3.5)+'" style="font-size:9px;font-weight:700;fill:#111110">'+k+'</text></g>';
+        +'<rect x="'+b.x+'" y="'+b.y+'" rx="9" width="'+b.w+'" height="'+b.h+'" fill="'+n.c+'" fill-opacity=".15" stroke="'+n.c+'" stroke-width="1.4"/>'
+        +'<rect x="'+b.x+'" y="'+b.y+'" rx="4" width="4" height="'+b.h+'" fill="'+n.c+'"/>'
+        +'<text x="'+(b.x+14)+'" y="'+(b.cy-2)+'" style="font-size:10.5px;font-weight:700;fill:#F0F5F7;letter-spacing:.01em">'+k+'</text>'
+        +'<text x="'+(b.x+14)+'" y="'+(b.cy+12)+'" style="font-size:8px;font-weight:600;fill:'+n.c+'">'+badge(n.cols)+'</text></g>';
     }).join("");
     return '<svg viewBox="0 0 '+W+' '+H+'" class="d-svg">'+lines+nodes+'</svg>';
   }
@@ -1777,7 +1807,7 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
   if(window.CASES && CASES.r_more){
     CASES.r_more.dashMulti=[
       {eyebrow:"EV Loan Risk", subtitle:"Random Forest · repossession model", accent:["#3ecfcf","#e0a24a","#2f8f8f"],
-       stats:[{v:"88%",l:"Accuracy"},{v:"300",l:"RF trees"},{v:"10–15×",l:"VHR repossess"}],
+       stats:[{v:"88%",l:"Accuracy"},{v:"300",l:"RF trees"},{v:"233K",l:"EV loans"}],
        charts:[{type:"bars",title:"Key risk factors (relative)",data:[["Credit-bureau score",1.0,1],["Past delinquencies",0.7,1],["Credit utilization",0.55,1]]}]},
       {eyebrow:"Market Basket", subtitle:"Apriori · R arules · ~1,834 orders", accent:["#6a7cd6","#3ecf9e","#8a93e0"],
        stats:[{v:"1,834",l:"Orders"},{v:"0.5%",l:"Min support"},{v:"20%",l:"Min confidence"}],
@@ -1810,6 +1840,41 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
         {type:"line",title:"Forecast volatility, out-of-sample (COVID spike)",color:"#5e5ce6",data:[["2016",0.54],["",0.43],["",1.23],["",0.47],["",0.49],["",0.51],["2020",1.68],["",1.34],["",0.73],["",1.12],["",1.60],["",0.88],["2023",0.72]]},
         {type:"bars",title:"Vol-state accuracy — GARCH vs 21-day baseline",data:[["GARCH(1,1)",0.815,1],["21-day RV",0.705,1]]},
         {type:"bars",title:"Error reduction vs baseline (%)",data:[["RMSE",14.7,1],["QLIKE",14,0]]}
+      ]
+    };
+  }
+  if(window.CASES && CASES.r_taxi){
+    CASES.r_taxi.dash={
+      subtitle:"NYC TLC · 274K trips · Jan / Jul / Dec 2025",
+      accent:["#e6c35a","#c9a13f","#8fb8e8"],
+      stats:[{v:"0.946",l:"AUC-ROC"},{v:"6.49",l:"RMSE (min)"},{v:"−21.8%",l:"Error vs baseline"},{v:"274K",l:"Trips modeled"}],
+      charts:[
+        {type:"bars",title:"Trip volume by hour — rush hours spike 2–3×",data:[["2 AM",0.16,0],["7–9 AM",0.9,1],["12 PM",0.6,0],["4–6 PM",1.0,1],["10 PM",0.44,0]]},
+        {type:"bars",title:"Duration RMSE, minutes — lower is better",data:[["Linear Regression",1.0,0],["XGBoost",0.78,1]]},
+        {type:"bars",title:"What drives predictions (SHAP)",data:[["Trip distance",1.0,1],["Pickup zone",0.62,1],["Dropoff zone",0.55,0],["Hour of day",0.38,0],["Rush-hour flag",0.18,0]]}
+      ]
+    };
+  }
+  if(window.CASES && CASES.r_fakenews){
+    CASES.r_fakenews.dash={
+      subtitle:"22,219 headlines \u00b7 Reuters vs fake \u00b7 R tidytext",
+      accent:["#e08fb8","#8fb8e8","#c9708f"],
+      stats:[{v:"22,219",l:"Headlines"},{v:"11,674",l:"Real \u00b7 Reuters"},{v:"10,545",l:"Fake"},{v:"4\u00d72",l:"LDA topics"}],
+      charts:[
+        {type:"bars",title:"Corpus split",data:[["Real \u2014 Reuters",0.53,1],["Fake / propaganda",0.47,0]]},
+        {type:"note",title:"Analysis-first",text:"TF-IDF distinctive vocabularies, bigram structure and separate 4-topic LDA fits per class \u2014 the fingerprint is visible before any classifier is trained."}
+      ]
+    };
+  }
+  if(window.CASES && CASES.r_hhp){
+    CASES.r_hhp.dash={
+      subtitle:"Heritage Health Prize \u00b7 113K patients \u00b7 19 features",
+      accent:["#7fc8a9","#4a9d7f","#c9a869"],
+      stats:[{v:"113K",l:"Patients"},{v:"48%",l:"Days in top 20%"},{v:"0.71",l:"MAE (days)"},{v:"84.5%",l:"Never hospitalised"}],
+      charts:[
+        {type:"bars",title:"Share of all hospital days",data:[["Top 20% by risk",0.48,1],["Remaining 80%",0.52,0]]},
+        {type:"bars",title:"Model error \u2014 MAE, days (lower is better)",data:[["Linear baseline",0.74,0],["Gradient Boosting",0.71,0],["Random Forest",0.71,1]]},
+        {type:"note",title:"Why ranking beats accuracy",text:"With 84.5% of patients at zero days, point estimates saturate \u2014 but the risk ranking concentrates half of all hospital time in a fifth of the population. That\u2019s a deployable triage queue."}
       ]
     };
   }
@@ -1851,7 +1916,7 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
   function buildCharts(charts,accent){
     var fulls='', halves='';
     charts.forEach(function(ch){
-      var card='<div class="d-card glass d-type-'+ch.type+(D_FULL_TYPES[ch.type]?' d-full':'')+'"><div class="d-card-t">'+ch.title+'</div>'+chartHTML(ch,accent)+'</div>';
+      var card='<div class="d-card '+(ch.type==="erd"?"dk":"glass")+' d-type-'+ch.type+(D_FULL_TYPES[ch.type]?' d-full':'')+'"><div class="d-card-t">'+ch.title+'</div>'+chartHTML(ch,accent)+'</div>';
       if(D_FULL_TYPES[ch.type]) fulls+=card; else halves+=card;
     });
     return fulls+(halves?'<div class="d-charts">'+halves+'</div>':'');
@@ -1905,31 +1970,60 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
   window.openDrawer=function(k){
     _open(k);
     var c=window.CASES&&CASES[k], drawer=document.getElementById("drawer"), body=document.getElementById("d-body");
+    /* per-section drawer theme: Work cases go immersive-dark in the card's own palette (its
+       gradient is already carried into .drawer-bg); Research cases go liquid-glass over the
+       card's near-crisp image. Toggled per open, so each drawer always gets exactly one theme. */
+    var isWork={bidcraft:1,tradingbot:1,retailpro:1}[k];
+    drawer.classList.toggle('drawer-dark', !!isWork);
+    drawer.classList.toggle('drawer-glass', !isWork);
+    /* the backdrop is position:fixed INSIDE the transformed drawer, so it actually scrolls away
+       with the content — glue it to the drawer's viewport so the image/gradient stays uniform
+       at every scroll depth instead of vanishing after the first screenful */
+    var bgEl=document.getElementById('drawer-bg');
+    if(bgEl){
+      bgEl.style.transform='translate3d(0,'+drawer.scrollTop+'px,0)';
+      if(!drawer.__bgSync){
+        drawer.__bgSync=1;
+        drawer.addEventListener('scroll',function(){ bgEl.style.transform='translate3d(0,'+drawer.scrollTop+'px,0)'; },{passive:true});
+      }
+    }
     [].forEach.call(body.querySelectorAll(".d-liquid"),function(o){if(o&&o.__stop)o.__stop();});
     if(!c) return;
-    var secCard=function(s){return '<div class="deck-card"><div class="dlabel">'+s.l+'</div>'+(s.h?'<h3>'+s.h+'</h3>':'')+s.b+'</div>';};
+    var secCard=function(s,sp){return '<div class="deck-card'+(sp?' '+sp:'')+'"><div class="dlabel">'+s.l+'</div>'+(s.h?'<h3>'+s.h+'</h3>':'')+s.b+'</div>';};
+    /* bento pairing — two consecutive SHORT sections share a row as half tiles; anything long
+       (lists, results) stays full width. Order-preserving by construction: no grid dense-packing,
+       so the narrative can never visually reorder. */
+    var isShort=function(s){ var b=s.b||''; return b.indexOf('<ul')===-1 && b.indexOf('rm-proj')===-1 && b.replace(/<[^>]+>/g,'').length<520; };
+    var renderSecs=function(secs){
+      var out='', i=0;
+      while(i<secs.length){
+        if(isShort(secs[i]) && i+1<secs.length && isShort(secs[i+1])){ out+=secCard(secs[i],'dk-half')+secCard(secs[i+1],'dk-half'); i+=2; }
+        else { out+=secCard(secs[i]); i++; }
+      }
+      return out;
+    };
     var tagsEl=body.querySelector(".drawer-tags"), liveEl=body.querySelector(".drawer-live");
     var head=(tagsEl?tagsEl.outerHTML:"")+(liveEl?liveEl.outerHTML:"");
     var heroImg='';
     var cards='', accents=[];
     if(c.dashMulti){
       var dashFor=function(nm){var n=(nm||"").toLowerCase();for(var i=0;i<c.dashMulti.length;i++){var e=c.dashMulti[i].eyebrow.toLowerCase();if(n.indexOf(e)>-1||e.indexOf(n)>-1)return c.dashMulti[i];}return null;};
-      var groups=[], lead='', curG=null;
+      var groups=[], lead=[], curG=null;
       c.sections.forEach(function(s){
         if(/rm-proj/.test(s.b)){ var nm=(s.b.match(/rm-proj-name">([^<]+)</)||[])[1]||""; curG={name:nm,secs:[]}; groups.push(curG); }
-        else if(curG){ curG.secs.push(s); } else { lead+=secCard(s); }
+        else if(curG){ curG.secs.push(s); } else { lead.push(s); }
       });
-      cards=lead+groups.map(function(g){
+      cards=renderSecs(lead)+groups.map(function(g){
         var d=dashFor(g.name), out='';
         out+='<div class="deck-card deck-title"><h3>'+g.name+'</h3></div>';
         if(d){ accents.push(d.accent); out+='<div class="deck-card deck-dash">'+renderMultiDash([d])+'</div>'; }
-        return out+g.secs.map(secCard).join('');
+        return out+renderSecs(g.secs);
       }).join('');
     } else if(c.dash){
       accents.push(c.dash.accent);
-      cards='<div class="deck-card deck-dash">'+renderDash(c.dash)+'</div>'+c.sections.map(secCard).join('');
+      cards='<div class="deck-card deck-dash">'+renderDash(c.dash)+'</div>'+renderSecs(c.sections);
     } else {
-      cards=c.sections.map(secCard).join('');
+      cards=renderSecs(c.sections);
     }
     body.innerHTML=heroImg+'<div class="deck-head">'+head+'<span class="deck-hint" aria-hidden="true">SCROLL <span class="hw-arr" style="display:inline-block">↓</span></span></div><div class="deck">'+cards+'</div>';
     [].forEach.call(body.querySelectorAll(".d-liquid"),function(cv,i){ initLiquid(cv,accents[i]); });
@@ -2187,20 +2281,59 @@ footer.foot-so{padding:24px 14px 14px;border-top:none}
 .deck-head .drawer-live{margin:0;border-radius:999px}
 .deck-hint{margin-left:auto;color:#96A1A8;font:700 10.5px/1 ui-monospace,'SF Mono',Menlo,monospace;letter-spacing:.16em;white-space:nowrap}
 /* ── case study now flows as one vertical column — each section blends in/out as it scrolls through the drawer ── */
-.deck{display:flex;flex-direction:column;align-items:stretch;gap:26px;padding:16px clamp(24px,4vw,64px) 80px;max-width:1600px;margin:0 auto}
-.deck-card{width:100%;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 28px;min-height:0;display:flex;flex-direction:column;opacity:0;transform:translateY(38px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+/* bento deck — 6-col grid; short sections pair as half tiles (order-preserving, assigned in JS),
+   long ones span full width; cards stretch to equal row height so paired tiles never rag */
+.deck{display:grid;grid-template-columns:repeat(6,1fr);align-items:stretch;gap:14px;padding:14px clamp(24px,4vw,64px) 72px;max-width:1280px;margin:0 auto}
+.deck-card{grid-column:span 6;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;min-height:0;display:flex;flex-direction:column;opacity:0;transform:translateY(38px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.deck-card.dk-half{grid-column:span 3}
 .deck-card.in{opacity:1;transform:translateY(0)}
-.deck-card .dlabel{margin-bottom:10px}
-.deck-card h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.18;margin-bottom:10px}
-.deck-card p,.deck-card ul li{font-size:.9rem}
+.deck-card .dlabel{margin-bottom:5px}
+.deck-card h3{font-size:1.14rem;letter-spacing:-.025em;line-height:1.22;margin-bottom:7px}
+.deck-card p,.deck-card ul li{font-size:.865rem;line-height:1.58}
+@media(max-width:700px){.deck-card.dk-half{grid-column:span 6}}
 .deck-card .drawer-stack{margin-top:auto;padding-top:14px}
 .deck-card .drawer-callout{border-radius:12px}
-.deck-dash{background:radial-gradient(130% 150% at 10% 0%,#161d2c 0%,#0a0e15 62%);padding:22px 20px;position:relative;overflow:hidden;border:none}
+.deck-dash{background:radial-gradient(130% 150% at 10% 0%,#161d2c 0%,#0a0e15 62%);padding:16px 18px;position:relative;overflow:hidden;border:none}
 .deck-dash .d-dash-inner{overflow:visible}
+/* compact dash: KPIs as one strip, charts flow 3-across when there's room (auto-fit keeps the
+   wide ERD/trend panels usable — they simply take a wider track at smaller counts) */
+.deck-dash .d-stats{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+.deck-dash .d-charts{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .deck-title{padding:0;overflow:hidden;background:var(--ink);border:none}
 .deck-title h3{color:#F0F5F7;padding:20px 24px;margin:0}
 @media(max-width:700px){.deck-head{padding:20px 16px 0}.deck{padding:14px 16px 60px;gap:20px}.drawer-head{padding:16px 16px 4px}.deck-card{padding:20px}}
 @media(prefers-reduced-motion:reduce){.drawer{transition:none}.deck-card{opacity:1;transform:none;transition:none}}
+/* ── drawer theme · WORK (Section 01): immersive dark — the card's own gradient (carried into
+   .drawer-bg on open) glows through a dark vignette; content sits on dark glass panels ── */
+.drawer.drawer-dark{background:#0C1116}
+.drawer-dark .drawer-bg{filter:blur(30px) saturate(140%);opacity:.85}
+.drawer-dark .drawer-bg::after{background:rgba(8,11,16,.64)}/* flat veil — backdrop reads the same at every scroll depth */
+.drawer-dark .drawer-head{background:rgba(7,10,15,.72);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%)}
+.drawer-dark .drawer-head h2,.drawer-dark .drawer-head .dno{color:#F0F5F7}
+.drawer-dark .drawer-head .dno{opacity:.55}
+.drawer-dark .drawer-close{border:1px solid rgba(255,255,255,.22)}
+.drawer-dark .drawer-tag{background:rgba(255,255,255,.09);color:#B9CFF2}
+.drawer-dark .deck-hint{color:rgba(240,245,247,.5)}
+.drawer-dark .deck-card{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.12);backdrop-filter:blur(14px) saturate(130%);-webkit-backdrop-filter:blur(14px) saturate(130%)}
+.drawer-dark .deck-card h3{color:#F0F5F7}
+.drawer-dark .deck-card p,.drawer-dark .deck-card ul li{color:#A9B4BE}
+.drawer-dark .deck-card b{color:#E9EEF3}
+.drawer-dark .deck-card .dlabel{color:#9EC3FF}
+.drawer-dark .drawer-callout{background:rgba(255,255,255,.07);color:#D6DEE6;border-left-color:#9EC3FF}
+.drawer-dark .drawer-callout b{color:#F0F5F7}
+.drawer-dark .drawer-pill{border-color:rgba(255,255,255,.18);color:#B7C2CC}
+.drawer-dark .deck-dash{border:1px solid rgba(255,255,255,.10)}
+/* ── drawer theme · RESEARCH (Section 02): liquid glass — the project image stays near-crisp
+   behind lightly-veiled frosted white cards (iOS widgets-over-wallpaper) ── */
+.drawer.drawer-glass{background:#E9EEF2}
+.drawer-glass .drawer-bg{filter:blur(7px) saturate(125%);opacity:1}
+.drawer-glass .drawer-bg::after{background:rgba(240,245,247,.30)}/* flat veil — image stays equally visible top to bottom */
+.drawer-glass .drawer-head{background:rgba(240,245,247,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%)}
+.drawer-glass .deck-card{background:rgba(255,255,255,.58);border-color:rgba(255,255,255,.72);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%)}
+.drawer-glass .deck-card.deck-dash,.drawer-glass .deck-card.deck-title{background:radial-gradient(130% 150% at 10% 0%,#161d2c 0%,#0a0e15 62%);backdrop-filter:none;-webkit-backdrop-filter:none}
+.drawer-glass .deck-card.deck-title{background:var(--ink)}
+.drawer-glass .drawer-callout{background:rgba(255,255,255,.55)}
+.drawer-glass .drawer-tag{background:rgba(255,255,255,.6)}
 .skip-link{position:fixed;top:-48px;left:16px;z-index:2000;background:var(--ink);color:#F0F5F7;padding:10px 18px;border-radius:999px;font-size:.75rem;font-weight:700;transition:top .2s}
 .skip-link:focus{top:12px}
 </style>
