@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260703221319';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260703231850';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -1001,7 +1001,7 @@ var CASES={
     {l:"The problem",h:"Double-bookings discovered on the day. History lost between visits.",b:'<p>Small clinics run on spreadsheets and memory: appointment collisions, billing reconciled by hand, no audit trail. The root cause is always the same \u2014 a data store that lets bad data in.</p>'},
     {l:"The goal",h:"Make bad data impossible, not just discouraged.",b:'<p>Design a clinic database where the business rules live in the schema itself \u2014 so they hold for the app, the API, and the DBA with a terminal open at 2am.</p><div class="drawer-callout"><b>Design principle:</b> rules enforced in the schema are enforced everywhere. Rules in the app can be bypassed.</div>'},
     {l:"What I built",h:"Six tables in 3NF \u2014 the constraints carry the rules.",b:'<p>Co-built as a two-person MGIS team \u2014 schema, constraints and the APEX app split between us.</p><ul><li><b>Appointments</b> \u2014 a compound UNIQUE constraint on (doctor, date-time): the database itself refuses a double-booking.</li><li><b>Patient / Doctor</b> \u2014 unique phone and email with format checks, and IDs assigned automatically by trigger (code the database runs on its own when a row is inserted).</li><li><b>Treatments</b> \u2014 every treatment row is chained to a real appointment by enforced foreign keys, so clinical history can never go orphan.</li><li><b>Insurance</b> split from Billing to satisfy 3NF \u2014 third normal form, meaning every fact is stored exactly once, so it can never disagree with itself; self-pay is handled cleanly by an optional link.</li><li><b>Billing</b> \u2014 a PL/SQL trigger recomputes the invoice total on every insert and update.</li><li><b>Oracle APEX app</b> on top \u2014 registration, calendar, treatment entry, billing, dashboards; receptionist / clinician / admin roles; every report reads from views, never the base tables.</li></ul>'},
-    {l:"What the data said",h:"17 constraints, 7 triggers, zero reliance on good intentions.",b:'<p>A full clinic system whose invariants are structural, not procedural. The schema on the left is interactive \u2014 tap any table to see its columns and constraints.</p><div class="drawer-stack"><span class="drawer-pill">Oracle SQL</span><span class="drawer-pill">Oracle APEX</span><span class="drawer-pill">PL/SQL Triggers</span><span class="drawer-pill">3NF</span><span class="drawer-pill">ERD</span><span class="drawer-pill">RBAC</span></div>'}
+    {l:"What the data said",h:"17 constraints, 7 triggers, zero reliance on good intentions.",b:'<p>A full clinic system whose invariants are structural, not procedural. The composite <b>UNIQUE(doctor, date, time)</b> constraint on Appointment is doing the real work: it turns a double-booking into a database rejection instead of a support ticket \u2014 the exact failure this project set out to kill.</p><div class="drawer-stack"><span class="drawer-pill">Oracle SQL</span><span class="drawer-pill">Oracle APEX</span><span class="drawer-pill">PL/SQL Triggers</span><span class="drawer-pill">3NF</span><span class="drawer-pill">ERD</span><span class="drawer-pill">RBAC</span></div>'}
   ]},
   r_vol:{no:"RESEARCH 04 \u00b7 TIME SERIES \u00b7 VOLATILITY",title:"S&P 500 Volatility Forecasting",img:"media/case/vol.webp",tags:["Python","ARIMA","GARCH(1,1)","statsmodels","ARCH library","pandas","matplotlib"],sections:[
     {l:"The problem",h:"Returns are unpredictable. Their variance is not.",b:'<p>Ten years of daily S&P 500 data (2014\u20132023, 2,516 trading days). Which way the market moves tomorrow is close to noise \u2014 but <b>how violently</b> it moves clusters: turbulent days follow turbulent days. That clustering is the one persistent, exploitable structure in the series.</p>'},
@@ -1013,7 +1013,7 @@ var CASES={
     {l:"The problem",h:"Restatements torch investor trust \u2014 and the warning signs sit in public filings.",b:'<p>303,800 firm-years of public-company data, 2000\u20132024, where only <b>8.6%</b> ever restate their earnings. Heavily imbalanced, noisy \u2014 exactly the kind of problem that gets triaged by auditor gut feel.</p>'},
     {l:"The goal",h:"An early-warning flag from public ratios only.",b:'<p>Score restatement risk using nothing an outside analyst couldn\'t compute themselves \u2014 ratio signals straight from the filings, no inside information.</p>'},
     {l:"What I built",h:"The Fraud Triangle, turned into features.",b:'<ul><li><b>Fraud-Triangle ratios</b> \u2014 each feature maps to a leg of the classic framework: <b>leverage</b> (debt \u00f7 assets \u2014 the pressure to cheat), <b>profit margin</b> (declining efficiency signals distress), <b>operational complexity</b> (log of total assets \u2014 the opportunity to hide errors), and the <b>audit opinion</b> as the watchdog, plus auditor-change and prior-restatement flags.</li><li><b>SMOTE</b> \u2014 synthesizes extra examples of the rare restatement class so the model actually gets to learn what one looks like, instead of ignoring the 8.6%.</li><li><b>Random Forest (200 trees)</b> benchmarked against a regularized logistic regression whose coefficient signs matched the Fraud-Triangle logic \u2014 the ML and the framework agree.</li></ul>'},
-    {l:"What the data said",h:"85% accuracy, 0.82 precision, AUC 0.88.",b:'<p>Recall 0.79 on the restatement class. The strongest signal is <b>falling profitability: a 20%+ drop in net income raises restatement risk ~3.5\u00d7</b>, with leverage and audit-opinion changes close behind \u2014 the same red flags auditors have watched for decades. The trend panel on the left shows something else the data volunteers: the post-SOX decline in restatement rates, visible straight from the filings.</p><div class="drawer-stack"><span class="drawer-pill">Random Forest</span><span class="drawer-pill">Logistic Regression L2</span><span class="drawer-pill">SMOTE</span><span class="drawer-pill">Beneish M-Score</span><span class="drawer-pill">SEC EDGAR</span><span class="drawer-pill">scikit-learn</span></div>'}
+    {l:"What the data said",h:"85% accuracy, 0.82 precision, AUC 0.88.",b:'<p>Recall 0.79 on the restatement class. The strongest signal is <b>falling profitability: a 20%+ drop in net income raises restatement risk ~3.5\u00d7</b>, with leverage and audit-opinion changes close behind \u2014 the same red flags auditors have watched for decades. The trend chart adds something else the data volunteers: a visible post-SOX decline in restatement rates, straight from the filings.</p><div class="drawer-stack"><span class="drawer-pill">Random Forest</span><span class="drawer-pill">Logistic Regression L2</span><span class="drawer-pill">SMOTE</span><span class="drawer-pill">Beneish M-Score</span><span class="drawer-pill">SEC EDGAR</span><span class="drawer-pill">scikit-learn</span></div>'}
   ]},
   r_taxi:{no:"RESEARCH 06 · REGRESSION · NYC TLC",title:"NYC Taxi Trip-Duration Prediction",img:"media/case/ev.webp",tags:["Python","XGBoost","SHAP","scikit-learn","pandas","NYC TLC","matplotlib"],sections:[
     {l:"The problem",h:"Every dispatch decision starts with a guess nobody checks.",b:'<p>NYC yellow cabs log about <b>3.5 million trips a month</b>, and the city publishes every record. Dispatchers, surge pricing, and driver scheduling all hinge on one number — how long will this trip take? — that has to be estimated <em>before the wheels move</em>, from nothing but what is known at pickup.</p>'},
@@ -1814,9 +1814,17 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     Object.keys(ERD_T).forEach(function(k){ B[k].y=tierY[ERD_T[k].tier]; });
     var H=tierY[2]+tierH[2]+24;
     var lines=ERD_EDGES.map(function(e){
-      var a=B[e[0]],b=B[e[1]],ac=ERD_T[e[0]].c,x1=a.cx,y1=a.y+a.h,x2=b.cx,y2=b.y,d;
-      if(Math.abs(x1-x2)<4){ d='M'+x1+' '+y1+' L'+x2+' '+y2; }
-      else { var mid=(y1+y2)/2; d='M'+x1+' '+y1+' L'+x1+' '+mid+' L'+x2+' '+mid+' L'+x2+' '+y2; }
+      var a=B[e[0]],b=B[e[1]],ac=ERD_T[e[0]].c,d;
+      if(ERD_T[e[0]].tier===ERD_T[e[1]].tier){
+        /* same-tier peers sit side by side, not stacked — connect the facing edges at
+           each box's own vertical center so the line never crosses through either body */
+        var aLeft=a.cx<b.cx, x1=aLeft?a.x+a.w:a.x, y1=a.y+a.h/2, x2=aLeft?b.x:b.x+b.w, y2=b.y+b.h/2;
+        d = (Math.abs(y1-y2)<2) ? 'M'+x1+' '+y1+' L'+x2+' '+y2 : 'M'+x1+' '+y1+' L'+((x1+x2)/2)+' '+y1+' L'+((x1+x2)/2)+' '+y2+' L'+x2+' '+y2;
+      } else {
+        var x1=a.cx,y1=a.y+a.h,x2=b.cx,y2=b.y;
+        if(Math.abs(x1-x2)<4){ d='M'+x1+' '+y1+' L'+x2+' '+y2; }
+        else { var mid=(y1+y2)/2; d='M'+x1+' '+y1+' L'+x1+' '+mid+' L'+x2+' '+mid+' L'+x2+' '+y2; }
+      }
       return '<path d="'+d+'" fill="none" stroke="'+ac+'" stroke-opacity=".55" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" style="animation:none;stroke-dasharray:none;stroke-dashoffset:0"/>';
     }).join("");
     var nodes=Object.keys(ERD_T).map(function(k){
