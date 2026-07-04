@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260703220232';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260703221319';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -1817,7 +1817,7 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
       var a=B[e[0]],b=B[e[1]],ac=ERD_T[e[0]].c,x1=a.cx,y1=a.y+a.h,x2=b.cx,y2=b.y,d;
       if(Math.abs(x1-x2)<4){ d='M'+x1+' '+y1+' L'+x2+' '+y2; }
       else { var mid=(y1+y2)/2; d='M'+x1+' '+y1+' L'+x1+' '+mid+' L'+x2+' '+mid+' L'+x2+' '+y2; }
-      return '<path d="'+d+'" fill="none" stroke="'+ac+'" stroke-opacity=".55" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" style="animation:none"/>';
+      return '<path d="'+d+'" fill="none" stroke="'+ac+'" stroke-opacity=".55" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" style="animation:none;stroke-dasharray:none;stroke-dashoffset:0"/>';
     }).join("");
     var nodes=Object.keys(ERD_T).map(function(k){
       var n=ERD_T[k],b=B[k];
@@ -1844,16 +1844,15 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     var key=null, dwellT=null, settleUntil=0;
     function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
     function render(){ var old=host.querySelector('.d-erd-svg'); if(old) old.outerHTML=buildErd(key); bind(); }
-    function setKey(k){ if(key===k) return; key=k; render(); settleUntil=now()+220; }
+    function setKey(k){ if(key===k) return; key=k; render(); settleUntil=now()+90; }
     function bind(){
       var svg=host.querySelector('.d-erd-svg'); if(!svg) return;
       [].forEach.call(svg.querySelectorAll('.d-node'),function(g){
         var k=g.getAttribute('data-k');
         g.addEventListener('pointerenter',function(e){
           if(e.pointerType==='touch') return;
-          if(now()<settleUntil) return;
           clearTimeout(dwellT);
-          dwellT=setTimeout(function(){ setKey(k); },150);
+          dwellT=setTimeout(function(){ setKey(k); },Math.max(30,settleUntil-now()));
         });
         g.addEventListener('pointerleave',function(e){ if(e.pointerType!=='touch') clearTimeout(dwellT); });
         g.addEventListener('click',function(e){ clearTimeout(dwellT); setKey(key===k?null:k); });
