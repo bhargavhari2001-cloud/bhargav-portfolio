@@ -169,10 +169,10 @@ bullets([
 ])
 
 section("Skills")
-story.append(Paragraph("<b>Languages &amp; Data:</b> Python (pandas, scikit-learn, XGBoost, LightGBM, SHAP), R (tidyverse, survival, caret, tidytext), SQL (Oracle, PostgreSQL, PL/SQL), TypeScript / JavaScript", skill))
-story.append(Paragraph("<b>AI &amp; Analytics:</b> Machine learning, survival analysis, NLP; time-series forecasting (ARIMA, GARCH, Prophet); RAG &amp; vector search (pgvector); LLM integration (Claude API)", skill))
+story.append(Paragraph("<b>Languages &amp; Data:</b> Python (pandas, NumPy, scikit-learn, XGBoost, LightGBM, SHAP), R (tidyverse, survival, caret, tidytext, arules), SQL (Oracle, PostgreSQL, PL/SQL), TypeScript / JavaScript", skill))
+story.append(Paragraph("<b>AI &amp; Analytics:</b> Machine learning (Random Forest, Gradient Boosting, ensemble ranking); survival analysis; NLP &amp; topic modeling; time-series forecasting (ARIMA, GARCH, Prophet); association-rule mining; RAG &amp; vector search (Voyage AI embeddings, pgvector); LLM integration (Claude API)", skill))
 story.append(Paragraph("<b>Business:</b> Financial modeling &amp; pricing; RFP management &amp; pre-sales solutioning; win/loss analysis; client discovery &amp; C-suite communication; research design", skill))
-story.append(Paragraph("<b>Tools &amp; Platforms:</b> Tableau, Power BI, Advanced Excel; Next.js, React, Supabase; Git, Jupyter, Oracle APEX, EndNote, Alpaca API, Vercel", skill))
+story.append(Paragraph("<b>Tools &amp; Platforms:</b> Tableau, Power BI, Advanced Excel, matplotlib/ggplot2; Next.js, React, TipTap, Zustand, Supabase; Git, Jupyter, Oracle APEX, EndNote, Alpaca API, Vercel", skill))
 story.append(Paragraph("<b>Spoken:</b> English · Kannada · Hindi · Tamil", skill))
 
 doc.build(story)

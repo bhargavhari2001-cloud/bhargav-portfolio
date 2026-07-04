@@ -591,8 +591,6 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 .d-dash-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.16em;color:var(--acc);text-transform:uppercase}
 .d-dash-sub{font-size:.82rem;font-weight:600;color:#F0F5F7;margin-top:3px}
 .glass{background:rgba(255,255,255,.86);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.7);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
-.d-card.dk{background:radial-gradient(120% 160% at 12% 0%,#1b2536 0%,#0a0e15 72%);border:1px solid rgba(255,255,255,.09);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
-.d-card.dk .d-card-t{color:#AEB9CB}
 .d-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .d-stat{padding:12px 13px}
 .d-stat-v{font-size:1.32rem;font-weight:800;letter-spacing:-.02em;color:#12161d;line-height:1}
@@ -623,8 +621,10 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 </style>
 <style id="dash-tip-css">
 .d-tip{position:fixed;z-index:99999;display:none;max-width:min(280px,74vw);background:rgba(15,20,32,.96);color:#fff;font-size:11px;line-height:1.5;font-weight:500;padding:8px 11px;border-radius:9px;box-shadow:0 12px 32px rgba(0,0,0,.32);pointer-events:none;border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.d-node{outline:none}
+.d-node{outline:none;cursor:pointer}
 .d-node:hover rect,.d-node:focus-visible rect{stroke-width:2.6}
+.d-node-open rect:first-child{stroke-width:2.2}
+.d-erd-svg .d-row{animation:ddotIn .3s ease both}
 .d-bar{cursor:pointer}
 .d-svg{touch-action:manipulation}
 </style>
@@ -944,9 +944,9 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <div class="fs-sub">Bengaluru, India</div>
     <div class="fs-social">
       <a href="https://www.linkedin.com/in/bhargav-hari-6b5428281/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v1.5A6 6 0 0 1 16 8z"/><rect width="4" height="12" x="2" y="9" rx="1"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <span class="fs-spark" aria-hidden="true">✳</span>
+      <span class="fs-spark" aria-hidden="true">✳︎</span>
       <a href="https://github.com/bhargavhari2001-cloud" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></a>
-      <span class="fs-spark" aria-hidden="true">✳</span>
+      <span class="fs-spark" aria-hidden="true">✳︎</span>
       <a href="mailto:bhargavhari2001@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="3"/><path d="m22 7-10 6L2 7"/></svg></a>
     </div>
     <div class="fs-row">
@@ -1764,41 +1764,111 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
       +'<text x="'+x0+'" y="'+(H-4)+'" class="d-bl">'+xmin+'</text><text x="'+(x1-22)+'" y="'+(H-4)+'" class="d-bl">'+xmax+'</text></svg>';
   }
   function chNote(t){ return '<div style="font-size:.72rem;color:var(--muted);line-height:1.55">'+t+'</div>'; }
-  function chErd(){
-    var W=520,H=280;
-    var T={
-      APPOINTMENT:{x:260,y:150,c:"#0a84ff",cols:"appointment_id PK \u00b7 date \u00b7 time \u00b7 status CHECK \u00b7 patient_id FK \u00b7 doctor_id FK \u00b7 UNIQUE(doctor,date,time)"},
-      PATIENT:{x:140,y:44,c:"#30d158",cols:"patient_id PK \u00b7 first/last_name \u00b7 dob \u00b7 gender CHECK \u00b7 phone UNIQUE \u00b7 email CHECK"},
-      DOCTOR:{x:380,y:44,c:"#30d158",cols:"doctor_id PK \u00b7 first/last_name \u00b7 specialization \u00b7 email UNIQUE"},
-      TREATMENT:{x:90,y:246,c:"#5e5ce6",cols:"treatment_id PK \u00b7 appointment_id FK (1:1) \u00b7 diagnosis \u00b7 prescription"},
-      BILL:{x:260,y:254,c:"#bf5af2",cols:"bill_id PK \u00b7 appointment_id FK (1:1) \u00b7 insurance_id FK? \u00b7 amount \u00b7 status"},
-      INSURANCE:{x:430,y:246,c:"#ff9f0a",cols:"insurance_id PK \u00b7 provider \u00b7 plan"}
-    };
-    var edges=[["PATIENT","APPOINTMENT"],["DOCTOR","APPOINTMENT"],["APPOINTMENT","TREATMENT"],["APPOINTMENT","BILL"],["INSURANCE","BILL"]];
-    function badge(cols){var fk=(cols.match(/FK/g)||[]).length,pk=/PK/.test(cols),p=[];if(pk)p.push("PK");if(fk)p.push(fk+" FK");return p.join(" \u00b7 ")||"lookup";}
-    function box(k){var n=T[k],w=Math.max(k.length*7.6+34,98);return {x:n.x-w/2,y:n.y-19,w:w,h:38,cx:n.x,cy:n.y};}
-    var B={}; Object.keys(T).forEach(function(k){B[k]=box(k);});
-    var lines=edges.map(function(e){
-      var a=B[e[0]],b=B[e[1]],ac=T[e[0]].c,x1=a.cx,y1=a.y+a.h,x2=b.cx,y2=b.y,d;
+  var ERD_T={
+    APPOINTMENT:{tier:1,x:260,c:"#007AFF",cols:"appointment_id PK \u00b7 date \u00b7 time \u00b7 status CHECK \u00b7 patient_id FK \u00b7 doctor_id FK \u00b7 UNIQUE(doctor,date,time)"},
+    PATIENT:{tier:0,x:140,c:"#34C759",cols:"patient_id PK \u00b7 first/last_name \u00b7 dob \u00b7 gender CHECK \u00b7 phone UNIQUE \u00b7 email CHECK"},
+    DOCTOR:{tier:0,x:380,c:"#34C759",cols:"doctor_id PK \u00b7 first/last_name \u00b7 specialization \u00b7 email UNIQUE"},
+    TREATMENT:{tier:2,x:90,c:"#5856D6",cols:"treatment_id PK \u00b7 appointment_id FK (1:1) \u00b7 diagnosis \u00b7 prescription"},
+    BILL:{tier:2,x:260,c:"#AF52DE",cols:"bill_id PK \u00b7 appointment_id FK (1:1) \u00b7 insurance_id FK? \u00b7 amount \u00b7 status"},
+    INSURANCE:{tier:2,x:430,c:"#FF9500",cols:"insurance_id PK \u00b7 provider \u00b7 plan"}
+  };
+  var ERD_EDGES=[["PATIENT","APPOINTMENT"],["DOCTOR","APPOINTMENT"],["APPOINTMENT","TREATMENT"],["APPOINTMENT","BILL"],["INSURANCE","BILL"]];
+  var ERD_BADGE_COLOR={PK:"#248A3D",FK:"#0071E3","FK?":"#007A78",CHECK:"#C26400",UNIQUE:"#9333B8"};
+  function erdBadgeSummary(cols){var fk=(cols.match(/FK/g)||[]).length,pk=/PK/.test(cols),p=[];if(pk)p.push("PK");if(fk)p.push(fk+" FK");return p.join(" \u00b7 ")||"lookup";}
+  /* assumes no plain column name ends in "PK"/"FK"/"CHECK"/"UNIQUE" as a literal substring \u2014
+     true for every ERD_T.cols string today; re-check this parser if that data ever changes */
+  function erdParseCols(cols){
+    return cols.split(" \u00b7 ").map(function(tok){
+      if(/^UNIQUE\(/.test(tok)) return {name:tok,badge:null,wide:true};
+      var m=tok.match(/^(.*?)\s*(PK|FK\s*\(1:1\)|FK\?|FK|CHECK|UNIQUE)$/);
+      if(!m) return {name:tok,badge:null};
+      var raw=m[2], b=/^PK/.test(raw)?"PK":/^FK\?/.test(raw)?"FK?":/^FK/.test(raw)?"FK":/^CHECK/.test(raw)?"CHECK":"UNIQUE";
+      return {name:m[1].trim(),badge:b};
+    });
+  }
+  function erdTierMaxWidth(t){
+    var xs=Object.keys(ERD_T).filter(function(k){return ERD_T[k].tier===t;}).map(function(k){return ERD_T[k].x;}).sort(function(a,b){return a-b;});
+    if(xs.length<2) return 300;
+    var minGap=Infinity; for(var i=1;i<xs.length;i++) minGap=Math.min(minGap,xs[i]-xs[i-1]);
+    return Math.max(110,minGap-40);
+  }
+  function buildErd(expandedKey){
+    var W=520;
+    function box(k){
+      var n=ERD_T[k], rows=erdParseCols(n.cols), expanded=(k===expandedKey);
+      var collapsedW=Math.max(k.length*7.6+34,98), w=collapsedW;
+      if(expanded){
+        var longest=rows.filter(function(r){return !r.wide;}).reduce(function(m,r){return Math.max(m,(r.name||'').length);},0);
+        w=Math.max(collapsedW,Math.min(longest*6.6+72,erdTierMaxWidth(n.tier)));
+      }
+      var h=expanded?(38+rows.length*15+10):38;
+      return {x:n.x-w/2,w:w,h:h,cx:n.x,rows:rows,expanded:expanded};
+    }
+    var B={}; Object.keys(ERD_T).forEach(function(k){B[k]=box(k);});
+    var tierH=[0,0,0];
+    Object.keys(ERD_T).forEach(function(k){ var t=ERD_T[k].tier; tierH[t]=Math.max(tierH[t],B[k].h); });
+    var TIER_BASE=[44,150,246];
+    var tierY=[TIER_BASE[0]];
+    tierY[1]=TIER_BASE[1]+Math.max(0,tierH[0]-38);
+    tierY[2]=TIER_BASE[2]+Math.max(0,tierH[0]-38)+Math.max(0,tierH[1]-38);
+    Object.keys(ERD_T).forEach(function(k){ B[k].y=tierY[ERD_T[k].tier]; });
+    var H=tierY[2]+tierH[2]+24;
+    var lines=ERD_EDGES.map(function(e){
+      var a=B[e[0]],b=B[e[1]],ac=ERD_T[e[0]].c,x1=a.cx,y1=a.y+a.h,x2=b.cx,y2=b.y,d;
       if(Math.abs(x1-x2)<4){ d='M'+x1+' '+y1+' L'+x2+' '+y2; }
       else { var mid=(y1+y2)/2; d='M'+x1+' '+y1+' L'+x1+' '+mid+' L'+x2+' '+mid+' L'+x2+' '+y2; }
-      return '<path d="'+d+'" fill="none" stroke="'+ac+'" stroke-opacity=".4" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>';
+      return '<path d="'+d+'" fill="none" stroke="'+ac+'" stroke-opacity=".55" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" style="animation:none"/>';
     }).join("");
-    var nodes=Object.keys(T).map(function(k){var n=T[k],b=B[k];
-      return '<g class="d-node" tabindex="0" role="button" aria-label="'+k+'" data-tip="'+k+' \u2014 '+n.cols+'" style="cursor:pointer">'
-        +'<rect x="'+b.x+'" y="'+b.y+'" rx="9" width="'+b.w+'" height="'+b.h+'" fill="'+n.c+'" fill-opacity=".15" stroke="'+n.c+'" stroke-width="1.4"/>'
-        +'<rect x="'+b.x+'" y="'+b.y+'" rx="4" width="4" height="'+b.h+'" fill="'+n.c+'"/>'
-        +'<text x="'+(b.x+14)+'" y="'+(b.cy-2)+'" style="font-size:10.5px;font-weight:700;fill:#F0F5F7;letter-spacing:.01em">'+k+'</text>'
-        +'<text x="'+(b.x+14)+'" y="'+(b.cy+12)+'" style="font-size:8px;font-weight:600;fill:'+n.c+'">'+badge(n.cols)+'</text></g>';
+    var nodes=Object.keys(ERD_T).map(function(k){
+      var n=ERD_T[k],b=B[k];
+      var rowsMk='';
+      if(b.expanded){
+        rowsMk='<line x1="'+(b.x+10)+'" y1="'+(b.y+40)+'" x2="'+(b.x+b.w-10)+'" y2="'+(b.y+40)+'" stroke="rgba(10,15,25,.12)" style="animation:none"/>'
+          +b.rows.map(function(r,i){
+            var ry=b.y+52+i*15;
+            if(r.wide) return '<text class="d-row" x="'+(b.x+14)+'" y="'+ry+'" style="font-size:7.6px;font-style:italic;fill:#5c6673">'+r.name+'</text>';
+            var bm=r.badge?'<text class="d-row" x="'+(b.x+b.w-10)+'" y="'+ry+'" text-anchor="end" style="font-size:7.6px;font-weight:700;fill:'+(ERD_BADGE_COLOR[r.badge]||'#5c6673')+'">'+r.badge+'</text>':'';
+            return '<text class="d-row" x="'+(b.x+14)+'" y="'+ry+'" style="font-size:8.4px;fill:#3c4450">'+r.name+'</text>'+bm;
+          }).join('');
+      }
+      return '<g class="d-node'+(b.expanded?' d-node-open':'')+'" tabindex="0" role="button" data-k="'+k+'" aria-expanded="'+(b.expanded?'true':'false')+'" aria-label="'+k+' \u2014 '+n.cols+'">'
+        +'<rect x="'+b.x+'" y="'+b.y+'" rx="9" width="'+b.w+'" height="'+b.h+'" fill="'+n.c+'" fill-opacity=".13" stroke="'+n.c+'" stroke-width="1.4" style="animation:none"/>'
+        +'<rect x="'+b.x+'" y="'+b.y+'" rx="4" width="4" height="'+b.h+'" fill="'+n.c+'" style="animation:none"/>'
+        +'<text x="'+(b.x+14)+'" y="'+(b.y+17)+'" style="font-size:10.5px;font-weight:700;fill:#12161d;letter-spacing:.01em;animation:none">'+k+'</text>'
+        +'<text x="'+(b.x+14)+'" y="'+(b.y+31)+'" style="font-size:8px;font-weight:600;fill:'+n.c+';animation:none">'+erdBadgeSummary(n.cols)+'</text>'
+        +rowsMk+'</g>';
     }).join("");
-    return '<svg viewBox="0 0 '+W+' '+H+'" class="d-svg">'+lines+nodes+'</svg>';
+    return '<svg viewBox="0 0 '+W+' '+H+'" class="d-svg d-erd-svg">'+lines+nodes+'</svg>';
+  }
+  function initErd(host){
+    var key=null, dwellT=null, settleUntil=0;
+    function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+    function render(){ var old=host.querySelector('.d-erd-svg'); if(old) old.outerHTML=buildErd(key); bind(); }
+    function setKey(k){ if(key===k) return; key=k; render(); settleUntil=now()+220; }
+    function bind(){
+      var svg=host.querySelector('.d-erd-svg'); if(!svg) return;
+      [].forEach.call(svg.querySelectorAll('.d-node'),function(g){
+        var k=g.getAttribute('data-k');
+        g.addEventListener('pointerenter',function(e){
+          if(e.pointerType==='touch') return;
+          if(now()<settleUntil) return;
+          clearTimeout(dwellT);
+          dwellT=setTimeout(function(){ setKey(k); },150);
+        });
+        g.addEventListener('pointerleave',function(e){ if(e.pointerType!=='touch') clearTimeout(dwellT); });
+        g.addEventListener('click',function(e){ clearTimeout(dwellT); setKey(key===k?null:k); });
+        g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); setKey(key===k?null:k); } });
+      });
+      svg.addEventListener('pointerleave',function(e){ if(e.pointerType==='touch') return; clearTimeout(dwellT); if(key!==null) setKey(null); });
+    }
+    render();
   }
   function chartHTML(ch,accent){
     if(ch.type==="bars")return chBars(ch.data,accent);
     if(ch.type==="surv")return chSurv();
     if(ch.type==="models")return chModels(ch.data);
     if(ch.type==="trend")return chTrend(ch.data);
-    if(ch.type==="erd")return chErd();
+    if(ch.type==="erd")return buildErd(null);
     if(ch.type==="line")return chLine(ch);
     if(ch.type==="note")return chNote(ch.text);
     return "";
@@ -1916,7 +1986,7 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
   function buildCharts(charts,accent){
     var fulls='', halves='';
     charts.forEach(function(ch){
-      var card='<div class="d-card '+(ch.type==="erd"?"dk":"glass")+' d-type-'+ch.type+(D_FULL_TYPES[ch.type]?' d-full':'')+'"><div class="d-card-t">'+ch.title+'</div>'+chartHTML(ch,accent)+'</div>';
+      var card='<div class="d-card glass d-type-'+ch.type+(D_FULL_TYPES[ch.type]?' d-full':'')+'"><div class="d-card-t">'+ch.title+'</div>'+chartHTML(ch,accent)+'</div>';
       if(D_FULL_TYPES[ch.type]) fulls+=card; else halves+=card;
     });
     return fulls+(halves?'<div class="d-charts">'+halves+'</div>':'');
@@ -1993,7 +2063,7 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     /* bento pairing — two consecutive SHORT sections share a row as half tiles; anything long
        (lists, results) stays full width. Order-preserving by construction: no grid dense-packing,
        so the narrative can never visually reorder. */
-    var isShort=function(s){ var b=s.b||''; return b.indexOf('<ul')===-1 && b.indexOf('rm-proj')===-1 && b.replace(/<[^>]+>/g,'').length<520; };
+    var isShort=function(s){ var b=s.b||''; if(/^<div class="drawer-stack">/.test(b.trim())) return false; return b.indexOf('<ul')===-1 && b.indexOf('rm-proj')===-1 && b.replace(/<[^>]+>/g,'').length<520; };
     var renderSecs=function(secs){
       var out='', i=0;
       while(i<secs.length){
@@ -2027,6 +2097,7 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     }
     body.innerHTML=heroImg+'<div class="deck-head">'+head+'<span class="deck-hint" aria-hidden="true">SCROLL <span class="hw-arr" style="display:inline-block">↓</span></span></div><div class="deck">'+cards+'</div>';
     [].forEach.call(body.querySelectorAll(".d-liquid"),function(cv,i){ initLiquid(cv,accents[i]); });
+    [].forEach.call(body.querySelectorAll(".d-type-erd"),function(host){ initErd(host); });
     /* sections flow vertically — fade/blend each one in as it enters view, back out as it leaves */
     var deck=body.querySelector('.deck');
     if(deck){
@@ -2259,7 +2330,7 @@ footer.foot-so{padding:24px 14px 14px;border-top:none}
 @keyframes ddotIn{to{opacity:1}}
 .d-svg text,.d-svg line,.d-svg rect:not(.d-bar){animation:ddotIn .5s ease both;animation-delay:.55s}
 .d-svg g.d-node rect{opacity:1;animation:none}
-@media(prefers-reduced-motion:reduce){.d-dash-inner{animation:none}.drawer.open .d-stats .d-stat{opacity:1;transform:none;animation:none}.d-svg rect.d-bar,.d-svg path,.d-svg circle,.d-svg text,.d-svg line{animation:none;opacity:1;stroke-dasharray:none;stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.d-dash-inner{animation:none}.drawer.open .d-stats .d-stat{opacity:1;transform:none;animation:none}.d-svg rect.d-bar,.d-svg path,.d-svg circle,.d-svg text,.d-svg line,.d-erd-svg .d-row{animation:none;opacity:1;stroke-dasharray:none;stroke-dashoffset:0}}
 /* ── fullscreen deck drawer — sohub work-page treatment: cover-up transition, hero image
    band, case study as a horizontally scrolling deck of cards ── */
 .drawer{width:100vw;left:0;background:var(--bg);transform:scale(.04);opacity:0;transform-origin:50% 50%;transition:transform .62s var(--ease-drawer),opacity .48s var(--ease-out);box-shadow:none;pointer-events:none}
@@ -2292,6 +2363,9 @@ footer.foot-so{padding:24px 14px 14px;border-top:none}
 .deck-card p,.deck-card ul li{font-size:.865rem;line-height:1.58}
 @media(max-width:700px){.deck-card.dk-half{grid-column:span 6}}
 .deck-card .drawer-stack{margin-top:auto;padding-top:14px}
+/* label-only "Stack" cards have no paragraph above the pills — pin them under the
+   label instead of at the card's bottom, which otherwise strands them below a dead gap */
+.deck-card .dlabel+.drawer-stack{margin-top:8px}
 .deck-card .drawer-callout{border-radius:12px}
 .deck-dash{background:radial-gradient(130% 150% at 10% 0%,#161d2c 0%,#0a0e15 62%);padding:16px 18px;position:relative;overflow:hidden;border:none}
 .deck-dash .d-dash-inner{overflow:visible}
