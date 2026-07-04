@@ -70,7 +70,7 @@ story.append(Spacer(1, 4))
 section("Summary")
 story.append(Paragraph(
     "Analyst with three years of enterprise pre-sales behind an M.S. in Business Analytics (GPA 3.89) and a "
-    "finance degree. At Impelsys I owned proposals worth over $1M a year and saw first-hand where deals, "
+    "finance degree. At Impelsys I owned RFPs across $250K+ in deals and saw first-hand where deals, "
     "pricing, and data break; at RIT I built the technical depth to fix them — volatility models, credit-risk "
     "rankings, survival analysis. Along the way I shipped three working AI products, alone, end to end. "
     "Equally at home in a client meeting, a financial model, or a codebase — and looking for analyst roles "
@@ -79,44 +79,36 @@ story.append(Paragraph(
 section("Experience")
 
 header_row("Student Research Intern — Accounting Analytics",
-           "Rochester Institute of Technology, Rochester, NY &nbsp;·&nbsp; Graduate Assistant (Jan–May) → Research Intern (May–Aug)",
+           "Rochester Institute of Technology, Rochester, NY",
            "Jan 2026 – Aug 2026")
 bullets([
-    "Ran the literature side of a faculty research program on AI and ESG: read, screened, and tagged 49+ papers "
-    "across 12 leading information-systems journals (MIS Quarterly, ISR, JMIS), building the organized, searchable "
-    "library the research is written from.",
-    "Converted 70+ academic references into EndNote import files and prepared manuscripts to journal submission "
-    "standards — removing the manual bottleneck in the lab's writing workflow.",
-    "Graded and gave structured feedback across accounting-analytics cohorts of 25+ students; built seminar "
-    "presentations on AI in accounting information systems and AI for SME growth.",
+    "Conducted systematic literature reviews across 12 premier IS journals (MIS Quarterly, ISR, JMIS), curating "
+    "49+ peer-reviewed articles on AI and ESG.",
+    "Built and maintained a structured research repository with abstract screening and relevance tagging.",
+    "Supported manuscript formatting and editorial preparation to journal submission standards.",
 ])
 story.append(Spacer(1, 3))
 
 header_row("Graduate Assistant — Financial Analysis",
            "Rochester Institute of Technology, Rochester, NY", "Sep 2024 – May 2025")
 bullets([
-    "Analyzed the fundamentals of 50+ public companies with time-series regression in R and Python, surfacing "
-    "sector trends the faculty used for risk-management research.",
-    "Built forecasting models across 10,000+ observations — EV-loan repossession risk and S&amp;P 500 volatility "
-    "(ARIMA + GARCH) — cutting forecast error by 18% against the standing baseline.",
-    "Maintained an Excel dashboard tracking $500M+ in financial-restatement events, the working dataset for "
-    "faculty research on earnings manipulation and governance failure.",
-    "Modeled credit default with XGBoost and SHAP (0.98 AUC) for instructor-led case studies.",
+    "Analyzed firm fundamentals through time-series regression in R and Python, surfacing market trends that "
+    "shaped risk-management thinking for institutional portfolios.",
+    "Researched AI-driven market disruption, synthesizing large datasets into insight on emerging business "
+    "models and sector shifts for investment decisions.",
+    "Built financial models to evaluate company valuations and assess market volatility, supporting academic "
+    "research in corporate finance.",
 ])
 story.append(Spacer(1, 3))
 
-header_row("Business Analyst", "Impelsys Pvt Ltd, Bangalore, India", "Jul 2022 – Jul 2024")
+header_row("Business Analyst", "Impelsys Pvt Ltd, Bengaluru, India", "Jul 2022 – Jul 2024")
 bullets([
-    "Owned proposal responses for $1M+ a year in enterprise publishing and edtech deals (Wiley, Pearson, "
-    "McGraw-Hill); the win rate rose 25% on the strength of sharper, evidence-led positioning.",
-    "Wrote and quality-checked 80+ RFP responses end to end — scope, pricing, compliance mapping, executive "
-    "narrative — and cut turnaround 30% by building the team's standard response playbook.",
-    "Built the Excel pricing models behind multi-product bids: FTE cost allocation, margin floors, and vendor "
-    "benchmarks that kept bids competitive without giving away the margin.",
-    "Studied win/loss patterns across 200+ proposals in Python; the pricing and messaging gaps it exposed "
-    "reshaped the go-to-market playbook.",
-    "Led discovery calls and C-suite presentations, turning loosely-defined transformation asks into clean "
-    "solution blueprints — 100% compliance on $500K+ contracts.",
+    "Owned the RFP/RFQ process end to end, structuring proposals that lifted the win rate 25% across $250K+ "
+    "in deals over my tenure.",
+    "Priced complex SaaS solutions with cross-functional teams, landing within 85% accuracy on scope and "
+    "margin estimates.",
+    "Ran 20–25+ bids a year and demoed directly to C-suite stakeholders across education, publishing, and "
+    "healthcare.",
 ])
 
 section("Education")
