@@ -80,7 +80,7 @@ section("Experience")
 
 header_row("Student Research Intern — Accounting Analytics",
            "Rochester Institute of Technology, Rochester, NY",
-           "Jan 2026 – Aug 2026")
+           "Jan 2026 – Present")
 bullets([
     "Conducted systematic literature reviews across 12 premier IS journals (MIS Quarterly, ISR, JMIS), curating "
     "49+ peer-reviewed articles on AI and ESG.",
@@ -90,7 +90,7 @@ bullets([
 story.append(Spacer(1, 3))
 
 header_row("Graduate Assistant — Financial Analysis",
-           "Rochester Institute of Technology, Rochester, NY", "Sep 2024 – May 2025")
+           "Rochester Institute of Technology, Rochester, NY", "Sep 2025 – May 2026")
 bullets([
     "Analyzed firm fundamentals through time-series regression in R and Python, surfacing market trends that "
     "shaped risk-management thinking for institutional portfolios.",
@@ -101,7 +101,7 @@ bullets([
 ])
 story.append(Spacer(1, 3))
 
-header_row("Business Analyst", "Impelsys Pvt Ltd, Bengaluru, India", "Jul 2022 – Jul 2024")
+header_row("Business Analyst", "Impelsys Pvt Ltd, Bengaluru, India", "Aug 2022 – Jul 2025")
 bullets([
     "Owned the RFP/RFQ process end to end, structuring proposals that lifted the win rate 25% across $250K+ "
     "in deals over my tenure.",
