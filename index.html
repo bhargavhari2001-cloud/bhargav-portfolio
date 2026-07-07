@@ -37,7 +37,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260706174237';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260707021606';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -698,21 +698,21 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
         <span class="wc-cta">Read case study <span class="wc-arr">→</span></span>
       </div>
       <div class="wc-media">
-        <div class="pdash pd-bd">
-          <div class="pdash-top">
-            <div class="bd-brand"><span class="bd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg></span> BidCraft</div>
-            <span class="bd-status"><i></i> Connected</span>
+        <div class="wc-frame pd-rise" style="--d:.06s">
+          <div class="wcf-bar">
+            <span class="wcf-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="wcf-name pd-mono">BidCraft — Bid Desk</span>
+            <span class="wcf-url pd-mono">bid-craft-beta.vercel.app</span>
           </div>
-          <div class="bd-resp pd-rise" style="--d:.06s">
-            <div class="bd-resp-top"><span class="bd-cat">Security &amp; Compliance</span><span class="bd-conf">92% confidence</span></div>
-            <div class="bd-q">“Describe your data security controls and certifications.”</div>
-            <div class="bd-meter"><span style="--w:92%"></span></div>
+          <div class="wcf-well">
+            <img class="wcf-poster" src="media/case/bidcraft-demo.webp" alt="BidCraft app — AI search over the RFP knowledge base" loading="lazy">
+            <video class="wc-demo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="media/case/bidcraft-demo.webm" type="video/webm"><source src="media/case/bidcraft-demo.mp4" type="video/mp4"></video>
           </div>
-          <div class="bd-stats pd-rise" style="--d:.16s">
-            <div class="bd-stat"><b>70%</b><span>faster responses</span></div>
-            <div class="bd-stat"><b>85%</b><span>auto-answered</span></div>
-            <div class="bd-stat"><b>2.4×</b><span>win-rate lift</span></div>
-          </div>
+        </div>
+        <div class="bd-stats wcf-under pd-rise" style="--d:.16s">
+          <div class="bd-stat"><b>70%</b><span>faster responses</span></div>
+          <div class="bd-stat"><b>85%</b><span>auto-answered</span></div>
+          <div class="bd-stat"><b>2.4×</b><span>win-rate lift</span></div>
         </div>
       </div>
       </div>
@@ -721,32 +721,22 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <button class="proj reveal work-card" type="button" onclick="openCaseTransition(this.querySelector('.wc-media'),'tradingbot')" aria-label="Open trading bot case study">
       <div class="wc-body">
       <div class="wc-media">
-        <div class="pdash pd-qt">
-          <div class="pdash-top">
-            <div class="pdash-brand"><span class="pdash-logo" style="background:linear-gradient(135deg,#4f9e80,#4892a3)">↗</span> <span class="pd-mono">options_bot</span> <span class="live-dot" aria-hidden="true"></span></div>
-            <div class="pdash-chip pd-mono">SPY · Paper</div>
+        <div class="wc-frame pd-rise" style="--d:.06s">
+          <div class="wcf-bar">
+            <span class="wcf-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="wcf-name pd-mono">options_bot <span class="live-dot" aria-hidden="true"></span></span>
+            <span class="wcf-url pd-mono">SPY · Paper</span>
           </div>
-          <div class="qt-panel pd-rise" style="--d:.06s">
-            <div class="qt-cap"><span class="pdash-k">Equity curve · paper</span><b class="pd-mono">+18.4%</b></div>
-            <svg class="pdash-spark" viewBox="0 0 190 66" aria-hidden="true">
-              <defs><linearGradient id="qtgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fa987" stop-opacity=".4"/><stop offset="1" stop-color="#5fa987" stop-opacity="0"/></linearGradient></defs>
-              <line class="grid" x1="0" y1="20" x2="190" y2="20"/><line class="grid" x1="0" y1="42" x2="190" y2="42"/>
-              <path class="area" d="M6,52 L34,49 L62,51 L90,38 L118,42 L146,26 L182,12 L182,66 L6,66 Z" style="fill:url(#qtgrad)"/>
-              <path class="line" pathLength="1" d="M6,52 L34,49 L62,51 L90,38 L118,42 L146,26 L182,12" style="stroke:#5fa987"/>
-              <circle class="dot lead" cx="182" cy="12" r="2.6" style="stroke:#5fa987"/>
-            </svg>
+          <div class="wcf-well">
+            <img class="wcf-poster" src="media/case/tradingbot-demo.webp" alt="Algo trading terminal — Theta Gang Alpha strategy dashboard" loading="lazy">
+            <video class="wc-demo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="media/case/tradingbot-demo.webm" type="video/webm"><source src="media/case/tradingbot-demo.mp4" type="video/mp4"></video>
           </div>
-          <div class="qt-greeks pd-rise" style="--d:.14s">
-            <div class="qt-greek pd-mono"><i>Δ Delta</i><b>+0.32</b></div>
-            <div class="qt-greek pd-mono"><i>Γ Gamma</i><b>0.04</b></div>
-            <div class="qt-greek pd-mono"><i>Θ Theta</i><b>−1.8</b></div>
-            <div class="qt-greek pd-mono"><i>ν Vega</i><b>0.21</b></div>
-          </div>
-          <div class="qt-grid pd-rise" style="--d:.22s">
-            <div class="qt-cell"><i>Win rate</i><b class="pd-mono" style="color:#5fa987">68%</b></div>
-            <div class="qt-cell"><i>IV Rank</i><b class="pd-mono">62%</b></div>
-            <div class="qt-cell"><i>Open</i><b class="pd-mono">3</b></div>
-          </div>
+        </div>
+        <div class="qt-greeks wcf-under pd-rise" style="--d:.16s">
+          <div class="qt-greek pd-mono"><i>Δ Delta</i><b>+0.32</b></div>
+          <div class="qt-greek pd-mono"><i>Γ Gamma</i><b>0.04</b></div>
+          <div class="qt-greek pd-mono"><i>Θ Theta</i><b>−1.8</b></div>
+          <div class="qt-greek pd-mono"><i>ν Vega</i><b>0.21</b></div>
         </div>
       </div>
       <div class="wc-info">
@@ -762,22 +752,21 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <button class="proj reveal work-card" type="button" onclick="openCaseTransition(this.querySelector('.wc-media'),'retailpro')" aria-label="Open Precision Retail Pro case study">
       <div class="wc-body">
       <div class="wc-media">
-        <div class="pdash pd-cli">
-          <div class="pdash-top">
-            <span class="cli-badge pd-mono">[ SYSTEM ONLINE ]</span>
-            <span class="cli-tag pd-mono">precision-retail</span>
+        <div class="wc-frame pd-rise" style="--d:.06s">
+          <div class="wcf-bar">
+            <span class="wcf-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="wcf-name pd-mono">precision-retail</span>
+            <span class="wcf-url pd-mono">precision-retail-pro.vercel.app</span>
           </div>
-          <div class="cli-term pd-mono pd-rise" style="--d:.06s">
-            <div class="l"><span class="p">›</span> upload inventory.csv</div>
-            <div class="ok">✓ 847 SKUs · 4 categories analyzed</div>
-            <div class="warn">⚡ Running Shoes — sells out in ~6 days · reorder</div>
+          <div class="wcf-well">
+            <img class="wcf-poster" src="media/case/retailpro-demo.webp" alt="Precision Retail Pro — CSV upload and AI inventory analysis" loading="lazy">
+            <video class="wc-demo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="media/case/retailpro-demo.webm" type="video/webm"><source src="media/case/retailpro-demo.mp4" type="video/mp4"></video>
           </div>
-          <div class="cli-grid pd-rise" style="--d:.16s">
-            <div class="cli-cell"><i>Stock value</i><b class="pd-mono">$124,580</b><span class="cli-up">▲ 4.1%</span></div>
-            <div class="cli-cell"><i>Avg margin</i><b class="pd-mono" style="color:#6aa6b4">34.2%</b></div>
-            <div class="cli-cell"><i>SKUs tracked</i><b class="pd-mono">847</b></div>
-            <div class="cli-cell"><i>Low stock</i><b class="pd-mono" style="color:#d2a559">12</b></div>
-          </div>
+        </div>
+        <div class="cli-term pd-mono wcf-under pd-rise" style="--d:.16s">
+          <div class="l"><span class="p">›</span> upload inventory.csv</div>
+          <div class="ok">✓ 847 SKUs · 4 categories analyzed</div>
+          <div class="warn">⚡ Running Shoes — sells out in ~6 days · reorder</div>
         </div>
       </div>
       <div class="wc-info">
@@ -882,7 +871,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
       </div>
     </div>
     <div class="edu">
-      <div class="edu-card reveal"><div class="when">Aug 2024 — May 2026</div><h3>M.S. Business Analytics (STEM)</h3><p>Rochester Institute of Technology, Saunders College (AACSB) · GPA 3.89/4.0</p></div>
+      <div class="edu-card reveal"><div class="when">Aug 2025 — May 2026</div><h3>M.S. Business Analytics (STEM)</h3><p>Rochester Institute of Technology, Saunders College (AACSB) · GPA 3.89/4.0</p></div>
       <div class="edu-card reveal"><div class="when">Jun 2019 — May 2022</div><h3>B.B.A. Finance &amp; International Business</h3><p>CHRIST University, Bangalore (NAAC A+) · CGPA 8.97/10</p></div>
       <div class="edu-card reveal"><div class="when">May — Jul 2025</div><h3>Advanced Certificate, Business &amp; Data Analytics</h3><p>IIM Udaipur (AACSB)</p></div>
     </div>
@@ -974,14 +963,14 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
 var CASES={
   bidcraft:{no:"CASE STUDY 01 \u00b7 RAG \u00b7 FULL-STACK SAAS",title:"BidCraft \u2014 AI-powered RFP automation",live:"https://bid-craft-beta.vercel.app/",tags:["Next.js 16","TypeScript 5","Claude API","Voyage AI","Supabase pgvector","TipTap","Zustand"],sections:[
     {l:"The problem",h:"The people who know the answers are blocked by the people doing the formatting.",b:'<p>At Impelsys I ran pre-sales for <b>20+ enterprise proposals a year</b>. Every RFP meant the same ritual: dig through old proposals for answers we had already written, copy-paste boilerplate, reformat Word documents, and chase sign-offs across Finance, Delivery, Legal and Product. Industry-wide, a single RFP response eats <b>40\u201360 hours</b>.</p><div class="drawer-callout"><b>The insight:</b> this is a retrieval problem wearing a writing problem\'s clothes. If every past answer lives in a vector space \u2014 text turned into coordinates, where similar meanings sit near each other \u2014 every new question can find its nearest proven answer, and an LLM can adapt it instead of inventing from scratch.</div>'},
-    {l:"How it works",h:"An eight-stage pipeline, each stage testable on its own.",b:'<ul><li><b>1 \u00b7 Ingest &amp; parse</b> \u2014 PDFs read by Claude Vision, DOCX by Mammoth. Tables, nested sections and numbered lists survive intact.</li><li><b>2 \u00b7 Question extraction</b> \u2014 Claude sorts every question into one of 7 categories (Technical, Security, Experience, Staffing, Methodology, Pricing, General) and flags the mandatory ones.</li><li><b>3 \u00b7 Knowledge base</b> \u2014 2,800 entries (1,300 Q&amp;A pairs, 1,500 proposal sections) embedded with Voyage voyage-3-lite: each becomes a 512-number coordinate in Supabase pgvector, indexed with HNSW.</li><li><b>4 \u00b7 Search</b> \u2014 cosine similarity (nearest meaning, not nearest keyword) runs as a single RPC inside PostgreSQL \u2014 no separate search service to deploy or babysit.</li><li><b>5 \u00b7 Rerank</b> \u2014 a cross-encoder (Voyage rerank-2-lite) re-scores the top candidates the embedding search returns, catching near-duplicate proposal sections that cosine similarity alone couldn\'t tell apart.</li><li><b>6 \u00b7 Grounded drafting</b> \u2014 Claude writes each answer using only the retrieved context, and every draft carries a 0\u2013100 confidence score.</li><li><b>7 \u00b7 Human review</b> \u2014 a TipTap editor with star ratings, inline feedback, and edit-distance tracking from draft to approved.</li><li><b>8 \u00b7 Export</b> \u2014 one click produces a finished Word document: cover page, TOC, category sections, appendix.</li></ul>'},
-    {l:"Why these choices",h:"Decisions I would defend in a design review.",b:'<p><b>RAG over fine-tuning.</b> Proposal content changes weekly; a fine-tuned model is stale on arrival. Retrieval reads from a knowledge base I can update in seconds.</p><p><b>pgvector, with HNSW once it needed it.</b> Postgres answers a similarity query without standing up a second database \u2014 but the index underneath isn\'t a one-time decision. The original ivfflat index was tuned for a table that no longer exists at this size, and its recall quietly degrades past that tuning point. Migrated to HNSW and confirmed with EXPLAIN ANALYZE that Postgres actually uses it: still one database, now the right index for the size it grew into.</p><p><b>Confidence scores as triage.</b> The dangerous failure in AI drafting isn\'t a bad answer \u2014 it\'s a bad answer that looks good. Low-confidence drafts get routed to a human first.</p><p><b>Measuring the pipeline, not just shipping it.</b> A RAGAS-style eval \u2014 Claude scoring every response for faithfulness and answer-relevancy against a 75-question golden set \u2014 runs in CI on every change to retrieval or generation code. Building it surfaced three real bugs a manual demo never would have: a silently-retired model ID returning 404s, a response-parsing bug that made every draft come back empty, and a rate-limit handler that leaked a vendor\'s raw billing text to end users.</p>'},
+    {l:"How it works",h:"A seven-stage pipeline, each stage testable on its own.",b:'<ul><li><b>1 \u00b7 Ingest &amp; parse</b> \u2014 PDFs read by Claude Vision, DOCX by Mammoth. Tables, nested sections and numbered lists survive intact.</li><li><b>2 \u00b7 Question extraction</b> \u2014 Claude sorts every question into one of 7 categories (Technical, Security, Experience, Staffing, Methodology, Pricing, General) and flags the mandatory ones.</li><li><b>3 \u00b7 Knowledge base</b> \u2014 240 approved answers embedded with Voyage voyage-3-lite: each answer becomes a 512-number coordinate stored in Supabase pgvector.</li><li><b>4 \u00b7 Search</b> \u2014 cosine similarity (nearest meaning, not nearest keyword) runs as a single RPC inside PostgreSQL \u2014 no separate search service to deploy or babysit.</li><li><b>5 \u00b7 Grounded drafting</b> \u2014 Claude writes each answer using only the retrieved context, and every draft carries a 0\u2013100 confidence score.</li><li><b>6 \u00b7 Human review</b> \u2014 a TipTap editor with star ratings, inline feedback, and edit-distance tracking from draft to approved.</li><li><b>7 \u00b7 Export</b> \u2014 one click produces a finished Word document: cover page, TOC, category sections, appendix.</li></ul>'},
+    {l:"Why these choices",h:"Decisions I would defend in a design review.",b:'<p><b>RAG over fine-tuning.</b> Proposal content changes weekly; a fine-tuned model is stale on arrival. Retrieval reads from a knowledge base I can update in seconds.</p><p><b>pgvector over a dedicated vector DB.</b> At 240 entries, PostgreSQL answers a similarity query instantly \u2014 adding a second database would be infrastructure for its own sake.</p><p><b>Confidence scores as triage.</b> The dangerous failure in AI drafting isn\'t a bad answer \u2014 it\'s a bad answer that looks good. Low-confidence drafts get routed to a human first.</p>'},
     {l:"Stack",h:"",b:'<div class="drawer-stack"><span class="drawer-pill">Next.js 16</span><span class="drawer-pill">TypeScript</span><span class="drawer-pill">Claude Sonnet</span><span class="drawer-pill">Voyage AI</span><span class="drawer-pill">Supabase pgvector</span><span class="drawer-pill">TipTap 3</span><span class="drawer-pill">docx v9</span><span class="drawer-pill">Zustand</span><span class="drawer-pill">Tailwind 4</span></div>'}
   ]},
-  tradingbot:{no:"CASE STUDY 02 \u00b7 ALGORITHMIC TRADING \u00b7 PYTHON",title:"S&P 500 Options Trading Bot",live:"https://trading-bot-dashboard-five.vercel.app",tags:["Python","Alpaca API","Options Greeks","IV Rank","VIX term structure","HAR-RV","Dealer GEX","Backtesting","pandas"],sections:[
+  tradingbot:{no:"CASE STUDY 02 \u00b7 ALGORITHMIC TRADING \u00b7 PYTHON",title:"S&P 500 Options Trading Bot",live:"https://trading-bot-dashboard-five.vercel.app",tags:["Python","Alpaca API","Options Greeks","IV Rank","RSI","pandas","matplotlib"],sections:[
     {l:"The problem",h:"Options selling is a discipline problem disguised as a prediction problem.",b:'<p>Selling options profits from time decay and overpriced fear \u2014 but the strategy fails in practice for one human reason: <b>discretion</b>. Traders skip the stop-loss &quot;just this once,&quot; oversize after a win, and can\'t watch positions every minute of the session.</p><div class="drawer-callout"><b>The insight:</b> if every rule can be written down, every rule can be automated \u2014 and the machine version of you is a more disciplined trader than you are. So I wrote every rule down.</div>'},
-    {l:"How it works",h:"Six phases \u2014 Black-Scholes doing the pricing at the core.",b:'<ul><li><b>1 \u00b7 Data</b> \u2014 pulls the live SPY options chain from Alpaca, computes historical volatility from a year of daily returns, and derives <b>IV Rank</b> \u2014 where today\'s implied volatility sits in its 52-week range. That one number is the strategy\'s on/off switch.</li><li><b>2 \u00b7 Pricing engine</b> \u2014 implements Black-Scholes, the standard formula for what an option <em>should</em> cost: <em>C = S\u00b7N(d\u2081) \u2212 K\u00b7e\u207b\u02b3\u1d40\u00b7N(d\u2082)</em>. For every candidate contract it computes fair value, then backs out the volatility the market price implies. The gap between market price and fair value flags overpriced premium before any trade decision.</li><li><b>3 \u00b7 Signals</b> \u2014 RSI-14 for momentum context plus the Greeks (Delta, Gamma, Theta, Vega \u2014 how the position\'s value moves with price, time and volatility). IV Rank, RSI neutrality and pricing edge combine into one verdict: SELL, BUY, or NO TRADE.</li><li><b>4 \u00b7 Risk manager</b> \u2014 enforces the 2% rule: no trade risks more than 2% of the account. Theta sizes positions so time-decay income covers the tail-risk budget. Stop-loss at 2\u00d7 premium and take-profit at 50% are placed as standing orders at entry \u2014 not decided in the moment.</li><li><b>5 \u00b7 Execution</b> \u2014 connects to Alpaca\'s paper-trading API, converts signals to standard option symbols, places the legs as limit orders, closes automatically when an exit level is hit.</li><li><b>6 \u00b7 Dashboard</b> \u2014 a live six-panel view refreshing every 60 seconds: equity curve, win rate, daily P&amp;L, Greeks, trade log, and fair-value-vs-market spread.</li><li><b>+ Volatility-edge layer</b> — a later pass added the signals that actually decide whether selling is worth it: the <b>Volatility Risk Premium</b> (real implied vol vs a HAR-RV forecast of realized vol), <b>VIX term structure</b> (contango vs backwardation), <b>dealer gamma exposure</b> (are market-makers dampening or amplifying moves), and a <b>credit-spread</b> systemic-stress veto.</li></ul>'},
-    {l:"Why these choices",h:"Why these rules and not others.",b:'<p><b>The backtest gets a vote — even when it says no.</b> Every new signal was walk-forward tested over 8 years of SPY before it earned a place. VIX term structure earned it: Sharpe rose 1.21 → 1.66 and max drawdown shrank ~87%. The Volatility Risk Premium did not — its edge flipped with the pricing assumption — so I demoted it to a soft flag rather than let a good story override the data.</p><p><b>IV Rank gates everything.</b> Selling options is selling insurance \u2014 you only want to sell it when the premiums are overpriced.</p><p><b>Asymmetric exits (50% take-profit / 2\u00d7 stop).</b> The last half of an option\'s premium takes the longest to collect and carries the most risk of sudden moves. Taking profit at half keeps the math positive even at modest win rates.</p><p><b>Paper trading as the honest middle ground.</b> Real market data, real order mechanics, fake money. A backtest can fool itself by peeking at the future; live paper trading can\'t.</p>'},
+    {l:"How it works",h:"Six phases \u2014 Black-Scholes doing the pricing at the core.",b:'<ul><li><b>1 \u00b7 Data</b> \u2014 pulls the live SPY options chain from Alpaca, computes historical volatility from a year of daily returns, and derives <b>IV Rank</b> \u2014 where today\'s implied volatility sits in its 52-week range. That one number is the strategy\'s on/off switch.</li><li><b>2 \u00b7 Pricing engine</b> \u2014 implements Black-Scholes, the standard formula for what an option <em>should</em> cost: <em>C = S\u00b7N(d\u2081) \u2212 K\u00b7e\u207b\u02b3\u1d40\u00b7N(d\u2082)</em>. For every candidate contract it computes fair value, then backs out the volatility the market price implies. The gap between market price and fair value flags overpriced premium before any trade decision.</li><li><b>3 \u00b7 Signals</b> \u2014 RSI-14 for momentum context plus the Greeks (Delta, Gamma, Theta, Vega \u2014 how the position\'s value moves with price, time and volatility). IV Rank, RSI neutrality and pricing edge combine into one verdict: SELL, BUY, or NO TRADE.</li><li><b>4 \u00b7 Risk manager</b> \u2014 enforces the 2% rule: no trade risks more than 2% of the account. Theta sizes positions so time-decay income covers the tail-risk budget. Stop-loss at 2\u00d7 premium and take-profit at 50% are placed as standing orders at entry \u2014 not decided in the moment.</li><li><b>5 \u00b7 Execution</b> \u2014 connects to Alpaca\'s paper-trading API, converts signals to standard option symbols, places the legs as limit orders, closes automatically when an exit level is hit.</li><li><b>6 \u00b7 Dashboard</b> \u2014 a live six-panel view refreshing every 60 seconds: equity curve, win rate, daily P&amp;L, Greeks, trade log, and fair-value-vs-market spread.</li></ul>'},
+    {l:"Why these choices",h:"Why these rules and not others.",b:'<p><b>IV Rank gates everything.</b> Selling options is selling insurance \u2014 you only want to sell it when the premiums are overpriced.</p><p><b>Asymmetric exits (50% take-profit / 2\u00d7 stop).</b> The last half of an option\'s premium takes the longest to collect and carries the most risk of sudden moves. Taking profit at half keeps the math positive even at modest win rates.</p><p><b>Paper trading as the honest middle ground.</b> Real market data, real order mechanics, fake money. A backtest can fool itself by peeking at the future; live paper trading can\'t.</p>'},
     {l:"Proof it ran",h:"A running system, not a notebook.",b:'<p>The trade log holds real executed short strangles \u2014 entry price, contracts, premium, stop and target levels, full Greeks at entry \u2014 written by the system itself as it traded.</p><div class="drawer-stack"><span class="drawer-pill">Python</span><span class="drawer-pill">pandas \u00b7 NumPy</span><span class="drawer-pill">Alpaca Broker API</span><span class="drawer-pill">Options Greeks</span><span class="drawer-pill">IV Rank</span><span class="drawer-pill">RSI</span><span class="drawer-pill">matplotlib</span></div>'}
   ]},
 
@@ -1663,6 +1652,23 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
 })();
 </script>
 <script>(function(){var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;if(reduce)return;var cards=[].slice.call(document.querySelectorAll('.mini,.skill-col,.edu-card'));if(fine){document.querySelectorAll('[data-magnetic]').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(((e.clientX-(r.left+r.width/2))/(r.width/2))*6).toFixed(1)+'px,'+(((e.clientY-(r.top+r.height/2))/(r.height/2))*5).toFixed(1)+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});cards.forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--sx',(e.clientX-r.left)+'px');c.style.setProperty('--sy',(e.clientY-r.top)+'px');},{passive:true});});}else{var ticking=false;function upd(){ticking=false;var vh=window.innerHeight,mid=vh/2;cards.forEach(function(c){var r=c.getBoundingClientRect();if(r.bottom<0||r.top>vh){c.classList.remove('lit');return;}var center=r.top+r.height/2,dist=Math.abs(center-mid)/vh;if(dist<0.34){c.style.setProperty('--sx',(r.width/2)+'px');c.style.setProperty('--sy',(mid-r.top)+'px');c.classList.add('lit');}else{c.classList.remove('lit');}});}window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});window.addEventListener('resize',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});upd();}})();
+/* ===== work-card live demos — play the real product recording on hover (desktop only).
+   preload=none + lazy load() on first hover keeps them off the initial page load entirely ===== */
+(function(){
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  [].forEach.call(document.querySelectorAll('.work-card'),function(card){
+    var v=card.querySelector('.wc-demo'); if(!v) return;
+    v.addEventListener('playing',function(){ v.classList.add('on'); });
+    card.addEventListener('pointerenter',function(e){
+      if(e.pointerType==='touch') return;
+      /* play() alone starts the (lazy) fetch on a preload=none video — an explicit load()
+         here would abort the play request and eat the first hover */
+      var p=v.play(); if(p&&p.catch)p.catch(function(){});
+    });
+    card.addEventListener('pointerleave',function(){ v.pause(); });
+  });
+})();
 /* ===== liquid-glass project dashboards (left column of the drawer) ===== */
 (function(){
   // ---- real data: Churn (E-Commerce) — audited from BANA DRAFT-1.ipynb ----
@@ -1960,11 +1966,10 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
     CASES.bidcraft.dash={
       subtitle:"RAG pipeline · Supabase pgvector · Claude + Voyage",
       accent:["#0a84ff","#5e5ce6","#bf5af2"],
-      stats:[{v:"8",l:"Pipeline stages"},{v:"2,800",l:"KB entries"},{v:"512",l:"Embedding dims"},{v:"7",l:"Question categories"}],
+      stats:[{v:"7",l:"Pipeline stages"},{v:"240",l:"KB entries"},{v:"512",l:"Embedding dims"},{v:"7",l:"Question categories"}],
       charts:[
-        {type:"bars",title:"Pipeline shape",data:[["Pipeline stages",8,1],["Question categories",7,0]]},
-        {type:"note",title:"The eight stages",text:"Parse (Claude Vision / Mammoth) → extract &amp; categorise questions → embed the KB (voyage-3-lite, 512 dims, HNSW-indexed) → pgvector cosine search → rerank with a cross-encoder → grounded drafting with 0–100 confidence scores → TipTap human review → one-click Word export."},
-        {type:"note",title:"Testing the pipeline, not just shipping it",text:"A RAGAS-style eval (Claude-as-judge, 75-question golden set) scores every response for faithfulness and answer-relevancy in CI. It caught three real bugs a demo never would have: a retired model ID, a parsing bug that emptied every draft, and a rate-limit handler leaking vendor billing text to users — all fixed before they could hit a real proposal."}
+        {type:"bars",title:"Knowledge base at a glance",data:[["Embedding dims",512,1],["KB entries",240,0],["Categories",7,1]]},
+        {type:"note",title:"The seven stages",text:"Parse (Claude Vision / Mammoth) → extract &amp; categorise questions → embed the KB (voyage-3-lite, 512 dims) → pgvector cosine search → grounded drafting with 0–100 confidence scores → TipTap human review → one-click Word export."}
       ]
     };
   }
@@ -2266,8 +2271,22 @@ footer.foot-so{padding:24px 14px 14px;border-top:none}
 .wc-cta{display:inline-flex;align-items:center;gap:10px;margin-top:6px;background:rgba(255,255,255,.09);border-radius:999px;padding:11px 20px;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#F0F5F7;transition:background .25s}
 .wc-arr{display:inline-block;transition:translate .25s var(--ease-out)}
 .wc-media{padding:12px;min-width:0}
-/* pdash core styles were scoped under .visual in the base CSS — re-declare for wc-media */
-.wc-media .pdash{background:radial-gradient(130% 150% at 0% 0%,#161d2e 0%,#0a0e17 62%);padding:13px;border-radius:18px;display:flex;flex-direction:column;gap:10px;min-height:214px}
+/* ── framed app window: the cover IS the demo. Poster = frame 0 of the loop, so
+   rest → hover-play → rest is one continuous surface; chrome stays HTML for retina crispness ── */
+.wc-frame{background:radial-gradient(130% 150% at 0% 0%,#161d2e 0%,#0a0e17 62%);border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.36)}
+.wcf-bar{display:flex;align-items:center;gap:11px;padding:10px 13px;background:rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.07)}
+.wcf-dots{display:flex;gap:5px;flex:none}
+.wcf-dots i{width:9px;height:9px;border-radius:50%}
+.wcf-dots i:nth-child(1){background:#ff5f57}.wcf-dots i:nth-child(2){background:#febc2e}.wcf-dots i:nth-child(3){background:#28c840}
+.wcf-name{display:inline-flex;align-items:center;gap:7px;font-size:.66rem;font-weight:700;color:#DFE6EE;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wcf-url{margin-left:auto;flex:none;font-size:.58rem;font-weight:600;color:#8FA0B5;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:4px 10px;border-radius:999px;letter-spacing:.03em}
+@media(max-width:480px){.wcf-url{display:none}}
+.wcf-well{position:relative;aspect-ratio:2/1;background:#0a0e15}
+.wcf-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.wcf-under{margin-top:10px}
+.wc-demo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s var(--ease-out);pointer-events:none;z-index:5}
+@media(hover:hover) and (pointer:fine){.work-card:hover .wc-demo.on{opacity:1}}
+@media(prefers-reduced-motion:reduce),(hover:none){.wc-demo{display:none}}
 /* card entrance: fade only (transform stays owned by the hover spring) */
 .work-grid .proj.reveal{opacity:0}
 .work-grid .proj.reveal.in{opacity:1;transition:opacity .6s var(--ease-out),transform .34s cubic-bezier(.34,1.56,.64,1),box-shadow .34s var(--ease-out)}
