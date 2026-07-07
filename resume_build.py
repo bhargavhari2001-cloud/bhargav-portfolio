@@ -114,7 +114,7 @@ bullets([
 section("Education")
 header_row("M.S. Business Analytics (STEM)",
            "Rochester Institute of Technology — Saunders College of Business (AACSB) · GPA 3.89/4.0",
-           "Aug 2025 – May 2026")
+           "Aug 2024 – May 2026")
 story.append(Spacer(1, 2))
 header_row("B.B.A. Finance &amp; International Business",
            "CHRIST University, Bangalore (NAAC A+) · CGPA 8.97/10", "Jun 2019 – May 2022")

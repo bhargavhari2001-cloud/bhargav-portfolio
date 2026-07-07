@@ -698,21 +698,21 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
         <span class="wc-cta">Read case study <span class="wc-arr">→</span></span>
       </div>
       <div class="wc-media">
-        <div class="wc-frame pd-rise" style="--d:.06s">
-          <div class="wcf-bar">
-            <span class="wcf-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="wcf-name pd-mono">BidCraft — Bid Desk</span>
-            <span class="wcf-url pd-mono">bid-craft-beta.vercel.app</span>
+        <div class="pdash pd-bd">
+          <div class="pdash-top">
+            <div class="bd-brand"><span class="bd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg></span> BidCraft</div>
+            <span class="bd-status"><i></i> Connected</span>
           </div>
-          <div class="wcf-well">
-            <img class="wcf-poster" src="media/case/bidcraft-demo.webp" alt="BidCraft app — AI search over the RFP knowledge base" loading="lazy">
-            <video class="wc-demo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="media/case/bidcraft-demo.webm" type="video/webm"><source src="media/case/bidcraft-demo.mp4" type="video/mp4"></video>
+          <div class="bd-resp pd-rise" style="--d:.06s">
+            <div class="bd-resp-top"><span class="bd-cat">Security &amp; Compliance</span><span class="bd-conf">92% confidence</span></div>
+            <div class="bd-q">“Describe your data security controls and certifications.”</div>
+            <div class="bd-meter"><span style="--w:92%"></span></div>
           </div>
-        </div>
-        <div class="bd-stats wcf-under pd-rise" style="--d:.16s">
-          <div class="bd-stat"><b>70%</b><span>faster responses</span></div>
-          <div class="bd-stat"><b>85%</b><span>auto-answered</span></div>
-          <div class="bd-stat"><b>2.4×</b><span>win-rate lift</span></div>
+          <div class="bd-stats pd-rise" style="--d:.16s">
+            <div class="bd-stat"><b>70%</b><span>faster responses</span></div>
+            <div class="bd-stat"><b>85%</b><span>auto-answered</span></div>
+            <div class="bd-stat"><b>2.4×</b><span>win-rate lift</span></div>
+          </div>
         </div>
       </div>
       </div>
@@ -721,22 +721,32 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <button class="proj reveal work-card" type="button" onclick="openCaseTransition(this.querySelector('.wc-media'),'tradingbot')" aria-label="Open trading bot case study">
       <div class="wc-body">
       <div class="wc-media">
-        <div class="wc-frame pd-rise" style="--d:.06s">
-          <div class="wcf-bar">
-            <span class="wcf-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="wcf-name pd-mono">options_bot <span class="live-dot" aria-hidden="true"></span></span>
-            <span class="wcf-url pd-mono">SPY · Paper</span>
+        <div class="pdash pd-qt">
+          <div class="pdash-top">
+            <div class="pdash-brand"><span class="pdash-logo" style="background:linear-gradient(135deg,#4f9e80,#4892a3)">↗</span> <span class="pd-mono">options_bot</span> <span class="live-dot" aria-hidden="true"></span></div>
+            <div class="pdash-chip pd-mono">SPY · Paper</div>
           </div>
-          <div class="wcf-well">
-            <img class="wcf-poster" src="media/case/tradingbot-demo.webp" alt="Algo trading terminal — Theta Gang Alpha strategy dashboard" loading="lazy">
-            <video class="wc-demo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="media/case/tradingbot-demo.webm" type="video/webm"><source src="media/case/tradingbot-demo.mp4" type="video/mp4"></video>
+          <div class="qt-panel pd-rise" style="--d:.06s">
+            <div class="qt-cap"><span class="pdash-k">Equity curve · paper</span><b class="pd-mono">+18.4%</b></div>
+            <svg class="pdash-spark" viewBox="0 0 190 66" aria-hidden="true">
+              <defs><linearGradient id="qtgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fa987" stop-opacity=".4"/><stop offset="1" stop-color="#5fa987" stop-opacity="0"/></linearGradient></defs>
+              <line class="grid" x1="0" y1="20" x2="190" y2="20"/><line class="grid" x1="0" y1="42" x2="190" y2="42"/>
+              <path class="area" d="M6,52 L34,49 L62,51 L90,38 L118,42 L146,26 L182,12 L182,66 L6,66 Z" style="fill:url(#qtgrad)"/>
+              <path class="line" pathLength="1" d="M6,52 L34,49 L62,51 L90,38 L118,42 L146,26 L182,12" style="stroke:#5fa987"/>
+              <circle class="dot lead" cx="182" cy="12" r="2.6" style="stroke:#5fa987"/>
+            </svg>
           </div>
-        </div>
-        <div class="qt-greeks wcf-under pd-rise" style="--d:.16s">
-          <div class="qt-greek pd-mono"><i>Δ Delta</i><b>+0.32</b></div>
-          <div class="qt-greek pd-mono"><i>Γ Gamma</i><b>0.04</b></div>
-          <div class="qt-greek pd-mono"><i>Θ Theta</i><b>−1.8</b></div>
-          <div class="qt-greek pd-mono"><i>ν Vega</i><b>0.21</b></div>
+          <div class="qt-greeks pd-rise" style="--d:.14s">
+            <div class="qt-greek pd-mono"><i>Δ Delta</i><b>+0.32</b></div>
+            <div class="qt-greek pd-mono"><i>Γ Gamma</i><b>0.04</b></div>
+            <div class="qt-greek pd-mono"><i>Θ Theta</i><b>−1.8</b></div>
+            <div class="qt-greek pd-mono"><i>ν Vega</i><b>0.21</b></div>
+          </div>
+          <div class="qt-grid pd-rise" style="--d:.22s">
+            <div class="qt-cell"><i>Win rate</i><b class="pd-mono" style="color:#5fa987">68%</b></div>
+            <div class="qt-cell"><i>IV Rank</i><b class="pd-mono">62%</b></div>
+            <div class="qt-cell"><i>Open</i><b class="pd-mono">3</b></div>
+          </div>
         </div>
       </div>
       <div class="wc-info">
@@ -752,21 +762,22 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <button class="proj reveal work-card" type="button" onclick="openCaseTransition(this.querySelector('.wc-media'),'retailpro')" aria-label="Open Precision Retail Pro case study">
       <div class="wc-body">
       <div class="wc-media">
-        <div class="wc-frame pd-rise" style="--d:.06s">
-          <div class="wcf-bar">
-            <span class="wcf-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="wcf-name pd-mono">precision-retail</span>
-            <span class="wcf-url pd-mono">precision-retail-pro.vercel.app</span>
+        <div class="pdash pd-cli">
+          <div class="pdash-top">
+            <span class="cli-badge pd-mono">[ SYSTEM ONLINE ]</span>
+            <span class="cli-tag pd-mono">precision-retail</span>
           </div>
-          <div class="wcf-well">
-            <img class="wcf-poster" src="media/case/retailpro-demo.webp" alt="Precision Retail Pro — CSV upload and AI inventory analysis" loading="lazy">
-            <video class="wc-demo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="media/case/retailpro-demo.webm" type="video/webm"><source src="media/case/retailpro-demo.mp4" type="video/mp4"></video>
+          <div class="cli-term pd-mono pd-rise" style="--d:.06s">
+            <div class="l"><span class="p">›</span> upload inventory.csv</div>
+            <div class="ok">✓ 847 SKUs · 4 categories analyzed</div>
+            <div class="warn">⚡ Running Shoes — sells out in ~6 days · reorder</div>
           </div>
-        </div>
-        <div class="cli-term pd-mono wcf-under pd-rise" style="--d:.16s">
-          <div class="l"><span class="p">›</span> upload inventory.csv</div>
-          <div class="ok">✓ 847 SKUs · 4 categories analyzed</div>
-          <div class="warn">⚡ Running Shoes — sells out in ~6 days · reorder</div>
+          <div class="cli-grid pd-rise" style="--d:.16s">
+            <div class="cli-cell"><i>Stock value</i><b class="pd-mono">$124,580</b><span class="cli-up">▲ 4.1%</span></div>
+            <div class="cli-cell"><i>Avg margin</i><b class="pd-mono" style="color:#6aa6b4">34.2%</b></div>
+            <div class="cli-cell"><i>SKUs tracked</i><b class="pd-mono">847</b></div>
+            <div class="cli-cell"><i>Low stock</i><b class="pd-mono" style="color:#d2a559">12</b></div>
+          </div>
         </div>
       </div>
       <div class="wc-info">
@@ -871,7 +882,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
       </div>
     </div>
     <div class="edu">
-      <div class="edu-card reveal"><div class="when">Aug 2025 — May 2026</div><h3>M.S. Business Analytics (STEM)</h3><p>Rochester Institute of Technology, Saunders College (AACSB) · GPA 3.89/4.0</p></div>
+      <div class="edu-card reveal"><div class="when">Aug 2024 — May 2026</div><h3>M.S. Business Analytics (STEM)</h3><p>Rochester Institute of Technology, Saunders College (AACSB) · GPA 3.89/4.0</p></div>
       <div class="edu-card reveal"><div class="when">Jun 2019 — May 2022</div><h3>B.B.A. Finance &amp; International Business</h3><p>CHRIST University, Bangalore (NAAC A+) · CGPA 8.97/10</p></div>
       <div class="edu-card reveal"><div class="when">May — Jul 2025</div><h3>Advanced Certificate, Business &amp; Data Analytics</h3><p>IIM Udaipur (AACSB)</p></div>
     </div>
@@ -1652,23 +1663,6 @@ window.addEventListener('scroll',function(){document.getElementById('main-nav').
 })();
 </script>
 <script>(function(){var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;if(reduce)return;var cards=[].slice.call(document.querySelectorAll('.mini,.skill-col,.edu-card'));if(fine){document.querySelectorAll('[data-magnetic]').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(((e.clientX-(r.left+r.width/2))/(r.width/2))*6).toFixed(1)+'px,'+(((e.clientY-(r.top+r.height/2))/(r.height/2))*5).toFixed(1)+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});cards.forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--sx',(e.clientX-r.left)+'px');c.style.setProperty('--sy',(e.clientY-r.top)+'px');},{passive:true});});}else{var ticking=false;function upd(){ticking=false;var vh=window.innerHeight,mid=vh/2;cards.forEach(function(c){var r=c.getBoundingClientRect();if(r.bottom<0||r.top>vh){c.classList.remove('lit');return;}var center=r.top+r.height/2,dist=Math.abs(center-mid)/vh;if(dist<0.34){c.style.setProperty('--sx',(r.width/2)+'px');c.style.setProperty('--sy',(mid-r.top)+'px');c.classList.add('lit');}else{c.classList.remove('lit');}});}window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});window.addEventListener('resize',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});upd();}})();
-/* ===== work-card live demos — play the real product recording on hover (desktop only).
-   preload=none + lazy load() on first hover keeps them off the initial page load entirely ===== */
-(function(){
-  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  [].forEach.call(document.querySelectorAll('.work-card'),function(card){
-    var v=card.querySelector('.wc-demo'); if(!v) return;
-    v.addEventListener('playing',function(){ v.classList.add('on'); });
-    card.addEventListener('pointerenter',function(e){
-      if(e.pointerType==='touch') return;
-      /* play() alone starts the (lazy) fetch on a preload=none video — an explicit load()
-         here would abort the play request and eat the first hover */
-      var p=v.play(); if(p&&p.catch)p.catch(function(){});
-    });
-    card.addEventListener('pointerleave',function(){ v.pause(); });
-  });
-})();
 /* ===== liquid-glass project dashboards (left column of the drawer) ===== */
 (function(){
   // ---- real data: Churn (E-Commerce) — audited from BANA DRAFT-1.ipynb ----
@@ -2271,22 +2265,8 @@ footer.foot-so{padding:24px 14px 14px;border-top:none}
 .wc-cta{display:inline-flex;align-items:center;gap:10px;margin-top:6px;background:rgba(255,255,255,.09);border-radius:999px;padding:11px 20px;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#F0F5F7;transition:background .25s}
 .wc-arr{display:inline-block;transition:translate .25s var(--ease-out)}
 .wc-media{padding:12px;min-width:0}
-/* ── framed app window: the cover IS the demo. Poster = frame 0 of the loop, so
-   rest → hover-play → rest is one continuous surface; chrome stays HTML for retina crispness ── */
-.wc-frame{background:radial-gradient(130% 150% at 0% 0%,#161d2e 0%,#0a0e17 62%);border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.36)}
-.wcf-bar{display:flex;align-items:center;gap:11px;padding:10px 13px;background:rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.07)}
-.wcf-dots{display:flex;gap:5px;flex:none}
-.wcf-dots i{width:9px;height:9px;border-radius:50%}
-.wcf-dots i:nth-child(1){background:#ff5f57}.wcf-dots i:nth-child(2){background:#febc2e}.wcf-dots i:nth-child(3){background:#28c840}
-.wcf-name{display:inline-flex;align-items:center;gap:7px;font-size:.66rem;font-weight:700;color:#DFE6EE;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wcf-url{margin-left:auto;flex:none;font-size:.58rem;font-weight:600;color:#8FA0B5;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:4px 10px;border-radius:999px;letter-spacing:.03em}
-@media(max-width:480px){.wcf-url{display:none}}
-.wcf-well{position:relative;aspect-ratio:2/1;background:#0a0e15}
-.wcf-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.wcf-under{margin-top:10px}
-.wc-demo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s var(--ease-out);pointer-events:none;z-index:5}
-@media(hover:hover) and (pointer:fine){.work-card:hover .wc-demo.on{opacity:1}}
-@media(prefers-reduced-motion:reduce),(hover:none){.wc-demo{display:none}}
+/* pdash core styles were scoped under .visual in the base CSS — re-declare for wc-media */
+.wc-media .pdash{background:radial-gradient(130% 150% at 0% 0%,#161d2e 0%,#0a0e17 62%);padding:13px;border-radius:18px;display:flex;flex-direction:column;gap:10px;min-height:214px}
 /* card entrance: fade only (transform stays owned by the hover spring) */
 .work-grid .proj.reveal{opacity:0}
 .work-grid .proj.reveal.in{opacity:1;transition:opacity .6s var(--ease-out),transform .34s cubic-bezier(.34,1.56,.64,1),box-shadow .34s var(--ease-out)}
