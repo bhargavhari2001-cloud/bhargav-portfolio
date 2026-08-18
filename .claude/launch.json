@@ -1,1 +1,12 @@
-{ "autoPort": true }
+{
+  "version": "0.0.1",
+  "autoPort": false,
+  "configurations": [
+    {
+      "name": "portfolio-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8791", "--directory", "/Users/bhargav./Claude/Artifacts/bhargav-portfolio"],
+      "port": 8791
+    }
+  ]
+}

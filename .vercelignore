@@ -4,3 +4,7 @@ thumbnail.png
 .DS_Store
 **/.DS_Store
 resume_build.py
+
+# planning + internal docs (never publish)
+*.md
+PLAN-*

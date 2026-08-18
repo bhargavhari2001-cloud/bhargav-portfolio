@@ -24,3 +24,6 @@ node_modules/
 
 # editor/backup snapshots (not part of the site)
 *.bak
+
+# planning + internal docs (never publish)
+PLAN-*.md

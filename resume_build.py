@@ -33,6 +33,9 @@ body = ParagraphStyle("body", fontName="Helvetica", fontSize=9, leading=11.5, te
 bullet = ParagraphStyle("bullet", fontName="Helvetica", fontSize=8.8, leading=11, textColor=INK)
 skill = ParagraphStyle("skill", fontName="Helvetica", fontSize=8.8, leading=11.5, textColor=INK, spaceAfter=1)
 
+bullet_item = ParagraphStyle("bullet_item", parent=bullet, leftIndent=11,
+                            firstLineIndent=-11, spaceBefore=1, spaceAfter=2.5)
+
 story = []
 
 def header_row(left_role, left_org, right_dates):
@@ -46,10 +49,11 @@ def header_row(left_role, left_org, right_dates):
         story.append(Paragraph(left_org, org))
 
 def bullets(items):
-    story.append(ListFlowable(
-        [ListItem(Paragraph(x, bullet), value="•", leftIndent=12) for x in items],
-        bulletType="bullet", start="•", leftIndent=10, bulletFontSize=7,
-        spaceBefore=1, spaceAfter=2))
+    # Rendered as one inline paragraph per item so the PDF text layer yields
+    # "• text" as a single run. ListFlowable puts the glyph in its own frame,
+    # which extracts as a stray "•" line and adds noise for resume parsers.
+    for x in items:
+        story.append(Paragraph("•&nbsp;&nbsp;" + x, bullet_item))
 
 def section(title):
     story.append(Paragraph(title.upper(), sec))
@@ -62,25 +66,25 @@ link = '<a href="{u}" color="#0F62FE">{t}</a>'
 story.append(Paragraph("Bhargav Hari", name))
 story.append(Paragraph("Business Analytics &nbsp;·&nbsp; Finance &nbsp;·&nbsp; Applied AI", tagline))
 story.append(Paragraph(
-    "Bengaluru, India &nbsp;·&nbsp; +1 (585) 633-6600 &nbsp;·&nbsp; bhargavhari2001@gmail.com &nbsp;·&nbsp; "
-    "linkedin.com/in/bhargavhari &nbsp;·&nbsp; github.com/bhargavhari2001-cloud &nbsp;·&nbsp; "
+    "Bengaluru, India &nbsp;·&nbsp; +91 99029 58921 &nbsp;·&nbsp; bhargavhari2001@gmail.com &nbsp;·&nbsp; "
+    "linkedin.com/in/bhargav-hari-6b5428281 &nbsp;·&nbsp; github.com/bhargavhari2001-cloud &nbsp;·&nbsp; "
     "bhargav-portfolio-lake.vercel.app", contact))
 story.append(Spacer(1, 4))
 
 section("Summary")
 story.append(Paragraph(
-    "Analyst with three years of enterprise pre-sales behind an M.S. in Business Analytics (GPA 3.89) and a "
-    "finance degree. At Impelsys I owned RFPs across $250K+ in deals and saw first-hand where deals, "
-    "pricing, and data break; at RIT I built the technical depth to fix them — volatility models, credit-risk "
-    "rankings, survival analysis. Along the way I shipped three working AI products, alone, end to end. "
-    "Equally at home in a client meeting, a financial model, or a codebase — and looking for analyst roles "
-    "that use all three.", body))
+    "Business analyst with three years at Impelsys owning the RFP/RFQ cycle end to end — $250K+ in deals, "
+    "20–25 bids a year, and C-suite demos across education, publishing and healthcare. I went back for an "
+    "M.S. in Business Analytics at RIT (GPA 3.89, STEM) to build the technical half: volatility models, "
+    "credit-risk ranking, survival analysis. Since then I have shipped three AI products end to end and spent "
+    "nine weeks on a client engagement documenting a system its own founder could no longer explain. Comfortable "
+    "in a client meeting, a pricing model, or a codebase — looking for analyst roles that use all three.", body))
 
 section("Experience")
 
-header_row("Student Research Intern — Accounting Analytics",
+header_row("Student Research Intern",
            "Rochester Institute of Technology, Rochester, NY",
-           "Jan 2026 – Present")
+           "Jan 2026 – Aug 2026")
 bullets([
     "Conducted systematic literature reviews across 12 premier IS journals (MIS Quarterly, ISR, JMIS), curating "
     "49+ peer-reviewed articles on AI and ESG.",
@@ -98,6 +102,21 @@ bullets([
     "models and sector shifts for investment decisions.",
     "Built financial models to evaluate company valuations and assess market volatility, supporting academic "
     "research in corporate finance.",
+])
+story.append(Spacer(1, 3))
+
+header_row("Analytics Consultant — Capstone Engagement",
+           "US real-estate intelligence startup (client engagement via RIT) — remote",
+           "Jun 2026 – Aug 2026")
+bullets([
+    "Worked in a ten-person team on a nine-week engagement with a live sponsor, delivering every two weeks.",
+    "Built the system map for a product running on an undocumented 23-tab workbook — 66 components and 63 "
+    "connections, with each tab classified by whether it was safe to edit or overwritten by a script; 52 links "
+    "traced to a cited source and 11 marked inferred.",
+    "Co-built the tool layer that let AI assistants query the product directly (Model Context Protocol), owning "
+    "the data-access layer over 8 core and 12 metric tables; contributed to the database migration and ERDs.",
+    "Wrote a reconciliation that re-derives every score in the client's 879-row log from its documented inputs, "
+    "so the team can re-run the check after any change.",
 ])
 story.append(Spacer(1, 3))
 
@@ -125,16 +144,16 @@ header_row("Advanced Certificate, Business &amp; Data Analytics",
 # ================================ PAGE 2 ================================
 story.append(PageBreak())
 
-section("Selected Projects — Built Solo, End To End")
+section("Projects")
 story.append(Paragraph(
-    "Three are live products; the rest are full studies. Every number below comes from the underlying code and "
+    "Built solo unless noted. Three are live products; the rest are full studies. Every number below comes from the underlying code and "
     "reports — deeper write-ups, dashboards, and source at "
     + link.format(u="https://bhargav-portfolio-lake.vercel.app", t="bhargav-portfolio-lake.vercel.app") + ".", body))
 story.append(Spacer(1, 4))
 bullets([
     "<b>BidCraft — AI RFP automation</b> (live): turns the 40–60-hour RFP grind into a grounded, "
     "confidence-scored first draft. Reads the RFP, retrieves your strongest past answers by meaning "
-    "(240-answer knowledge base, 512-dim embeddings, pgvector), and drafts the response with citations. "
+    "(2,800-entry knowledge base, 512-dim embeddings, pgvector), and drafts the response with citations. "
     "Born from running 20+ enterprise proposals a year at Impelsys. Next.js 16 · Claude · Voyage AI · "
     "Supabase. &nbsp;" + link.format(u="https://bid-craft-beta.vercel.app/", t="bid-craft-beta.vercel.app"),
 
