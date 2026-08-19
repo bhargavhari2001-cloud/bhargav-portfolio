@@ -34,7 +34,7 @@
 <script>
 /* auto cache-bust: reload only when a newer build is deployed (handles Safari bfcache) */
 (function(){
-  var BUILD='b20260818193723';   /* stamped fresh on every deploy by deploy.sh */
+  var BUILD='b20260819204709';   /* stamped fresh on every deploy by deploy.sh */
   function checkFresh(){
     fetch('/version.json?t='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
@@ -159,6 +159,7 @@ h2.sec{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.025em
 .bd-stat{background:#121826;border:1px solid #222b3b;border-radius:10px;padding:10px 8px;text-align:center}
 .bd-stat b{display:block;font-size:1.12rem;font-weight:750;color:#fff;letter-spacing:-.02em;line-height:1}
 .bd-stat span{display:block;margin-top:4px;font-size:.49rem;color:#7d8aa0;letter-spacing:.03em;text-transform:uppercase;font-weight:600;line-height:1.3}
+.bd-cap{display:block;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9ec3ff;line-height:1.4;padding:3px 0}
 /* 2 · options bot — quant · muted green */
 .qt-panel{background:#121826;border:1px solid #222b3b;border-radius:11px;padding:10px 12px 6px}
 .qt-cap{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
@@ -692,7 +693,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
   </div>
   <div class="hw-foot">
     <div class="hw-lead">
-      <div class="kick">Business Analytics · Finance · AI Engineering</div>
+      <div class="kick">Analytics · Finance · AI Engineering</div>
       <h1 class="display">I analyze the problem.<br>Then I <span class="kw">build</span> the fix.</h1>
       <script>(function(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;var h=document.querySelector('.display');if(!h)return;var frag=document.createDocumentFragment(),words=[];function wrap(t){t.split(/(\s+)/).forEach(function(p){if(p==='')return;if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));}else{var s=document.createElement('span');s.className='hw';s.textContent=p;frag.appendChild(s);words.push(s);}});}[].slice.call(h.childNodes).forEach(function(n){if(n.nodeType===3){wrap(n.nodeValue);}else if(n.nodeName==='BR'){frag.appendChild(document.createElement('br'));}else{var s=document.createElement('span');s.className='hw';s.appendChild(n.cloneNode(true));frag.appendChild(s);words.push(s);}});h.textContent='';h.appendChild(frag);h.classList.add('hsplit');words.forEach(function(w,i){w.style.transitionDelay=(i*55+40)+'ms';});requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('hin');});});})();</script>
       <div class="hero-btns">
@@ -789,9 +790,9 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
             <div class="bd-meter"><span style="--w:92%"></span></div>
           </div>
           <div class="bd-stats pd-rise" style="--d:.16s">
-            <div class="bd-stat"><b>70%</b><span>faster responses</span></div>
-            <div class="bd-stat"><b>85%</b><span>auto-answered</span></div>
-            <div class="bd-stat"><b>2.4×</b><span>win-rate lift</span></div>
+            <div class="bd-stat"><span class="bd-cap">Faster responses</span></div>
+            <div class="bd-stat"><span class="bd-cap">Auto-answered</span></div>
+            <div class="bd-stat"><span class="bd-cap">Helps win-rate lift</span></div>
           </div>
         </div>
       </div>
@@ -832,7 +833,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
       <div class="wc-info">
         <div class="wc-cat">Case study 02 · Algorithmic trading · Python</div>
         <h3 class="wc-name">Options Bot</h3>
-        <p class="wc-desc">Six-phase system: live options data → Black-Scholes pricing → signals → automated risk → real order execution on Alpaca's paper API. The trade log shows real executed strangles.</p>
+        <p class="wc-desc">Six-phase system: live options data → Black-Scholes pricing → signals → automated risk → order execution on Alpaca's paper API. Paper-traded executions — no real capital deployed.</p>
         <div class="tag-row"><span class="tag">Python</span><span class="tag">Alpaca API</span><span class="tag">Options Greeks</span><span class="tag">RSI · IV Rank</span></div>
         <span class="wc-cta">Read case study <span class="wc-arr">→</span></span>
       </div>
@@ -904,10 +905,10 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
     <div class="sec-label">04 — Skills</div>
     <h2 class="sec">Skills, with receipts.</h2>
     <div class="skills">
-      <div class="skill-col"><h3>Programming &amp; Data</h3><ul><li><b>Python</b> — Pandas, Scikit-learn, XGBoost, SHAP</li><li><b>R</b> — tidyverse, ggplot2, survival, caret</li><li><b>SQL</b> — Oracle, PostgreSQL, PL/SQL, 3NF</li><li><b>TypeScript</b> / JavaScript</li></ul></div>
-      <div class="skill-col"><h3>AI &amp; Analytics</h3><ul><li>Machine Learning, Survival Analysis, NLP</li><li>Time-series — ARIMA, GARCH, Prophet</li><li><b>RAG</b> pipelines &amp; vector search (pgvector)</li><li><b>LLM</b> integration — Claude API</li></ul></div>
-      <div class="skill-col"><h3>Finance &amp; Business</h3><ul><li>Financial modeling &amp; variance analysis</li><li>RFP management &amp; presales solutioning</li><li>Client relationships &amp; requirements gathering</li><li>Research design &amp; stakeholder communication</li></ul></div>
-      <div class="skill-col"><h3>Tools &amp; Platforms</h3><ul><li>Tableau, Power BI, Advanced Excel</li><li>Oracle APEX, Git, Jupyter</li><li>Next.js, React, Tailwind, Supabase</li><li>Alpaca API, Vercel, Google Colab</li></ul></div>
+      <div class="skill-col"><h3>Programming &amp; Data</h3><ul><li><b>Python</b> — Pandas, Scikit-learn, XGBoost, SHAP</li><li><b>R</b> — tidyverse, ggplot2, survival, caret</li><li><b>SQL</b> — Oracle, PostgreSQL, PL/SQL, 3NF</li><li><b>TypeScript</b> / JavaScript</li><li><b>Testing</b> — pytest, failure-path coverage</li></ul></div>
+      <div class="skill-col"><h3>AI &amp; Analytics</h3><ul><li>Machine Learning, Survival Analysis, NLP</li><li>Time-series — ARIMA, GARCH, Prophet</li><li><b>RAG</b> pipelines &amp; vector search (pgvector)</li><li><b>LLM</b> integration — Claude API</li><li><b>MCP</b> — tool design for AI assistants</li></ul></div>
+      <div class="skill-col"><h3>Consulting &amp; Business</h3><ul><li>Client engagements &amp; sponsor handoff</li><li>RFP management &amp; presales solutioning</li><li>System documentation &amp; knowledge graphs</li><li>Data reconciliation &amp; audit trails</li><li>Requirements gathering &amp; C-suite comms</li></ul></div>
+      <div class="skill-col"><h3>Tools &amp; Platforms</h3><ul><li>Tableau, Power BI, Advanced Excel</li><li>Oracle APEX, Airtable, Git, Jupyter</li><li>Next.js, React, Tailwind, Supabase</li><li>Google Cloud Run, Vercel, Alpaca API</li></ul></div>
     </div>
   </div>
 </section>
@@ -923,8 +924,8 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
           <h3>Business Analyst</h3>
           <div class="rm-org">Impelsys Pvt Ltd · Bengaluru, India</div>
           <ul>
-            <li>Spearheaded end-to-end RFP/RFQ process, structuring proposals that increased win rates by <b>25%</b> across <b>$250K+</b> in deals over my tenure</li>
-            <li>Collaborated with cross-functional teams to price complex SaaS solutions, ensuring <b>85% accuracy</b> in scope and margin estimation</li>
+            <li>Spearheaded the end-to-end RFP/RFQ process, structuring proposals that increased win rate across <b>$250K+</b> in deals over my tenure</li>
+            <li>Collaborated with cross-functional teams to price complex SaaS solutions, holding scope and margin estimates accurate enough to quote from</li>
             <li>Delivered product demonstrations to C-suite stakeholders, managing <b>20–25+ bids per year</b> across education, publishing, and healthcare sectors</li>
           </ul>
         </div>
@@ -962,7 +963,7 @@ button.mini{text-align:left;width:100%;cursor:pointer;font-family:inherit;backgr
       </div>
     </div>
     <div class="edu">
-      <div class="edu-card reveal"><div class="when">Aug 2025 — Aug 2026</div><h3>M.S. Business Analytics (STEM)</h3><p>Rochester Institute of Technology, Saunders College (AACSB) · GPA 3.89/4.0</p></div>
+      <div class="edu-card reveal"><div class="when">Aug 2025 — Aug 2026</div><h3>M.S. Business Analytics (STEM)</h3><p>Rochester Institute of Technology, Saunders College (AACSB) · GPA 3.90/4.0</p></div>
       <div class="edu-card reveal"><div class="when">Jun 2019 — May 2022</div><h3>B.B.A. Finance &amp; International Business</h3><p>CHRIST University, Bangalore (NAAC A+) · CGPA 8.97/10</p></div>
       <div class="edu-card reveal"><div class="when">May — Jul 2025</div><h3>Advanced Certificate, Business &amp; Data Analytics</h3><p>IIM Udaipur (AACSB)</p></div>
     </div>
@@ -1063,7 +1064,7 @@ var CASES={
     {l:"The problem",h:"Options selling is a discipline problem disguised as a prediction problem.",b:'<p>Selling options profits from time decay and overpriced fear \u2014 but the strategy fails in practice for one human reason: <b>discretion</b>. Traders skip the stop-loss &quot;just this once,&quot; oversize after a win, and can\'t watch positions every minute of the session.</p><div class="drawer-callout"><b>The insight:</b> if every rule can be written down, every rule can be automated \u2014 and the machine version of you is a more disciplined trader than you are. So I wrote every rule down.</div>'},
     {l:"How it works",h:"Six phases \u2014 Black-Scholes doing the pricing at the core.",b:'<ul><li><b>1 \u00b7 Data</b> \u2014 pulls the live SPY options chain from Alpaca, computes historical volatility from a year of daily returns, and derives <b>IV Rank</b> \u2014 where today\'s implied volatility sits in its 52-week range. That one number is the strategy\'s on/off switch.</li><li><b>2 \u00b7 Pricing engine</b> \u2014 implements Black-Scholes, the standard formula for what an option <em>should</em> cost: <em>C = S\u00b7N(d\u2081) \u2212 K\u00b7e\u207b\u02b3\u1d40\u00b7N(d\u2082)</em>. For every candidate contract it computes fair value, then backs out the volatility the market price implies. The gap between market price and fair value flags overpriced premium before any trade decision.</li><li><b>3 \u00b7 Signals</b> \u2014 RSI-14 for momentum context plus the Greeks (Delta, Gamma, Theta, Vega \u2014 how the position\'s value moves with price, time and volatility). IV Rank, RSI neutrality and pricing edge combine into one verdict: SELL, BUY, or NO TRADE. An economic-calendar blackout stands the bot down around Fed, CPI and jobs days \u2014 with CPI and jobs dates pulled live from the FRED API.</li><li><b>4 \u00b7 Risk manager</b> \u2014 enforces the 2% rule: no trade risks more than 2% of the account. Theta sizes positions so time-decay income covers the tail-risk budget. Stop-loss at 2\u00d7 premium and take-profit at 50% are placed as standing orders at entry \u2014 not decided in the moment.</li><li><b>5 \u00b7 Execution</b> \u2014 connects to Alpaca\'s paper-trading API, converts signals to standard option symbols, places the legs as limit orders, closes automatically when an exit level is hit.</li><li><b>6 \u00b7 Dashboard</b> \u2014 a live six-panel view refreshing every 60 seconds: equity curve, win rate, daily P&amp;L, Greeks, trade log, and fair-value-vs-market spread.</li></ul>'},
     {l:"Why these choices",h:"Why these rules and not others.",b:'<p><b>IV Rank gates everything.</b> Selling options is selling insurance \u2014 you only want to sell it when the premiums are overpriced.</p><p><b>Asymmetric exits (50% take-profit / 2\u00d7 stop).</b> The last half of an option\'s premium takes the longest to collect and carries the most risk of sudden moves. Taking profit at half keeps the math positive even at modest win rates.</p><p><b>Macro blackouts on live dates.</b> No new trades from two days before to one day after Fed, CPI and jobs releases. The CPI and jobs dates stream from the FRED API with a cached fail-safe fallback \u2014 the old hardcoded calendar had already drifted wrong by several days, which is exactly how blackout filters quietly die.</p><p><b>Paper trading as the honest middle ground.</b> Real market data, real order mechanics, fake money. A backtest can fool itself by peeking at the future; live paper trading can\'t.</p>'},
-    {l:"Proof it ran",h:"A running system, not a notebook.",b:'<p>The trade log holds real executed short strangles \u2014 entry price, contracts, premium, stop and target levels, full Greeks at entry \u2014 written by the system itself as it traded.</p><div class="drawer-stack"><span class="drawer-pill">Python</span><span class="drawer-pill">pandas \u00b7 NumPy</span><span class="drawer-pill">Alpaca Broker API</span><span class="drawer-pill">Options Greeks</span><span class="drawer-pill">IV Rank</span><span class="drawer-pill">RSI</span><span class="drawer-pill">matplotlib</span></div>'}
+    {l:"Proof it ran",h:"A running system, not a notebook.",b:'<p>Paper-traded executions \u2014 no real capital deployed. The trade log holds each short strangle the system opened \u2014 entry price, contracts, premium, stop and target levels, full Greeks at entry \u2014 written by the system itself as it traded.</p><div class="drawer-stack"><span class="drawer-pill">Python</span><span class="drawer-pill">pandas \u00b7 NumPy</span><span class="drawer-pill">Alpaca Broker API</span><span class="drawer-pill">Options Greeks</span><span class="drawer-pill">IV Rank</span><span class="drawer-pill">RSI</span><span class="drawer-pill">matplotlib</span></div>'}
   ]},
 
   engagement01:{no:"CLIENT ENGAGEMENT \u00b7 CONSULTING \u00b7 TEAM OF 10",title:"The System Map \u2014 making a live product AI-queryable",img:"media/case/engagement01.svg",tags:["MCP \u00b7 FastMCP","Python","Airtable API","Oracle APEX","pytest","Knowledge graph","Google Cloud Run"],sections:[

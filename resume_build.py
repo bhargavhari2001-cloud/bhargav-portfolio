@@ -64,7 +64,7 @@ link = '<a href="{u}" color="#0F62FE">{t}</a>'
 # ================================ PAGE 1 ================================
 
 story.append(Paragraph("Bhargav Hari", name))
-story.append(Paragraph("Business Analytics &nbsp;·&nbsp; Finance &nbsp;·&nbsp; Applied AI", tagline))
+story.append(Paragraph("Analytics &nbsp;·&nbsp; Finance &nbsp;·&nbsp; Applied AI", tagline))
 story.append(Paragraph(
     "Bengaluru, India &nbsp;·&nbsp; +91 99029 58921 &nbsp;·&nbsp; bhargavhari2001@gmail.com &nbsp;·&nbsp; "
     "linkedin.com/in/bhargav-hari-6b5428281 &nbsp;·&nbsp; github.com/bhargavhari2001-cloud &nbsp;·&nbsp; "
@@ -73,9 +73,9 @@ story.append(Spacer(1, 4))
 
 section("Summary")
 story.append(Paragraph(
-    "Business analyst with three years at Impelsys owning the RFP/RFQ cycle end to end — $250K+ in deals, "
-    "20–25 bids a year, and C-suite demos across education, publishing and healthcare. I went back for an "
-    "M.S. in Business Analytics at RIT (GPA 3.89, STEM) to build the technical half: volatility models, "
+    "Business analyst with three years at Impelsys owning the RFP/RFQ cycle end to end — $250K+ in deals and "
+    "C-suite demos across education, publishing and healthcare. I went back for an "
+    "M.S. in Business Analytics at RIT (GPA 3.90, STEM) to build the technical half: volatility models, "
     "credit-risk ranking, survival analysis. Since then I have shipped three AI products end to end and spent "
     "nine weeks on a client engagement documenting a system its own founder could no longer explain. Comfortable "
     "in a client meeting, a pricing model, or a codebase — looking for analyst roles that use all three.", body))
@@ -122,17 +122,17 @@ story.append(Spacer(1, 3))
 
 header_row("Business Analyst", "Impelsys Pvt Ltd, Bengaluru, India", "Aug 2022 – Jul 2025")
 bullets([
-    "Owned the RFP/RFQ process end to end, structuring proposals that lifted the win rate 25% across $250K+ "
-    "in deals over my tenure.",
-    "Priced complex SaaS solutions with cross-functional teams, landing within 85% accuracy on scope and "
-    "margin estimates.",
+    "Owned the RFP/RFQ process end to end, structuring proposals that increased win rate across $250K+ in "
+    "deals over my tenure.",
+    "Priced complex SaaS solutions with cross-functional teams, holding scope and margin estimates accurate "
+    "enough to quote from.",
     "Ran 20–25+ bids a year and demoed directly to C-suite stakeholders across education, publishing, and "
     "healthcare.",
 ])
 
 section("Education")
 header_row("M.S. Business Analytics (STEM)",
-           "Rochester Institute of Technology — Saunders College of Business (AACSB) · GPA 3.89/4.0",
+           "Rochester Institute of Technology — Saunders College of Business (AACSB) · GPA 3.90/4.0",
            "Aug 2025 – Aug 2026")
 story.append(Spacer(1, 2))
 header_row("B.B.A. Finance &amp; International Business",
@@ -172,7 +172,7 @@ bullets([
 
     "<b>Options trading bot</b> (live): a vol-gated SPY options strategy that stands aside when the VIX term "
     "structure says panic — lifting Sharpe from 1.21 to 1.66 and cutting max drawdown 87% in an 8-year "
-    "backtest; runs live on Alpaca paper trading. &nbsp;"
+    "backtest. Paper-traded executions — no real capital deployed. &nbsp;"
     + link.format(u="https://trading-bot-dashboard-five.vercel.app", t="trading-bot-dashboard-five.vercel.app"),
 
     "<b>Precision Retail Pro</b> (live): turns two CSVs — inventory and sales — into demand forecasts and "
@@ -189,9 +189,9 @@ bullets([
 
 section("Skills")
 story.append(Paragraph("<b>Languages &amp; Data:</b> Python (pandas, NumPy, scikit-learn, XGBoost, LightGBM, SHAP), R (tidyverse, survival, caret, tidytext, arules), SQL (Oracle, PostgreSQL, PL/SQL), TypeScript / JavaScript", skill))
-story.append(Paragraph("<b>AI &amp; Analytics:</b> Machine learning (Random Forest, Gradient Boosting, ensemble ranking); survival analysis; NLP &amp; topic modeling; time-series forecasting (ARIMA, GARCH, Prophet); association-rule mining; RAG &amp; vector search (Voyage AI embeddings, pgvector); LLM integration (Claude API)", skill))
-story.append(Paragraph("<b>Business:</b> Financial modeling &amp; pricing; RFP management &amp; pre-sales solutioning; win/loss analysis; client discovery &amp; C-suite communication; research design", skill))
-story.append(Paragraph("<b>Tools &amp; Platforms:</b> Tableau, Power BI, Advanced Excel, matplotlib/ggplot2; Next.js, React, TipTap, Zustand, Supabase; Git, Jupyter, Oracle APEX, EndNote, Alpaca API, Vercel", skill))
+story.append(Paragraph("<b>AI &amp; Analytics:</b> Machine learning (Random Forest, Gradient Boosting, ensemble ranking); survival analysis; NLP &amp; topic modeling; time-series forecasting (ARIMA, GARCH, Prophet); association-rule mining; RAG &amp; vector search (Voyage AI embeddings, pgvector); LLM integration (Claude API); Model Context Protocol (MCP) tool design", skill))
+story.append(Paragraph("<b>Consulting &amp; Business:</b> Client engagements &amp; sponsor handoff; system documentation &amp; knowledge graphs; data reconciliation &amp; audit trails; financial modeling &amp; pricing; RFP management &amp; pre-sales solutioning; client discovery &amp; C-suite communication", skill))
+story.append(Paragraph("<b>Tools &amp; Platforms:</b> Tableau, Power BI, Advanced Excel, matplotlib/ggplot2; Next.js, React, TipTap, Zustand, Supabase; Git, Jupyter, Oracle APEX, Airtable, Google Cloud Run, pytest, EndNote, Alpaca API, Vercel", skill))
 story.append(Paragraph("<b>Spoken:</b> English · Kannada · Hindi · Tamil", skill))
 
 doc.build(story)
